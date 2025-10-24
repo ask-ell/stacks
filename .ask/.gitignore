@@ -1,0 +1,4 @@
+build
+secrets.json
+secrets.*.json
+!secrets.sample.json

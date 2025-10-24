@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "build": "nx run-many -t build",
+    "start:dev": "jest --watchAll",
     "nx": "nx"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "jest": "^30.2.0"
+  },
   "devDependencies": {
     "@nx/js": "22.0.1",
     "@swc-node/register": "~1.9.1",
