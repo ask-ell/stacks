@@ -2,7 +2,9 @@
   "name": "@ask-ell/stacks",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "nx": "nx"
+  },
   "private": true,
   "dependencies": {},
   "devDependencies": {
@@ -10,6 +12,7 @@
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@types/node": "20.19.9",
     "nx": "22.0.1",
     "prettier": "^2.6.2",
     "tslib": "^2.3.0",
