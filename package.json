@@ -4,19 +4,23 @@
   "license": "MIT",
   "scripts": {
     "build": "nx run-many -t build",
+    "format": "lint-staged",
+    "lint": "echo 'No lint command implemented'",
     "start:dev": "jest --watchAll",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "nx": "nx"
   },
   "private": true,
-  "dependencies": {
-    "jest": "^30.2.0"
-  },
   "devDependencies": {
     "@nx/js": "22.0.1",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@types/node": "20.19.9",
+    "eslint": "^9.38.0",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.2.6",
     "nx": "22.0.1",
     "prettier": "^2.6.2",
     "tslib": "^2.3.0",
