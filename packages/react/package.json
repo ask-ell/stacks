@@ -1,8 +1,8 @@
 {
   "name": "@ask-ell/react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
-  "type": "commonjs",
+  "type": "module",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {

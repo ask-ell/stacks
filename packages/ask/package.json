@@ -1,8 +1,8 @@
 {
   "name": "@ask-ell/ask",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
-  "type": "module",
+  "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
