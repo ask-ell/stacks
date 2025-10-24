@@ -1,3 +1,3 @@
-export * from './forms.js'
-export * from './keyboard-events.js'
-export * from './select-events.js'
+export * from './forms'
+export * from './keyboard-events'
+export * from './select-events'
