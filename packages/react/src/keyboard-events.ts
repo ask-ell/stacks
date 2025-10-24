@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent } from 'react';
 
-// TODO_: https://ask-ell.atlassian.net/browse/FACTORY-46
+
 export const handleEnterKeyDown =
   (callback: () => void) => (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
@@ -8,7 +8,6 @@ export const handleEnterKeyDown =
     }
   };
 
-// TODO_: https://ask-ell.atlassian.net/browse/FACTORY-46
 export const handleKeyboardEvent =
   (callback: (fieldValue: string) => void) => <TargetType>(event: KeyboardEvent<TargetType>) => {
     callback((event.target as any).value as string);
