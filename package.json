@@ -32,10 +32,12 @@
     "jest-environment-node": "^30.0.2",
     "jest-util": "^30.0.2",
     "jsonc-eslint-parser": "^2.1.0",
+    "keyv": "^5.5.3",
     "lint-staged": "^16.2.6",
     "nx": "22.0.1",
     "prettier": "^2.6.2",
     "react": "^19.2.0",
+    "rxjs": "^7.8.2",
     "ts-jest": "^29.4.0",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
@@ -43,6 +45,7 @@
     "typescript-eslint": "^8.40.0"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "libs/*"
   ]
 }
