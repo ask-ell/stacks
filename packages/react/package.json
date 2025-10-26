@@ -1,15 +1,12 @@
 {
   "name": "@ask-ell/react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "type": "module",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
-  "dependencies": {
-    "react": "^19.2.0",
+  "peerDependencies": {
+    "react": "^19.0.0",
     "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.2"
   }
 }

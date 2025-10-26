@@ -1,11 +1,11 @@
 {
   "name": "@ask-ell/ask",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
-  "dependencies": {
+  "peerDependencies": {
     "@ask-ell/core": "^1.3.1",
     "tslib": "^2.3.0"
   }
