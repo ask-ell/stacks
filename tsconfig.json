@@ -14,6 +14,9 @@
     },
     {
       "path": "./packages/nest"
+    },
+    {
+      "path": "./packages/k8s"
     }
   ]
 }
