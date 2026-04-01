@@ -6,6 +6,7 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "peerDependencies": {
-    "react": "^19.0.0"
+    "react": "^19.0.0",
+    "@sentry/react": "^10.39.0"
   }
 }
