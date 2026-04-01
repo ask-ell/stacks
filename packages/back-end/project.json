@@ -1,0 +1,28 @@
+{
+  "name": "back-end",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/back-end/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/back-end",
+        "main": "packages/back-end/src/index.ts",
+        "tsConfig": "packages/back-end/tsconfig.lib.json",
+        "assets": [
+          "packages/back-end/*.md"
+        ]
+      }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
+    }
+  }
+}
