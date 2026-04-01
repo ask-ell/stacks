@@ -1,8 +1,10 @@
+import { Injectable } from "@nestjs/common";
+import { KeyvStoreAdapter } from "keyv";
 import KeyvSqlite from '@keyv/sqlite';
 import KeyvPostgres from '@keyv/postgres';
 import { ILogger } from "@ask-ell/core";
+import { NestLogger } from '@ask-ell/nest';
 import { createTmpFolder } from '@ask-ell/ask';
-import { KeyvStoreAdapter } from "keyv";
 
 
 type CreateKeyvStoreAdapterOptions = {
@@ -10,8 +12,9 @@ type CreateKeyvStoreAdapterOptions = {
     databaseRelativePath: string;
 }
 
+@Injectable()
 export class KeyvStoreAdapterFactory {
-    constructor(private logger: ILogger){ }
+    private logger: ILogger = NestLogger.fromClass(KeyvStoreAdapterFactory);
 
     create(options: CreateKeyvStoreAdapterOptions): KeyvStoreAdapter {
         const adapter: KeyvStoreAdapter = this.getKeyvStoreAdapter(options);

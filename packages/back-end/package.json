@@ -1,6 +1,6 @@
 {
   "name": "@ask-ell/back-end",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "type": "commonjs",
   "main": "./src/index.js",
@@ -10,6 +10,7 @@
     "@ask-ell/ask": "^0.0.4",
     "keyv": "^5.6.0",
     "@keyv/postgres": "^2.2.3",
-    "@keyv/sqlite": "^4.0.8"
+    "@keyv/sqlite": "^4.0.8",
+    "@nestjs/common": "^11.1.7"
   }
 }
