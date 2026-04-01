@@ -4,11 +4,10 @@ import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from "@nestjs/core";
 import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import type { ILogger } from "@ask-ell/core";
 import { askDockerSecretsFactory, askLocalSecretsFactory } from "@ask-ell/ask";
+import { NestLogger, HealthModule, ResponseFormatInterceptor, HttpExceptionFilter } from "@ask-ell/nest";
 
-import { HealthModule } from "./health";
-import { ResponseFormatInterceptor } from "../interceptors";
-import { HttpExceptionFilter } from "../filters";
-import { NestLogger } from "../utils";
+import { KeyvStoreAdapterFactory } from "./keyv.store.adapter.factory";
+
 
 const configurationLogger: ILogger = new NestLogger("Configuration");
 
@@ -29,6 +28,7 @@ const configurationLogger: ILogger = new NestLogger("Configuration");
         })
     ],
     providers: [
+        KeyvStoreAdapterFactory,
         {
             provide: APP_GUARD,
             useClass: ThrottlerGuard

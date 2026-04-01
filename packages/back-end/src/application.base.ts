@@ -1,6 +1,6 @@
 import { DynamicModule, Provider } from "@nestjs/common";
 
-import { RequirementModule } from "../modules";
+import { RequirementModule } from "./requirement.module";
 
 export class ApplicationBase {
     static withProviders(providers: Provider[]): DynamicModule {
