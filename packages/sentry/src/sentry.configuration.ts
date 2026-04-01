@@ -27,13 +27,18 @@ export class SentryConfiguration {
         }
 
         const { publicKey, host, projectId, environment, init } = this.props;
-        const dsn: string = `${publicKey}@${host}/${projectId}`;
+        const dsn: string = `https://${publicKey}@${host}/${projectId}`;
 
-        init({
+        const client: MaybeUndefined<Client> = init({
             dsn,
             sendDefaultPii: true,
             environment: environment ?? "production"
         });
+
+        if(!client){
+            this.logger.warn(`Sentry not inited`);
+            return;
+        }
 
         this.logger.info(`Sentry inited for environment "${environment}"`);
         this.inited = true;
