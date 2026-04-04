@@ -9,7 +9,7 @@ const DOCKER_SECRETS_FILE_PATH = `${DOCKER_SECRETS_DIRECTORY}/ask`;
 export const askDockerSecretsFactory = (logger: ILogger): SecretFactory<object> => (): object => {
     const isRunningInsideDocker: boolean = existsSync(DOCKER_SECRETS_DIRECTORY);
     if(!isRunningInsideDocker){
-        logger.warn('Application is not running inside Docker container. Secrets are not available.');
+        logger.warn('Application is not running inside Docker container. Docker secrets will be unavailable.');
         return {};
     }
 

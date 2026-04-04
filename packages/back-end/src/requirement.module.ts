@@ -5,16 +5,18 @@ import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import type { ILogger } from "@ask-ell/core";
 import { askDockerSecretsFactory, askLocalSecretsFactory } from "@ask-ell/ask";
 import { NestLogger, HealthModule, ResponseFormatInterceptor, HttpExceptionFilter } from "@ask-ell/nest";
+import { SentryGlobalFilter, SentryModule } from '@sentry/nestjs/setup';
 
 import { KeyvStoreAdapterFactory } from "./keyv.store.adapter.factory";
 
 
-const configurationLogger: ILogger = new NestLogger("Configuration");
+const logger: ILogger = new NestLogger("Requirements");
 
 @Global()
 @Module({
     imports: [
         HealthModule,
+        SentryModule.forRoot(),
         ThrottlerModule.forRoot([{
             ttl: 60000,
             limit: 30,
@@ -22,8 +24,8 @@ const configurationLogger: ILogger = new NestLogger("Configuration");
         ConfigModule.forRoot({
             isGlobal: true,
             load: [
-                askDockerSecretsFactory(configurationLogger),
-                askLocalSecretsFactory(configurationLogger)
+                askDockerSecretsFactory(logger),
+                askLocalSecretsFactory(logger)
             ]
         })
     ],
@@ -40,10 +42,16 @@ const configurationLogger: ILogger = new NestLogger("Configuration");
         {
             provide: APP_FILTER,
             useClass: HttpExceptionFilter
+        },
+        {
+            provide: APP_FILTER,
+            useClass: SentryGlobalFilter
         }
     ],
     exports: [
-        ConfigModule
+        ConfigModule,
+        SentryModule,
+        KeyvStoreAdapterFactory
     ]
 })
 export class RequirementModule { }
