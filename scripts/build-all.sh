@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-nx build $1
+nx run-many -t build
 
 node scripts/update-internal-dependencies-versions.js
-
-pushd dist/packages/$1
-
-npm publish --access public
-
-popd
