@@ -1,11 +1,11 @@
 {
   "name": "@ask-ell/react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "type": "module",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
-  "peerDependencies": {
+  "dependencies": {
     "react": "^19.0.0",
     "@sentry/react": "^10.39.0"
   }
