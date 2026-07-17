@@ -1,2 +1,1 @@
-export * from './utils'
-export * from './secrets'
+export * from './script';

@@ -1,5 +1,6 @@
 import { ILogger } from "@ask-ell/core";
 import { Command } from "commander";
+import { confirm } from '@topcli/prompts';
 
 
 type ScriptArgument = {
@@ -8,13 +9,19 @@ type ScriptArgument = {
     required?: boolean;
 }
 
-type ScriptParams = {
+export type ScriptParams = {
     logger: ILogger;
     arguments: ScriptArgument[];
 }
 
+type PromptTools = {
+    confirm: (message: string) => Promise<boolean>;
+}
+
 export type ExecuteOptions = {
     arguments: Record<string, string>;
+    logger: ILogger;
+    prompts: PromptTools;
 }
 
 export abstract class Script extends Command {
@@ -29,7 +36,11 @@ export abstract class Script extends Command {
         this.parse(process.argv);
         const args: string[] = this.args;
         const executeOptions: ExecuteOptions = {
-            arguments: {}
+            arguments: {},
+            logger: this.params.logger,
+            prompts: {
+                confirm
+            }
         };
 
         this.params.arguments.forEach((argument: ScriptArgument, index: number): void => {
