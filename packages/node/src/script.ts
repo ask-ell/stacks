@@ -1,9 +1,6 @@
 import { ILogger } from "@ask-ell/core";
 import { Command } from "commander";
-import { NestLogger } from "@ask-ell/nest";
 
-
-// TODO: move to @ask-ell/node
 
 type ScriptArgument = {
     name: string;
@@ -12,6 +9,7 @@ type ScriptArgument = {
 }
 
 type ScriptParams = {
+    logger: ILogger;
     arguments: ScriptArgument[];
 }
 
@@ -20,8 +18,6 @@ export type ExecuteOptions = {
 }
 
 export abstract class Script extends Command {
-    private logger: ILogger = NestLogger.fromClass(this.constructor);
-
     constructor(private params: ScriptParams) {
         super();
         params.arguments.forEach((argument: ScriptArgument): void => this.setArgument(argument));
@@ -46,7 +42,7 @@ export abstract class Script extends Command {
 
         this.execute(executeOptions)
             .then((): void => process.exit())
-            .catch(this.logger.error.bind(this.logger));
+            .catch(this.params.logger.error.bind(this.params.logger));
     }
 
     private setArgument(argument: ScriptArgument): void {

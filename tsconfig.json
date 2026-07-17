@@ -4,19 +4,10 @@
   "files": [],
   "references": [
     {
-      "path": "./packages/react"
-    },
-    {
       "path": "./packages/ask"
     },
     {
-      "path": "./packages/keyv"
-    },
-    {
-      "path": "./packages/nest"
-    },
-    {
-      "path": "./packages/k8s"
+      "path": "./packages/back-end"
     },
     {
       "path": "./packages/github"
@@ -25,10 +16,25 @@
       "path": "./packages/gitlab"
     },
     {
+      "path": "./packages/k8s"
+    },
+    {
+      "path": "./packages/keyv"
+    },
+    {
+      "path": "./packages/nest"
+    },
+    {
+      "path": "./packages/node"
+    },
+    {
+      "path": "./packages/react"
+    },
+    {
       "path": "./packages/sentry"
     },
     {
-      "path": "./packages/back-end"
+      "path": "./packages/signale"
     }
   ]
 }

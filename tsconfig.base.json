@@ -18,9 +18,6 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2022",
-    "paths": {
-      "@ask-ell/nest": ["packages/nest/src/index.ts"]
-    }
+    "target": "es2022"
   }
 }

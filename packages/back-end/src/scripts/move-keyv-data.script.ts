@@ -1,9 +1,13 @@
 import { PercentageIncrementor } from '@ask-ell/core';
 import { Client, QueryResult } from 'pg';
 import { confirm } from '@topcli/prompts';
+import { Script, ExecuteOptions } from '@ask-ell/node';
 
-import { ExecuteOptions, Script } from './script';
 
+type KeyvRowData = {
+    key: string;
+    value: any;
+}
 
 export class MoveKeyvDataScript extends Script {
     constructor() {
@@ -27,7 +31,7 @@ export class MoveKeyvDataScript extends Script {
         ]);
 
         try {
-            const { rows }: QueryResult<any> = await originPostgresClient.query('SELECT * FROM keyv');
+            const { rows }: QueryResult<KeyvRowData> = await originPostgresClient.query('SELECT * FROM keyv');
 
             const rowsCount: number = rows.length;
             console.log(`You're going to insert ${rowsCount} keyv entries from the original database to the target database.`);
@@ -41,8 +45,7 @@ export class MoveKeyvDataScript extends Script {
                     console.log(`Progress: ${achivmentOnPercent}%`);
                 });
 
-                for (const row in rows) {
-                    const { key, value } = rows[row];
+                for (const { key, value } of rows) {
                     await targetPostgresClient.query('INSERT INTO keyv (key, value) VALUES ($1, $2)', [key, value]);
                     incrementor.increment();
                 }
