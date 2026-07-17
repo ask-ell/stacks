@@ -2,14 +2,15 @@ import { Injectable } from "@nestjs/common";
 import { KeyvStoreAdapter } from "keyv";
 import KeyvSqlite from '@keyv/sqlite';
 import KeyvPostgres from '@keyv/postgres';
-import { ILogger } from "@ask-ell/core";
+import { ILogger, MaybeUndefined } from "@ask-ell/core";
 import { NestLogger } from '@ask-ell/nest';
-import { createTmpFolder } from '@ask-ell/ask';
+import { join } from "node:path";
+
+import { createTmpFolder, TMP_FOLDER_PATH } from "./utils";
 
 
 type CreateKeyvStoreAdapterOptions = {
-    postgresUri: string;
-    databaseRelativePath: string;
+    postgresUri: MaybeUndefined<string>;
 }
 
 @Injectable()
@@ -22,11 +23,13 @@ export class KeyvStoreAdapterFactory {
         return adapter;
     }
 
-    private getKeyvStoreAdapter({ postgresUri, databaseRelativePath }: CreateKeyvStoreAdapterOptions): KeyvStoreAdapter {
+    private getKeyvStoreAdapter({ postgresUri }: CreateKeyvStoreAdapterOptions): KeyvStoreAdapter {
         if (!postgresUri) {
             createTmpFolder(this.logger);
-            return new KeyvSqlite(databaseRelativePath);
+            const localDatabaseFilePath: string = join(TMP_FOLDER_PATH, 'database.sqlite');
+            return new KeyvSqlite(localDatabaseFilePath);
         }
+
         return new KeyvPostgres({
             uri: postgresUri,
         });
