@@ -1,0 +1,8 @@
+{
+  "name": "@ask-ell/blog",
+  "version": "0.0.0",
+  "private": false,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts"
+}
