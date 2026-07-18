@@ -1,13 +1,14 @@
-import { type MaybeNullOrUndefined } from './primitives'
+import { type MaybeNullOrUndefined } from './primitives';
+
 
 interface ISuccessResult<Data> {
-  getError: () => undefined
-  getData: () => Data
+  getError(): undefined
+  getData(): Data
 }
 
 interface IFailResult {
-  getError: () => Error
-  getData: () => undefined
+  getError(): Error
+  getData(): undefined
 }
 
 interface FoldParams<Data> {
@@ -16,15 +17,13 @@ interface FoldParams<Data> {
 }
 
 export type IResult<Data = any> = (ISuccessResult<Data> | IFailResult) & {
-  // @ts-ignore
-  isAFail: () => this is IFailResult
-  // @ts-ignore
-  isASuccess: () => this is ISuccessResult<Data>
-  fold: (params: FoldParams<Data>) => void
+  isAFail(): this is IFailResult
+  isASuccess(): this is ISuccessResult<Data>
+  fold(params: FoldParams<Data>): void
 }
 
 class Result<Data> {
-  constructor (
+  constructor(
     private readonly successValue: MaybeNullOrUndefined<Data>,
     private readonly failValue: MaybeNullOrUndefined<Error>
   ) {
@@ -33,25 +32,26 @@ class Result<Data> {
     }
   }
 
-  isAFail (): this is IFailResult {
+  isAFail(): this is IFailResult {
     return this.failValue !== null
   }
 
-  getError (): MaybeNullOrUndefined<Error> {
+  getError(): MaybeNullOrUndefined<Error> {
     return this.failValue
   }
 
-  isASuccess (): this is ISuccessResult<Data> {
+  isASuccess(): this is ISuccessResult<Data> {
     return this.successValue !== null
   }
 
-  getData (): MaybeNullOrUndefined<Data> {
+  getData(): MaybeNullOrUndefined<Data> {
     return this.successValue
   }
 
-  fold ({ onSuccess, onFail }: FoldParams<Data>): void {
+  fold({ onSuccess, onFail }: FoldParams<Data>): void {
     if (this.isAFail() && !(onFail == null)) {
-      onFail((this as IFailResult).getError()); return
+      onFail((this as IFailResult).getError());
+      return;
     }
     if (onSuccess != null) {
       onSuccess((this as ISuccessResult<Data>).getData())
@@ -75,7 +75,7 @@ export const fail = (error: any): IResult => {
   return new Result(null, finalError) as IResult
 }
 
-export function mergeResults<MergedResultData extends any[], MergedResultDataRange extends IResult[]> (results: MergedResultDataRange): IResult<[...MergedResultData]> {
+export function mergeResults<MergedResultData extends any[], MergedResultDataRange extends IResult[]>(results: MergedResultDataRange): IResult<[...MergedResultData]> {
   const successData: any = []
   for (const result of results) {
     if (result.isAFail()) {

@@ -5,3 +5,4 @@ export * from './html.view.data.interface';
 export * from './html.view';
 export * from './js.file';
 export * from './json';
+export * from './url';

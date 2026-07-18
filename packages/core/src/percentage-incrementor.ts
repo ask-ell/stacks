@@ -1,4 +1,8 @@
-import { type OnIncrementCallback } from './types'
+export interface PercentageIncrementorState {
+  achivmentOnPercent: number
+};
+
+export type OnIncrementCallback = (state: PercentageIncrementorState) => void;
 
 export class PercentageIncrementor {
   private achivementIncrement = 0
