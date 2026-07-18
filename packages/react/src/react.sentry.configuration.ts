@@ -1,17 +1,20 @@
-import { ConsoleLogger, ILogger } from "@ask-ell/core";
-import { SentryClientFactory, SentryConfiguration, SentryConfigurationProps } from "@ask-ell/sentry";
-import { init } from "@sentry/react";
+import { ConsoleLogger, ILogger, MaybeUndefined } from "@ask-ell/core";
+import { SentryConfiguration, SentryConfigurationProps } from "@ask-ell/sentry";
+import { BrowserOptions, init } from "@sentry/react";
+import { Client } from "@sentry/core";
 
 import { environment } from "./environment";
 
 
-type ReactSentryConfigurationProps = Omit<SentryConfigurationProps, "environment" | "logger" | "init"> & { logger?: ILogger };
+type ReactSentryClientFactory = (options: BrowserOptions) => MaybeUndefined<Client>;
 
-export class ReactSentryConfiguration extends SentryConfiguration {
+type ReactSentryConfigurationProps = Omit<SentryConfigurationProps<ReactSentryClientFactory>, "environment" | "logger" | "init"> & { logger?: ILogger };
+
+export class ReactSentryConfiguration extends SentryConfiguration<ReactSentryClientFactory> {
     constructor(props: ReactSentryConfigurationProps) {
         super({
             ...props,
-            init: init as SentryClientFactory, // TODO: update @sentry/core as same version
+            init,
             environment,
             logger: props.logger ?? new ConsoleLogger(),
         })
