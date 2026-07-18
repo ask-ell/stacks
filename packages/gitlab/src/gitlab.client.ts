@@ -14,14 +14,19 @@ export class GitlabClient implements IGitlabClient {
     readonly rootURL: URL;
     private headers: HeadersInit;
     private urlProvider: URLProvider;
-    private httpClient: IHttpClient = new HttpClient();
+    private httpClient: IHttpClient;
 
-    constructor(params: GitlabClientParams) {
+    constructor({
+        httpClient,
+        rootURL,
+        token
+    }: GitlabClientParams) {
         this.headers = {
             'Content-Type': 'application/json',
-            'PRIVATE-TOKEN': params.token
+            'PRIVATE-TOKEN': token
         };
-        this.rootURL = params.rootURL ?? new URL('https://gitlab.com');
+        this.httpClient = httpClient ?? new HttpClient();
+        this.rootURL = rootURL ?? new URL('https://gitlab.com');
         const apiRootURL: URL = new URL('api/v4/', this.rootURL);
         this.urlProvider = new URLProvider(apiRootURL);
     }
