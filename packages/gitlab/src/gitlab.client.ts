@@ -1,4 +1,4 @@
-import { IResult, HttpClient } from "@ask-ell/core"
+import { IResult, HttpClient, IHttpClient } from "@ask-ell/core"
 
 import { CreateProjectDTO } from "./dto/inputs/project/create-project.dto"
 import { UpdateProjectDTO } from "./dto/inputs/project/update-project.dto"
@@ -13,7 +13,8 @@ import { URLProvider } from "./urls/url.provider"
 export class GitlabClient implements IGitlabClient {
     readonly rootURL: URL;
     private headers: HeadersInit;
-    private urlProvider: URLProvider
+    private urlProvider: URLProvider;
+    private httpClient: IHttpClient = new HttpClient();
 
     constructor(params: GitlabClientParams) {
         this.headers = {
@@ -26,21 +27,21 @@ export class GitlabClient implements IGitlabClient {
     }
 
     searchNamespaces(dto: SearchNamespacesDTO): Promise<IResult<NamespaceDTO[]>> {
-        return HttpClient.get({
+        return this.httpClient.get({
             url: this.urlProvider.searchNamespacesUrlFactory(dto),
             headers: this.headers,
         });
     }
 
     getProject(projectId: string): Promise<IResult<ProjectDTO>> {
-        return HttpClient.get({
+        return this.httpClient.get({
             url: this.urlProvider.getProjectUrlFactory(projectId),
             headers: this.headers,
         })
     }
 
     createProject(body: CreateProjectDTO): Promise<IResult<ProjectDTO>> {
-        return HttpClient.post({
+        return this.httpClient.post({
             url: this.urlProvider.createProjectUrl,
             headers: this.headers,
             body
@@ -48,7 +49,7 @@ export class GitlabClient implements IGitlabClient {
     }
 
     updateProject({ projectId, ...body }: UpdateProjectDTO): Promise<IResult<ProjectDTO>> {
-        return HttpClient.put({
+        return this.httpClient.put({
             url: this.urlProvider.updateProjectUrlFactory(projectId),
             headers: this.headers,
             body
@@ -56,21 +57,21 @@ export class GitlabClient implements IGitlabClient {
     }
 
     archiveProject(projectId: string): Promise<IResult> {
-        return HttpClient.post({
+        return this.httpClient.post({
             url: this.urlProvider.archiveProjectUrlFactory(projectId),
             headers: this.headers,
         })
     }
 
     unarchiveProject(projectId: string): Promise<IResult> {
-        return HttpClient.post({
+        return this.httpClient.post({
             url: this.urlProvider.unarchiveProjectUrlFactory(projectId),
             headers: this.headers,
         })
     }
 
     deleteProject(projectId: string): Promise<IResult> {
-        return HttpClient.delete({
+        return this.httpClient.delete({
             url: this.urlProvider.deleteProjectUrlFactory(projectId),
             headers: this.headers,
         })
