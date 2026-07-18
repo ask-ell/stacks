@@ -28,10 +28,10 @@ export class CreateArticleUseCase implements ICreateArticleUseCase {
 
     const newArticleSnapshot: ArticleState = newArticle.getSnapshot();
 
-    const saved: boolean = await this.unitOfWork
+    await this.unitOfWork
       .getArticleRepository()
       .save(newArticleSnapshot);
 
-    return saved ? newArticleSnapshot : undefined;
+    return newArticleSnapshot;
   }
 }
