@@ -1,47 +1,49 @@
 import type { ILogger, MaybeUndefined } from "@ask-ell/core";
-import type { Client, Options } from "@sentry/core"
+import { Client } from "@sentry/core";
 
 
-// TODO: update @sentry/core as same version
-export type SentryClientFactory = (options: MaybeUndefined<Options>) => MaybeUndefined<Client>;
+type SentryClientFactoryParams = {
+    dsn: string;
+    sendDefaultPii: boolean;
+    environment?: string;
+};
 
-export type SentryConfigurationProps = {
+export type SentryConfigurationProps<SentryClientFactory extends (params: SentryClientFactoryParams) => MaybeUndefined<Client>> = {
     publicKey: string;
     host: string;
     projectId: string;
-    environment?: MaybeUndefined<string>;
     logger: ILogger;
     init: SentryClientFactory;
+    environment?: MaybeUndefined<string>;
 };
 
-export class SentryConfiguration {
-    private inited = false;
+export class SentryConfiguration<SentryClientFactory extends (params: SentryClientFactoryParams) => MaybeUndefined<Client>> {
+    private client: MaybeUndefined<Client>;
     private logger: ILogger;
 
-    constructor(private props: SentryConfigurationProps) {
+    constructor(private props: SentryConfigurationProps<SentryClientFactory>) {
         this.logger = this.props.logger;
     }
 
     init(): void {
-        if(this.inited){
+        if (this.client) {
             return this.logger.info("Sentry already inited. Step skipped");
         }
 
         const { publicKey, host, projectId, environment, init } = this.props;
         const dsn: string = `https://${publicKey}@${host}/${projectId}`;
 
-        const client: MaybeUndefined<Client> = init({
+        this.client = init({
             dsn,
             sendDefaultPii: true,
             environment: environment ?? "production"
         });
 
-        if(!client){
+        if (!this.client) {
             this.logger.warn(`Sentry not inited`);
             return;
         }
 
         this.logger.info(`Sentry inited for environment "${environment}"`);
-        this.inited = true;
     }
 }

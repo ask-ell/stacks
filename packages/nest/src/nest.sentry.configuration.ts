@@ -1,16 +1,19 @@
-import { init } from "@sentry/nestjs";
-import { SentryClientFactory, SentryConfiguration, SentryConfigurationProps } from "@ask-ell/sentry";
+import { MaybeUndefined } from "@ask-ell/core";
+import { init, NodeClient, NodeOptions } from "@sentry/nestjs";
+import { SentryConfiguration, SentryConfigurationProps } from "@ask-ell/sentry";
 
 import { NestLogger } from "./utils";
 
 
-type NestSentryConfigurationProps = Omit<SentryConfigurationProps, "environment" | "logger" | "init">;
+type NestSentryClientFactory = (options?: MaybeUndefined<NodeOptions>) => MaybeUndefined<NodeClient>;
 
-export class NestSentryConfiguration extends SentryConfiguration {
+type NestSentryConfigurationProps = Omit<SentryConfigurationProps<NestSentryClientFactory>, "environment" | "logger" | "init">;
+
+export class NestSentryConfiguration extends SentryConfiguration<NestSentryClientFactory> {
     constructor(props: NestSentryConfigurationProps) {
         super({
             ...props,
-            init: init as SentryClientFactory, // TODO: update @sentry/core as same version
+            init,
             logger: NestLogger.fromClass(NestSentryConfiguration),
             environment: process.env["NODE_ENV"],
         })
