@@ -12,7 +12,7 @@ import {
   WrongArticleTitleSizeError
 } from './application'
 
-import { InMemoryUnitOfWork } from './infra/in-memory'
+import { KeyvUnitOfWork } from './infra'
 
 
 describe('Blog', (): void => {
@@ -24,15 +24,20 @@ describe('Blog', (): void => {
       title: "My article's title",
       description: "My article's description"
     }
-    const createdArticle: ArticleState =
-      await createArticleUseCase.run(dto)
+    const createdArticle: MaybeUndefined<ArticleState> = await createArticleUseCase.run(dto);
+
+    if(!createdArticle){
+      throw new TestMustFailError();
+    }
+
     expect(createdArticle.title).toEqual(dto.title)
     expect(createdArticle.description).toEqual(dto.description)
+
     return createdArticle
   }
 
   beforeEach((): void => {
-    const unitOfWork: IUnitOfWork = new InMemoryUnitOfWork()
+    const unitOfWork: IUnitOfWork = new KeyvUnitOfWork()
     createArticleUseCase = new CreateArticleUseCase(unitOfWork)
     updateArticleUseCase = new UpdateArticleUseCase(unitOfWork)
   })

@@ -5,6 +5,8 @@ import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { KeyvClient } from "./keyv.client";
 
 
+export type KeyvRowData<EntityState extends AggregateRootState> = Omit<EntityState, 'id'>;
+
 export abstract class KeyvAggregateRootRepository<EntityState extends AggregateRootState> extends KeyvClient<EntityState> implements IAggregateRootRepository<EntityState> {
     protected _lastSavedEntity$: Subject<EntityState> = new ReplaySubject(1);
     protected _lastUpdatedEntity$: Subject<EntityState> = new ReplaySubject(1);
@@ -53,5 +55,5 @@ export abstract class KeyvAggregateRootRepository<EntityState extends AggregateR
         return this.instance.set(id, { ...this.purgeData(dto), id });
     }
 
-    protected abstract purgeData(dto: Omit<EntityState, 'id'>): EntityState;
+    protected abstract purgeData(dto: KeyvRowData<EntityState>): KeyvRowData<EntityState>;
 }
