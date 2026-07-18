@@ -1,4 +1,8 @@
+import { HttpClient } from "@ask-ell/core";
+
+
 export type GitlabClientParams = {
-    rootURL?: URL;
     token: string;
-}
+    rootURL?: URL;
+    httpClient?: HttpClient;
+};

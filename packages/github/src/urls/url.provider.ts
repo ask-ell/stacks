@@ -1,13 +1,13 @@
 import { URLFactory } from "@ask-ell/core";
 
-import { createRepositoryUrlFactory, deleteRepositoryUrlFactory, getRepositoryUrlFactory, RepositoryRootUrlFactoryDTO, updateRepositoryUrlFactory } from "./utils/repository";
+import { createRepositoryUrlFactory, deleteRepositoryUrlFactory, getRepositoryUrlFactory, RepositoryRootURLFactoryDTO, updateRepositoryUrlFactory } from "./utils/repository";
 
 
 export class URLProvider {
-    readonly getRepositoryUrlFactory: URLFactory<RepositoryRootUrlFactoryDTO>;
+    readonly getRepositoryUrlFactory: URLFactory<RepositoryRootURLFactoryDTO>;
     readonly createRepositoryUrlFactory: URLFactory<string>;
-    readonly updateRepositoryUrlFactory: URLFactory<RepositoryRootUrlFactoryDTO>;
-    readonly deleteRepositoryUrlFactory: URLFactory<RepositoryRootUrlFactoryDTO>;
+    readonly updateRepositoryUrlFactory: URLFactory<RepositoryRootURLFactoryDTO>;
+    readonly deleteRepositoryUrlFactory: URLFactory<RepositoryRootURLFactoryDTO>;
 
     constructor(rootUrl: URL){
         this.getRepositoryUrlFactory = getRepositoryUrlFactory(rootUrl);
