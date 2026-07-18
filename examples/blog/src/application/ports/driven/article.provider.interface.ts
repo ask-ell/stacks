@@ -1,7 +1,7 @@
-import type { IAggregateRootProvider } from '@ask-ell/core/hexa'
+import type { IAggregateRootProvider } from '@ask-ell/hexa'
 
-import type { IArticleState } from '../../domain'
-import type { ArticleAggregateRootState } from './types'
+import type { ArticleState } from '../../domain'
+
 
 export interface IArticleProvider
-  extends IAggregateRootProvider<IArticleState, ArticleAggregateRootState> {}
+  extends IAggregateRootProvider<ArticleState> {}

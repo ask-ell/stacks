@@ -1,12 +1,12 @@
 import type { MaybeUndefined } from '@ask-ell/core'
 
-import type { IArticle, IArticleState } from '../domain'
+import type { ArticleState, IArticle } from '../domain'
 import { Article } from '../domain'
 
 import type { IUpdateArticleUseCase } from '../ports/driving/update-article.use-case.interface'
 import type { IUpdateArticleUseCaseInput } from '../ports/driving/types'
-import type { ArticleAggregateRootState } from '../ports/driven/types'
 import type { IUnitOfWork } from '../unit-of-work.interface'
+
 
 export class UpdateArticleUseCase implements IUpdateArticleUseCase {
   constructor(private readonly unitOfWork: IUnitOfWork) { }
@@ -15,8 +15,8 @@ export class UpdateArticleUseCase implements IUpdateArticleUseCase {
     id,
     title,
     description
-  }: IUpdateArticleUseCaseInput): Promise<MaybeUndefined<ArticleAggregateRootState>> {
-    const articleToUpdateState: MaybeUndefined<ArticleAggregateRootState> =
+  }: IUpdateArticleUseCaseInput): Promise<MaybeUndefined<ArticleState>> {
+    const articleToUpdateState: MaybeUndefined<ArticleState> =
       await this.unitOfWork.getArticleProvider().findOneById(id)
 
     if (!articleToUpdateState) {
@@ -30,7 +30,7 @@ export class UpdateArticleUseCase implements IUpdateArticleUseCase {
       description
     }))
 
-    const updatedArticleSnapshot: IArticleState = articleToUpdate.getSnapshot()
+    const updatedArticleSnapshot: ArticleState = articleToUpdate.getSnapshot()
     const hasBeenUpdated: boolean = await this.unitOfWork
       .getArticleRepository()
       .updateOne(updatedArticleSnapshot)

@@ -1,37 +1,34 @@
-import type { Id } from '@ask-ell/core/ddd'
+import type { Id } from '@ask-ell/ddd'
 import type { Observable } from 'rxjs'
 
 import type {
   IArticleRepository,
-  ArticleAggregateRootState,
-  IArticleState
+  ArticleState,
 } from '../../application'
 
 import type { InMemoryDatabase } from './in-memory.database'
-import { fakeWait, generateRandomId, breakReference } from './utils'
+import { fakeWait, breakReference } from './utils'
+
 
 export class InMemoryArticleRepository implements IArticleRepository {
   constructor(private readonly database: InMemoryDatabase) { }
 
   async save(
-    entityState: IArticleState
-  ): Promise<ArticleAggregateRootState> {
+    entityState: ArticleState
+  ): Promise<ArticleState> {
     await fakeWait()
 
-    const id: Id = generateRandomId()
-
-    const newArticle: ArticleAggregateRootState = {
-      id,
+    const newArticle: ArticleState = {
       ...entityState
     }
 
-    this.database.articles.set(id, newArticle)
+    this.database.articles.set(entityState.id, newArticle)
 
     return breakReference(newArticle)
   }
 
   async updateOne(
-    aggregateRootState: ArticleAggregateRootState
+    aggregateRootState: ArticleState
   ): Promise<boolean> {
     await fakeWait()
 
@@ -52,15 +49,15 @@ export class InMemoryArticleRepository implements IArticleRepository {
     throw new Error('Method not implemented.')
   }
 
-  lastSavedEntity$(): Observable<ArticleAggregateRootState> {
+  lastSavedEntity$(): Observable<ArticleState> {
     throw new Error('Method not implemented.')
   }
 
-  lastUpdatedEntity$(): Observable<ArticleAggregateRootState> {
+  lastUpdatedEntity$(): Observable<ArticleState> {
     throw new Error('Method not implemented.')
   }
 
-  lastDeletedEntity$(): Observable<ArticleAggregateRootState> {
+  lastDeletedEntity$(): Observable<ArticleState> {
     throw new Error('Method not implemented.')
   }
 }

@@ -1,4 +1,5 @@
-import type { Id } from '@ask-ell/core/ddd'
+import type { Id } from '@ask-ell/ddd'
+
 
 export interface ICreateArticleUseCaseInput {
   title: string

@@ -1,17 +1,18 @@
-import type { Id } from '@ask-ell/core/ddd'
+import type { Id } from '@ask-ell/ddd'
 
 import { breakReference } from './utils'
-import type { ArticleAggregateRootState } from '../../application'
+import type { ArticleState } from '../../application'
+
 
 interface InMemoryDatabaseConstructor {
-  articles?: ArticleAggregateRootState[]
+  articles?: ArticleState[]
 }
 
 export class InMemoryDatabase {
-  readonly articles = new Map<Id, ArticleAggregateRootState>()
+  readonly articles = new Map<Id, ArticleState>()
 
   constructor(data?: InMemoryDatabaseConstructor) {
-    data?.articles?.forEach((article: ArticleAggregateRootState): void => {
+    data?.articles?.forEach((article: ArticleState): void => {
       if (article.id) {
         this.articles.set(article.id, breakReference(article))
       }

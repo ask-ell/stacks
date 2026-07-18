@@ -1,6 +1,8 @@
 import { wait } from '@ask-ell/core'
-import type { Id } from '@ask-ell/core/ddd'
+import type { Id } from '@ask-ell/ddd'
 
+
+// TODO: remove
 export const generateRandomId: () => Id = () =>
   new Date().getTime().toString()
 

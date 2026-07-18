@@ -4,7 +4,7 @@ import { IAggregateRoot } from "./aggregate-root.interface";
 import { AggregateRootState } from "./types";
 
 
-export abstract class AggregateRoot<EntityState>
-  extends Entity<AggregateRootState<EntityState>>
+export abstract class AggregateRoot<EntityState extends AggregateRootState<unknown>>
+  extends Entity<EntityState>
   implements IAggregateRoot<EntityState>
 { }

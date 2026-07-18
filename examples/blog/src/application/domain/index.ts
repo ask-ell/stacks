@@ -1,9 +1,4 @@
-import type { IArticleState } from './aggregates/article/article.state.interface'
-import type { IArticle } from './aggregates/article/article.interface'
-
-import { Article } from './aggregates/article/article'
-import { WrongArticleTitleSizeError } from '../errors/wrong-article-title-size.error'
-
-export type { IArticle, IArticleState }
-
-export { Article, WrongArticleTitleSizeError }
+export * from './aggregates/article/article.state'
+export * from './aggregates/article/article.interface'
+export * from './aggregates/article/article'
+export * from './aggregates/article/constants'

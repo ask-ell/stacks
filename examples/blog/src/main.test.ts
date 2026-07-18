@@ -6,7 +6,7 @@ import {
   type ICreateArticleUseCase,
   type IUpdateArticleUseCase,
   type IUnitOfWork,
-  type ArticleAggregateRootState,
+  type ArticleState,
   CreateArticleUseCase,
   UpdateArticleUseCase,
   WrongArticleTitleSizeError
@@ -19,12 +19,12 @@ describe('Blog', (): void => {
   let createArticleUseCase: ICreateArticleUseCase
   let updateArticleUseCase: IUpdateArticleUseCase
 
-  async function createArticle(): Promise<ArticleAggregateRootState> {
+  async function createArticle(): Promise<ArticleState> {
     const dto: ICreateArticleUseCaseInput = {
       title: "My article's title",
       description: "My article's description"
     }
-    const createdArticle: ArticleAggregateRootState =
+    const createdArticle: ArticleState =
       await createArticleUseCase.run(dto)
     expect(createdArticle.title).toEqual(dto.title)
     expect(createdArticle.description).toEqual(dto.description)
@@ -54,7 +54,7 @@ describe('Blog', (): void => {
 
   it('A user cannot update an article with an empty title', async () => {
     try {
-      const dto: ArticleAggregateRootState = await createArticle()
+      const dto: ArticleState = await createArticle()
       dto.title = ''
       await updateArticleUseCase.run(dto as IUpdateArticleUseCaseInput)
       throw new TestMustFailError()
@@ -68,7 +68,7 @@ describe('Blog', (): void => {
     dto.title = "My article's new title"
     dto.description = "My article's new description"
 
-    const updatedArticle: MaybeUndefined<ArticleAggregateRootState> = await updateArticleUseCase.run(dto as IUpdateArticleUseCaseInput)
+    const updatedArticle: MaybeUndefined<ArticleState> = await updateArticleUseCase.run(dto as IUpdateArticleUseCaseInput)
 
     expect(updatedArticle).toBeDefined()
     expect(updatedArticle?.title).toEqual(dto.title)
