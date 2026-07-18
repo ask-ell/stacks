@@ -1,6 +1,6 @@
 import { Id } from "./types";
 
 
-export interface IdFactory<DTO> {
-    create(dto: DTO): Promise<Id>;
+export interface IIdFactory<DTO = unknown> {
+    create(dto?: DTO): Promise<Id>;
 }

@@ -1,4 +1,6 @@
 import Keyv from 'keyv';
+import { IIdFactory } from '@ask-ell/ddd';
+import { CryptoIdFactory } from '@ask-ell/node';
 
 import type {
   IArticleProvider,
@@ -6,14 +8,14 @@ import type {
   IUnitOfWork
 } from '../../application';
 
-import { KeyvArticleProvider } from './keyv.article.provider';
-import { KeyvArticleRepository } from './keyv.article.repository';
+import { KeyvArticleProvider, KeyvArticleRepository } from '../keyv';
 
 
-export class KeyvUnitOfWork implements IUnitOfWork {
+export class FullStackUnitOfWork implements IUnitOfWork {
   private keyvInstance: Keyv = new Keyv();
   private articleProvider: IArticleProvider = new KeyvArticleProvider(this.keyvInstance);
   private articleRepository: IArticleRepository = new KeyvArticleRepository(this.keyvInstance);
+  private idFactory: IIdFactory = new CryptoIdFactory()
 
   getArticleProvider(): IArticleProvider {
     return this.articleProvider
@@ -21,5 +23,9 @@ export class KeyvUnitOfWork implements IUnitOfWork {
 
   getArticleRepository(): IArticleRepository {
     return this.articleRepository
+  }
+
+  getIdFactory(): IIdFactory {
+    return this.idFactory;
   }
 }

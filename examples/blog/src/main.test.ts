@@ -12,7 +12,7 @@ import {
   WrongArticleTitleSizeError
 } from './application'
 
-import { KeyvUnitOfWork } from './infra'
+import { FullStackUnitOfWork } from './infra'
 
 
 describe('Blog', (): void => {
@@ -37,7 +37,7 @@ describe('Blog', (): void => {
   }
 
   beforeEach((): void => {
-    const unitOfWork: IUnitOfWork = new KeyvUnitOfWork()
+    const unitOfWork: IUnitOfWork = new FullStackUnitOfWork()
     createArticleUseCase = new CreateArticleUseCase(unitOfWork)
     updateArticleUseCase = new UpdateArticleUseCase(unitOfWork)
   })
