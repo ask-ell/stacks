@@ -1,5 +1,6 @@
-import { List } from "../list";
+import { List } from "../../list";
 import { OrderedListElement } from "./types";
+
 
 export class OrderableList<T> extends List<OrderedListElement<T>> {
   constructor(elements = new Array<T>()) {

@@ -1,4 +1,4 @@
-import { type MaybeNullOrUndefined } from './primitives';
+import { MaybeNullOrUndefined } from "./nullable";
 
 
 interface ISuccessResult<Data> {

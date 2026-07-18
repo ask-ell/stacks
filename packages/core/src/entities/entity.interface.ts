@@ -1,5 +1,5 @@
-import { IResult } from "../../../result";
-import { ISnapshotable } from "../snapshotable.interface";
+import { ISnapshotable, IResult } from "../primitives";
+
 
 export interface IEntity<EntityState> extends ISnapshotable<EntityState> {
   updateAndCheckStateValidity(

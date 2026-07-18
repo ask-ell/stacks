@@ -1,4 +1,4 @@
-import { fail, success, type IResult } from '../result'
+import { fail, success, type IResult } from '../primitives'
 import { HttpError } from './http.error'
 
 
