@@ -1,5 +1,5 @@
 import { ConsoleLogger, ILogger } from "@ask-ell/core";
-import { SentryConfiguration, SentryConfigurationProps } from "@ask-ell/sentry";
+import { SentryClientFactory, SentryConfiguration, SentryConfigurationProps } from "@ask-ell/sentry";
 import { init } from "@sentry/react";
 
 import { environment } from "./environment";
@@ -11,7 +11,7 @@ export class ReactSentryConfiguration extends SentryConfiguration {
     constructor(props: ReactSentryConfigurationProps) {
         super({
             ...props,
-            init,
+            init: init as SentryClientFactory, // TODO: update @sentry/core as same version
             environment,
             logger: props.logger ?? new ConsoleLogger(),
         })
