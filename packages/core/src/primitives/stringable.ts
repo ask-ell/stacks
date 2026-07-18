@@ -1,3 +1,3 @@
 export interface IStringable {
-  toString: () => string;
+  toString(): string;
 }

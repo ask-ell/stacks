@@ -1,4 +1,4 @@
-import { type MaybeUndefined } from './primitives/fp/maybe';
+import type { MaybeUndefined } from './primitives';
 
 
 export type OnChangesDetectedCallback<Change> = (change: Change) => void;

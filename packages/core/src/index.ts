@@ -1,3 +1,4 @@
+export * from './entities';
 export * from './errors';
 export * from './event-listeners';
 export * from './http';
@@ -10,5 +11,4 @@ export * from './durations';
 export * from './filters';
 export * from './percentage-incrementor';
 export * from './reduce';
-export * from './result';
 export * from './wait';

@@ -1,4 +1,4 @@
-import { type IStringable } from '../primitives/oop/stringable'
+import { type IStringable } from '../primitives'
 
 
 export class Json<Data> implements IStringable {

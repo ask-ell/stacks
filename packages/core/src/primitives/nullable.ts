@@ -1,9 +1,9 @@
-import { type MaybeNullOrUndefined } from './fp/maybe';
+import type { Maybe } from './maybe';
 
 
-export type StringOrNullOrUndefined = MaybeNullOrUndefined<string>
+export type MaybeUndefined<T> = Maybe<T, undefined>;
 
-export type NumberOrNullOrUndefined = MaybeNullOrUndefined<number>
+export type MaybeNullOrUndefined<T> = Maybe<null, MaybeUndefined<T>>;
 
 export function isDefinedAndNotNull<T> (obj: MaybeNullOrUndefined<T>): obj is T {
   return !isUndefinedOrNull(obj)

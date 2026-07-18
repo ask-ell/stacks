@@ -1,4 +1,4 @@
-import type { IResult } from '../result'
+import type { IResult } from '../primitives'
 import { DeleteMethodParams, GetMethodParams, HttpMethod, PatchMethodParams, PostMethodParams, PutMethodParams } from './types'
 import { IHttpClient } from './http.client.interface'
 import { inspectResponse } from './utils'

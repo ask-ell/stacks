@@ -1,4 +1,4 @@
-import type { IResult } from '../result'
+import { IResult } from '../primitives';
 import type { DeleteMethodParams, GetMethodParams, PatchMethodParams, PostMethodParams, PutMethodParams } from './types'
 
 
