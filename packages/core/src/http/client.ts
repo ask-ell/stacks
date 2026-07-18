@@ -2,6 +2,7 @@ import { type IResult } from '../result'
 import { type DeleteMethodParams, type GetMethodParams, HttpMethod, type PatchMethodParams, type PostMethodParams, type PutMethodParams } from './types'
 import { inspectRequest } from './utils'
 
+
 export class HttpClient {
   static get = async <ResponseData>({ url, headers }: GetMethodParams): Promise<IResult<ResponseData>> =>
     await inspectRequest(

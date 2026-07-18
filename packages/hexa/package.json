@@ -1,0 +1,8 @@
+{
+  "name": "@ask-ell/hexa",
+  "version": "0.0.1",
+  "private": false,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts"
+}

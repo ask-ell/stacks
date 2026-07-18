@@ -1,5 +1,6 @@
 import { fail, success, type IResult } from '../result'
-import { HttpError } from './errors/http.error'
+import { HttpError } from './http.error'
+
 
 export async function inspectRequest<ResponseData>(request: Promise<Response>): Promise<IResult<ResponseData>> {
   const response: Response = await request
