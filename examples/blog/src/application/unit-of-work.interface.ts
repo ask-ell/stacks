@@ -1,3 +1,5 @@
+import { IIdFactory } from '@ask-ell/ddd';
+
 import type { IArticleProvider } from './ports/driven/article.provider.interface'
 import type { IArticleRepository } from './ports/driven/article.repository.interface'
 
@@ -5,4 +7,5 @@ import type { IArticleRepository } from './ports/driven/article.repository.inter
 export interface IUnitOfWork {
   getArticleProvider(): IArticleProvider;
   getArticleRepository(): IArticleRepository;
+  getIdFactory(): IIdFactory;
 }

@@ -1,4 +1,5 @@
 import { MaybeUndefined } from '@ask-ell/core'
+import { Id } from '@ask-ell/ddd'
 
 import type { ArticleState, IArticle } from '../domain'
 import { Article } from '../domain'
@@ -9,14 +10,18 @@ import type { IUnitOfWork } from '../unit-of-work.interface'
 
 
 export class CreateArticleUseCase implements ICreateArticleUseCase {
-  constructor(private readonly unitOfWork: IUnitOfWork) { }
+  constructor(
+    private unitOfWork: IUnitOfWork
+  ) { }
 
   async run({
     title,
     description
   }: ICreateArticleUseCaseInput): Promise<MaybeUndefined<ArticleState>> {
+    const id: Id = await this.unitOfWork.getIdFactory().create();
+
     const newArticle: IArticle = new Article({
-      id: new Date().getTime().toString(), // TODO: call id factory
+      id,
       title,
       description
     });
