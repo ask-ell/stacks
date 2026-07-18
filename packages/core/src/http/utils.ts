@@ -2,7 +2,7 @@ import { fail, success, type IResult } from '../result'
 import { HttpError } from './http.error'
 
 
-export async function inspectRequest<ResponseData>(request: Promise<Response>): Promise<IResult<ResponseData>> {
+export async function inspectResponse<ResponseData>(request: Promise<Response>): Promise<IResult<ResponseData>> {
   const response: Response = await request
   const isAtJsonFormat: boolean = response.headers.get('Content-Type')?.includes('application/json') ?? false
   const responseData: ResponseData = isAtJsonFormat ? await response.json() : await response.text()

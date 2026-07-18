@@ -1,4 +1,4 @@
-import { type IEventListener, type EventListenerCallback } from './event.listener.interface'
+import type { IEventListener, EventListenerCallback } from './event.listener.interface'
 
 
 export class EventListener<EventData> implements IEventListener<EventData> {
