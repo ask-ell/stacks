@@ -1,5 +1,5 @@
 import { PercentageIncrementor } from '@ask-ell/core';
-import { Client, QueryResult } from 'pg'; // TODO: install dev dependency
+import { Client, QueryResult } from 'pg';
 import { Script, ExecuteOptions } from '@ask-ell/node';
 import { NestLogger } from '@ask-ell/nest';
 
