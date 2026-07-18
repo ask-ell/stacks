@@ -1,4 +1,2 @@
-import { TestMustFailError } from './test-must-fail.error'
-import { UnknownEnvironmentVariableError } from './unknown-environment-variable.error'
-
-export { TestMustFailError, UnknownEnvironmentVariableError }
+export * from './test-must-fail.error'
+export * from './unknown-environment-variable.error'
