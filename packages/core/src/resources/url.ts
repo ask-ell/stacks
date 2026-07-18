@@ -1,5 +1,6 @@
-import { isUndefinedOrNull } from './nullables'
-import { type MaybeNullOrUndefined } from './primitives'
+import { type MaybeNullOrUndefined } from '../primitives'
+import { isUndefinedOrNull } from '../primitives'
+
 
 export type URLFactory<DTO> = (dto: DTO) => URL
 

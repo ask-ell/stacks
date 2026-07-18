@@ -1,3 +1,3 @@
 export interface IMicroservice {
-  listen: () => Promise<void>
+  listen(): Promise<void>;
 }

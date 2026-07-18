@@ -1,1 +1,1 @@
-export type Filter<T> = (data: T) => boolean
+export type Filter<T> = (data: T) => boolean;
