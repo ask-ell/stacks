@@ -16,12 +16,12 @@ export abstract class KeyvAggregateRootRepository<EntityState extends AggregateR
         return this._lastSavedEntity$.asObservable();
     }
 
-    async save(entityState: EntityState): Promise<boolean> {
-        const isSaved: boolean = await this.persist(entityState);
-        if(isSaved){
-            this._lastSavedEntity$.next(entityState);
+    async save(entityState: EntityState): Promise<void> {
+        if(await this.isAlreadySaved(entityState)){
+            throw new Error('Entity ID already saved');
         }
-        return isSaved;
+        await this.persist(entityState);
+        this._lastSavedEntity$.next(entityState);
     }
 
     lastUpdatedEntity$(): Observable<EntityState> {
@@ -29,11 +29,12 @@ export abstract class KeyvAggregateRootRepository<EntityState extends AggregateR
     }
 
     async updateOne(entityState: EntityState): Promise<boolean> {
-        const isUpdated: boolean = await this.persist(entityState);
-        if(isUpdated){
-            this._lastUpdatedEntity$.next(entityState);
+        if(!(await this.isAlreadySaved(entityState))){
+            return false;
         }
-        return isUpdated;
+        await this.persist(entityState);
+        this._lastUpdatedEntity$.next(entityState);
+        return true;
     }
 
     lastDeletedEntity$(): Observable<EntityState> {
@@ -48,12 +49,16 @@ export abstract class KeyvAggregateRootRepository<EntityState extends AggregateR
         return isDeleted;
     }
 
+    protected abstract purgeData(dto: KeyvRowData<EntityState>): KeyvRowData<EntityState>;
+
+    private isAlreadySaved(entityState: EntityState): Promise<boolean> {
+        return this.instance.has(entityState.id);
+    }
+
     private persist({
         id,
         ...dto
     }: EntityState): Promise<boolean> {
         return this.instance.set(id, { ...this.purgeData(dto), id });
     }
-
-    protected abstract purgeData(dto: KeyvRowData<EntityState>): KeyvRowData<EntityState>;
 }
