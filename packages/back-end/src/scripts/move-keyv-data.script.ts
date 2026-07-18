@@ -1,5 +1,5 @@
 import { PercentageIncrementor } from '@ask-ell/core';
-import { Client, QueryResult } from 'pg';
+import { Client, QueryResult } from 'pg'; // TODO: install dev dependency
 import { Script, ExecuteOptions } from '@ask-ell/node';
 import { NestLogger } from '@ask-ell/nest';
 
@@ -57,8 +57,10 @@ export class MoveKeyvDataScript extends Script {
                 logger.log('Migration cancelled.');
             }
         } finally {
-            await originPostgresClient.end();
-            await targetPostgresClient.end();
+            await Promise.all([
+                originPostgresClient.end(),
+                targetPostgresClient.end()
+            ]);
             logger.log('Database connections closed.');
         }
     }
