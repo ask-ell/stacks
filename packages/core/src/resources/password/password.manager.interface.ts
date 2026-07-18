@@ -1,5 +1,6 @@
 import { IHashedPassword } from "./hashed.password.interface";
 
+
 export type GenerateRandomPasswordResultDTO = {
   randomPasswordPlainText: string;
   hashedPassword: IHashedPassword;

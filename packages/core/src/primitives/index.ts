@@ -4,6 +4,8 @@ import type { IStringable } from './oop/stringable'
 import type { IEntity } from './oop/entity/entity.interface'
 import type { ISnapshotable } from './oop/snapshotable.interface'
 
+// TODO: rework module
+
 import { Entity } from './oop/entity/entity'
 import { append, find } from './fp/array'
 import { _if } from './fp/boolean'

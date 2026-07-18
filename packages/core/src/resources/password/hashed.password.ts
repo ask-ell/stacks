@@ -1,4 +1,5 @@
-import { IHashedPassword } from "../interfaces/hashed.password.interface";
+import { IHashedPassword } from "./hashed.password.interface";
+
 
 export class HashedPassword implements IHashedPassword {
   constructor(private hashedValue: string) {}
