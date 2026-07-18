@@ -16,4 +16,8 @@ export class NestLogger extends Logger implements ILogger {
       this.log(line);
     }
   }
+
+  success(...data: any[]): void {
+    this.info(...data);
+  }
 }

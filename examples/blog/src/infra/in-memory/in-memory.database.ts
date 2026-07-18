@@ -4,6 +4,7 @@ import { breakReference } from './utils'
 import type { ArticleState } from '../../application'
 
 
+// TODO: remove
 interface InMemoryDatabaseConstructor {
   articles?: ArticleState[]
 }
