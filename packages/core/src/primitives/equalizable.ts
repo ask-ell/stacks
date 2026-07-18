@@ -1,3 +1,3 @@
-export interface IEqualizable<EqualizableType> {
-  isEquals: (valueToCompare: EqualizableType) => boolean;
+export interface IEqualizable {
+  isEquals: (comparator: this) => boolean;
 }
