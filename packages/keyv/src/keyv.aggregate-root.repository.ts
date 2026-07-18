@@ -1,71 +1,57 @@
-import { randomUUID } from "node:crypto";
-import { AggregateRootState, Id } from '@ask-ell/core/dist/src/ddd';
-import { IAggregateRootRepository } from "@ask-ell/core/dist/src/hexa";
-import { Keyv } from "keyv";
+import { AggregateRootState } from '@ask-ell/ddd';
+import { IAggregateRootRepository } from "@ask-ell/hexa";
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 
 import { KeyvClient } from "./keyv.client";
-import { IdFactory } from "./types";
 
-export abstract class KeyvAggregateRootRepository<EntityState, PersistanceResultDrivenSideAdapter extends AggregateRootState<EntityState>> extends KeyvClient<PersistanceResultDrivenSideAdapter> implements IAggregateRootRepository<EntityState, PersistanceResultDrivenSideAdapter> {
-    protected _lastSavedEntity$: Subject<PersistanceResultDrivenSideAdapter> = new ReplaySubject(1);
-    protected _lastUpdatedEntity$: Subject<PersistanceResultDrivenSideAdapter> = new ReplaySubject(1);
-    protected _lastDeletedEntity$: Subject<PersistanceResultDrivenSideAdapter> = new ReplaySubject(1);
 
-    constructor(
-        instance: Keyv<PersistanceResultDrivenSideAdapter>,
-        private idFactory: IdFactory<EntityState> = () => randomUUID()
-    ) {
-        super(instance)
-    }
+export abstract class KeyvAggregateRootRepository<EntityState extends AggregateRootState> extends KeyvClient<EntityState> implements IAggregateRootRepository<EntityState> {
+    protected _lastSavedEntity$: Subject<EntityState> = new ReplaySubject(1);
+    protected _lastUpdatedEntity$: Subject<EntityState> = new ReplaySubject(1);
+    protected _lastDeletedEntity$: Subject<EntityState> = new ReplaySubject(1);
 
-    async save(entityState: EntityState) {
-        const id: Id = this.idFactory(entityState);
-        const aggregateRootState: PersistanceResultDrivenSideAdapter = {
-            ...this.purgeData(entityState),
-            id
-        } as PersistanceResultDrivenSideAdapter;
-        await this.instance.set(id, aggregateRootState);
-        this._lastSavedEntity$.next(aggregateRootState);
-        return aggregateRootState;
-    }
-
-    lastSavedEntity$(): Observable<PersistanceResultDrivenSideAdapter> {
+    lastSavedEntity$(): Observable<EntityState> {
         return this._lastSavedEntity$.asObservable();
     }
 
-    async updateOne(aggregateRootState: PersistanceResultDrivenSideAdapter): Promise<boolean> {
-        const id: Id = this.extractId(aggregateRootState);
-        if (!(await this.instance.has(id))) {
-            return false;
+    async save(entityState: EntityState): Promise<boolean> {
+        const isSaved: boolean = await this.persist(entityState);
+        if(isSaved){
+            this._lastSavedEntity$.next(entityState);
         }
-        await this.instance.set(id, { ...this.purgeData(aggregateRootState), id });
-        this._lastUpdatedEntity$.next(aggregateRootState);
-        return true;
+        return isSaved;
     }
 
-    lastUpdatedEntity$(): Observable<PersistanceResultDrivenSideAdapter> {
+    lastUpdatedEntity$(): Observable<EntityState> {
         return this._lastUpdatedEntity$.asObservable();
     }
 
-    async removeOne(id: Id): Promise<boolean> {
-        if (!(await this.instance.has(id))) {
-            return false;
+    async updateOne(entityState: EntityState): Promise<boolean> {
+        const isUpdated: boolean = await this.persist(entityState);
+        if(isUpdated){
+            this._lastUpdatedEntity$.next(entityState);
         }
-        return this.instance.delete(id);
+        return isUpdated;
     }
 
-    lastDeletedEntity$(): Observable<PersistanceResultDrivenSideAdapter> {
+    lastDeletedEntity$(): Observable<EntityState> {
         return this._lastDeletedEntity$;
     }
 
-    protected abstract purgeData(data: EntityState): EntityState;
-
-    private extractId(aggregateRootState: PersistanceResultDrivenSideAdapter): Id {
-        const { id } = aggregateRootState;
-        if (!id) {
-            throw new Error('Aggregate root state id must be defined here');
+    async deleteOne(entityState: EntityState): Promise<boolean> {
+        const isDeleted: boolean = await this.instance.delete(entityState.id);
+        if(isDeleted){
+            this._lastDeletedEntity$.next(entityState);
         }
-        return id;
+        return isDeleted;
     }
+
+    private persist({
+        id,
+        ...dto
+    }: EntityState): Promise<boolean> {
+        return this.instance.set(id, { ...this.purgeData(dto), id });
+    }
+
+    protected abstract purgeData(dto: Omit<EntityState, 'id'>): EntityState;
 }

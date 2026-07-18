@@ -3,7 +3,7 @@ import { AggregateRootState, Id } from "@ask-ell/ddd";
 
 
 export interface IAggregateRootProvider<
-  EntityState extends AggregateRootState<unknown>
+  EntityState extends AggregateRootState
 > {
   findAll(): Promise<EntityState[]>;
   findOneById(
