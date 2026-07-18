@@ -2,9 +2,7 @@ import { Observable } from 'rxjs';
 import { AggregateRootState } from "@ask-ell/ddd";
 
 
-export interface IAggregateRootRepository<
-  EntityState extends AggregateRootState
-> {
+export interface IAggregateRootRepository<EntityState extends AggregateRootState> {
   lastSavedEntity$(): Observable<EntityState>;
   save(entityState: EntityState): Promise<void>;
   lastUpdatedEntity$(): Observable<EntityState>;
