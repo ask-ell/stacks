@@ -1,16 +1,14 @@
 import { Observable } from 'rxjs';
-import { AggregateRootState, Id } from "@ask-ell/ddd";
+import { AggregateRootState } from "@ask-ell/ddd";
 
 
 export interface IAggregateRootRepository<
-  EntityState extends AggregateRootState<unknown>
+  EntityState extends AggregateRootState
 > {
-  save(entityState: EntityState): Promise<EntityState>;
   lastSavedEntity$(): Observable<EntityState>;
-  updateOne(
-    aggregateRootState: EntityState
-  ): Promise<boolean>;
+  save(entityState: EntityState): Promise<boolean>;
   lastUpdatedEntity$(): Observable<EntityState>;
-  removeOne(id: Id): Promise<boolean>;
+  updateOne(entityState: EntityState): Promise<boolean>;
   lastDeletedEntity$(): Observable<EntityState>;
+  deleteOne(entityState: EntityState): Promise<boolean>;
 }
