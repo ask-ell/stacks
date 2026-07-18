@@ -1,5 +1,6 @@
-import type { IAggregateRoot } from '@ask-ell/core/ddd'
+import type { IAggregateRoot } from '@ask-ell/ddd'
 
-import type { IArticleState } from './article.state.interface'
+import type { ArticleState } from './article.state'
 
-export interface IArticle extends IAggregateRoot<IArticleState> {}
+
+export interface IArticle extends IAggregateRoot<ArticleState> {}

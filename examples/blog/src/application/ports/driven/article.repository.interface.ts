@@ -1,6 +1,6 @@
-import type { IAggregateRootRepository } from '@ask-ell/core/hexa'
+import type { IAggregateRootRepository } from '@ask-ell/hexa'
 
-import type { ArticleAggregateRootState } from './types'
-import type { IArticleState } from '../../domain'
+import type { ArticleState } from '../../domain'
 
-export interface IArticleRepository extends IAggregateRootRepository<IArticleState, ArticleAggregateRootState> { }
+
+export interface IArticleRepository extends IAggregateRootRepository<ArticleState> { }

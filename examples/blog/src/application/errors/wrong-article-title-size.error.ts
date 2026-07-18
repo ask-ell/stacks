@@ -1,6 +1,7 @@
-import { ApplicationError } from '@ask-ell/core/hexa'
+import { ApplicationError } from '@ask-ell/hexa';
 
-import { MINIMUM_CHARACTERS_REQUIRED_FOR_ARTICLE_TITLE } from '../domain/aggregates/article/constants'
+import { MINIMUM_CHARACTERS_REQUIRED_FOR_ARTICLE_TITLE } from '../domain'
+
 
 export class WrongArticleTitleSizeError extends ApplicationError {
   constructor() {

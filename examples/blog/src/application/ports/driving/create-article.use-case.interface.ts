@@ -1,6 +1,7 @@
-import type { IUseCase } from '@ask-ell/core/hexa'
+import type { IUseCase } from '@ask-ell/hexa'
 
+import { ArticleState } from '../../domain'
 import type { ICreateArticleUseCaseInput } from './types'
-import type { ArticleAggregateRootState } from '../driven/types'
 
-export interface ICreateArticleUseCase extends IUseCase<ICreateArticleUseCaseInput, Promise<ArticleAggregateRootState>> { }
+
+export interface ICreateArticleUseCase extends IUseCase<ICreateArticleUseCaseInput, Promise<ArticleState>> { }
