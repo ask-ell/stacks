@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { AggregateRootState, Id } from "../../ddd";
+import { AggregateRootState, Id } from "../../../../ddd/src";
 
 export interface IAggregateRootRepository<
   EntityState,

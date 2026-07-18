@@ -1,4 +1,4 @@
-import { AggregateRootState, Id } from "../../ddd";
+import { AggregateRootState, Id } from "../../../../ddd/src";
 import { MaybeUndefined } from "../../primitives";
 
 export interface IAggregateRootProvider<
