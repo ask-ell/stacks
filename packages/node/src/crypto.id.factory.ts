@@ -4,7 +4,6 @@ import { randomUUID } from 'node:crypto';
 
 export class CryptoIdFactory implements IIdFactory {
     async create(): Promise<Id> {
-        await Promise.resolve();
-        return randomUUID();
+        return Promise.resolve(randomUUID());
     }
 }
