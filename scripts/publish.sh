@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-nx build $1 && \
-
-node scripts/update-internal-dependencies-versions.js && \
+scripts/build.sh $1 && \
 
 pushd dist/packages/$1 && \
 
