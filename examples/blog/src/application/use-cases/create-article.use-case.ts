@@ -1,3 +1,5 @@
+import { MaybeUndefined } from '@ask-ell/core'
+
 import type { ArticleState, IArticle } from '../domain'
 import { Article } from '../domain'
 
@@ -12,15 +14,19 @@ export class CreateArticleUseCase implements ICreateArticleUseCase {
   async run({
     title,
     description
-  }: ICreateArticleUseCaseInput): Promise<ArticleState> {
+  }: ICreateArticleUseCaseInput): Promise<MaybeUndefined<ArticleState>> {
     const newArticle: IArticle = new Article({
       id: new Date().getTime().toString(), // TODO: call id factory
       title,
       description
     });
 
-    return this.unitOfWork
+    const newArticleSnapshot: ArticleState = newArticle.getSnapshot();
+
+    const saved: boolean = await this.unitOfWork
       .getArticleRepository()
-      .save(newArticle.getSnapshot())
+      .save(newArticleSnapshot);
+
+    return saved ? newArticleSnapshot : undefined;
   }
 }
