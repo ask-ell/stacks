@@ -2,6 +2,7 @@ import type { ILogger, MaybeUndefined } from "@ask-ell/core";
 import type { Client, Options } from "@sentry/core"
 
 
+// TODO: update @sentry/core as same version
 export type SentryClientFactory = (options: MaybeUndefined<Options>) => MaybeUndefined<Client>;
 
 export type SentryConfigurationProps = {
