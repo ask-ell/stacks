@@ -1,5 +1,6 @@
-import { AggregateRootState, Id } from "../../../../ddd/src";
-import { MaybeUndefined } from "../../primitives";
+import { MaybeUndefined } from "@ask-ell/core";
+import { AggregateRootState, Id } from "@ask-ell/ddd";
+
 
 export interface IAggregateRootProvider<
   EntityState,

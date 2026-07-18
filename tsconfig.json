@@ -13,10 +13,16 @@
       "path": "./packages/core"
     },
     {
+      "path": "./packages/ddd"
+    },
+    {
       "path": "./packages/github"
     },
     {
       "path": "./packages/gitlab"
+    },
+    {
+      "path": "./packages/hexa"
     },
     {
       "path": "./packages/k8s"
