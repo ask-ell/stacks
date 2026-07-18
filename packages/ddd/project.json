@@ -1,0 +1,28 @@
+{
+  "name": "ddd",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ddd/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/ddd",
+        "main": "packages/ddd/src/index.ts",
+        "tsConfig": "packages/ddd/tsconfig.lib.json",
+        "assets": [
+          "packages/ddd/*.md"
+        ]
+      }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
+    }
+  }
+}
