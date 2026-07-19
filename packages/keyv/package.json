@@ -7,7 +7,11 @@
   "module": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
-    "keyv": "^5.5.3",
-    "rxjs": "^7.8.2"
+    "@ask-ell/core": "*",
+    "@ask-ell/ddd": "*",
+    "@ask-ell/hexa": "*",
+    "keyv": "*",
+    "rxjs": "*",
+    "tslib": "*"
   }
 }

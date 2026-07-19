@@ -6,11 +6,21 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
-    "@keyv/postgres": "^2.2.3",
-    "@keyv/sqlite": "^4.0.8",
-    "@nestjs/common": "^11.1.7",
-    "@sentry/nestjs": "^10.47.0",
-    "keyv": "^5.5.3",
-    "pg": "^8.22.0"
+    "@ask-ell/ask": "*",
+    "@ask-ell/core": "*",
+    "@ask-ell/node": "*",
+    "@ask-ell/nest": "*",
+    "@keyv/postgres": "*",
+    "@keyv/sqlite": "*",
+    "@nestjs/common": "*",
+    "@nestjs/config": "*",
+    "@nestjs/core": "*",
+    "@nestjs/swagger": "*",
+    "@nestjs/throttler": "*",
+    "@sentry/nestjs": "*",
+    "helmet": "*",
+    "keyv": "*",
+    "pg": "*",
+    "tslib": "*"
   }
 }
