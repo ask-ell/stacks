@@ -95,7 +95,7 @@ async function main() {
     dependencies.forEach((dependency) => {
       const versionTag = isACompanyPackage(dependency)
         ? `^${workspaceDependenciesMap[dependency.replace(COMPANY_PACKAGE_PREFIX, '')].source.version}`
-        : ROOT_PACKAGE_CONTENT.devDependencies[dependency];
+        : ROOT_PACKAGE_CONTENT.dependencies[dependency];
       packageFileContent.dependencies[dependency] = versionTag;
     });
 
