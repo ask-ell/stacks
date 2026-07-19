@@ -1,61 +1,118 @@
 const { spawnSync } = require('node:child_process');
-const { readdirSync } = require('node:fs');
+const { readdirSync, writeFileSync, readFileSync } = require('node:fs');
+const { mkdir } = require('node:fs/promises');
 const { join } = require('node:path');
-const fs = require('node:fs');
 
+
+const COMPANY_PACKAGE_PREFIX = '@ask-ell/';
+
+/**
+ * @param {String} packageName 
+ */
+function isACompanyPackage(packageName) {
+  return packageName.includes(COMPANY_PACKAGE_PREFIX);
+}
+
+const TARGETED_PACKAGE_ID = process.argv[2];
 
 const EXAMPLES_FOLDER = join(__dirname, '../examples');
-const EXAMPLES_PROJECTS = readdirSync(EXAMPLES_FOLDER);
+const EXAMPLES_PACKAGES = readdirSync(EXAMPLES_FOLDER);
 
 const NX_GRAPH_FILE_PATH = join(__dirname, '../tmp/graph.json');
 
-function getVersionTag(dependencyName) {
-  const dependencyPackageJsonFilePath = join(__dirname, `../dist/packages/${dependencyName}/package.json`);
-  const dependencyPackage = require(dependencyPackageJsonFilePath);
-  return `^${dependencyPackage.version}`;
+const ROOT_PACKAGE_FILE_PATH = join(__dirname, `../package.json`);
+const ROOT_PACKAGE_CONTENT = require(ROOT_PACKAGE_FILE_PATH);
+
+function isAnExample(packageId) {
+  return EXAMPLES_PACKAGES.includes(packageId);
 }
 
-function discriminateExamples([packageName, dependenciesMaps]) {
-  return !EXAMPLES_PROJECTS.includes(packageName);
+function isNotAnExample(packageId) {
+  return !isAnExample(packageId);
 }
 
-function main() {
+function isTargetedPackage(packageId) {
+  if(TARGETED_PACKAGE_ID){
+    return packageId === TARGETED_PACKAGE_ID;
+  }
+  return true;
+}
+
+function getCompanyPackageFile(packageId) {
+  const packageFilePath = join(__dirname, `../packages/${packageId}/package.json`);
+  return require(packageFilePath);
+}
+
+function getWorkspaceDependenciesMap(){
+  /**
+   * @type {{[id: string]: { id: string; dependencies: string[]; source: any }}}
+   */
   const workspaceDependenciesMap = {};
 
   spawnSync('nx', ['graph', '--file', NX_GRAPH_FILE_PATH], { stdio: 'inherit' });
   const nxGraph = require(NX_GRAPH_FILE_PATH);
 
-  for(const [packageName, dependenciesMaps] of Object.entries(nxGraph.graph.dependencies).filter(discriminateExamples)) {
-    console.log(`Scanning dependencies for package ${packageName}...`)
-    for(const dependencyMap of dependenciesMaps){
-      if(!workspaceDependenciesMap[packageName]){
-        workspaceDependenciesMap[packageName] = []
+  const packageIds = Object.entries(nxGraph.graph.dependencies).map(([packageId]) => packageId);
+  const targetedPackageFileContent = TARGETED_PACKAGE_ID ? getCompanyPackageFile(TARGETED_PACKAGE_ID) : undefined;
+  const targetedPackageFileDependencies = Object.entries(targetedPackageFileContent?.dependencies ?? {}).map(([packageName]) => packageName);
+
+  for(const packageId of packageIds.filter(isNotAnExample)) {
+    console.log(`Scanning dependencies for package ${packageId}...`)
+    const packageFileContent = getCompanyPackageFile(packageId);
+    const dependencies = packageFileContent.dependencies ? Object.entries(packageFileContent.dependencies).map(([dependency]) => dependency) : []
+    const beyondsToTargetedProjectDependencies = targetedPackageFileDependencies.some(dependency => dependency === COMPANY_PACKAGE_PREFIX + packageId);
+
+    if(isTargetedPackage(packageId) || beyondsToTargetedProjectDependencies){
+      workspaceDependenciesMap[packageId] = {
+        id: packageId,
+        dependencies: [],
+        source: packageFileContent
       }
-      workspaceDependenciesMap[packageName].push(dependencyMap.target);
+      if(packageFileContent.dependencies){
+        for(const dependency of dependencies) {
+          workspaceDependenciesMap[packageId].dependencies.push(dependency);
+        }
+      }
     }
   }
+
   console.log('Dependencies scan done.');
 
-  for (const [packageName, dependencies] of Object.entries(workspaceDependenciesMap)) {
-    console.log(`package.json file update for project "${packageName}"...`);
-    const rootPackageJsonFilePath = join(__dirname, `../dist/packages/${packageName}/package.json`);
+  return workspaceDependenciesMap;
+}
 
-    const rootPackage = JSON.parse(
-      fs.readFileSync(rootPackageJsonFilePath, 'utf8')
-    );
+async function main() {
+  const workspaceDependenciesMap = getWorkspaceDependenciesMap();
 
-    dependencies.forEach((dependencyName) => {
-      rootPackage.dependencies ??= {};
-      rootPackage.dependencies[`@ask-ell/${dependencyName}`] = getVersionTag(dependencyName);
+  for(const { id, dependencies, source } of Object.values(workspaceDependenciesMap)) {
+    console.log(`package.json file updating for project "${id}"...`);
+
+    const packagePath = join(__dirname, `../dist/packages/${id}`)
+    await mkdir(packagePath, { recursive: true });
+    const packageFilePath = join(packagePath, 'package.json');
+
+    const packageFileContent = {...source};
+
+    if(dependencies.length && !packageFileContent.dependencies){
+      packageFileContent.dependencies = [];
+    }
+
+    dependencies.forEach((dependency) => {
+      const versionTag = isACompanyPackage(dependency)
+        ? `^${workspaceDependenciesMap[dependency.replace(COMPANY_PACKAGE_PREFIX, '')].source.version}`
+        : ROOT_PACKAGE_CONTENT.devDependencies[dependency];
+      packageFileContent.dependencies[dependency] = versionTag;
     });
 
-    fs.writeFileSync(
-      rootPackageJsonFilePath,
-      JSON.stringify(rootPackage, null, 2) + '\n'
+    writeFileSync(
+      packageFilePath,
+      JSON.stringify(packageFileContent, null, 2) + '\n'
     );
+
+    console.log(`package.json file updated for project "${id}"`);
   }
 
-  console.log('package.json files updated.')
+  console.log('Package files updated.')
 }
 
 main();

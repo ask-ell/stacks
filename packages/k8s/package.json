@@ -6,6 +6,8 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
-    "@kubernetes/client-node": "^0.21.0"
+    "@ask-ell/core": "*",
+    "@kubernetes/client-node": "*",
+    "tslib": "*"
   }
 }

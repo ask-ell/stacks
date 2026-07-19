@@ -5,6 +5,8 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
-    "@sentry/core": "^10.39.0"
+    "@ask-ell/core": "*",
+    "@sentry/core": "*",
+    "tslib": "*"
   }
 }

@@ -6,8 +6,11 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
-    "@sentry/core": "^10.66.0",
-    "@sentry/react": "^10.39.0",
-    "react": "^19.0.0"
+    "@ask-ell/core": "*",
+    "@ask-ell/sentry": "*",
+    "@sentry/core": "*",
+    "@sentry/react": "*",
+    "react": "*",
+    "tslib": "*"
   }
 }

@@ -6,7 +6,10 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
-    "commander": "^14.0.3",
-    "@topcli/prompts": "^2.4.1"
+    "@ask-ell/core": "*",
+    "@ask-ell/ddd": "*",
+    "commander": "*",
+    "@topcli/prompts": "*",
+    "tslib": "*"
   }
 }

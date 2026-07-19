@@ -4,5 +4,9 @@
   "private": false,
   "type": "commonjs",
   "main": "./src/index.js",
-  "types": "./src/index.d.ts"
+  "types": "./src/index.d.ts",
+  "dependencies": {
+    "@ask-ell/core": "*",
+    "tslib": "*"
+  }
 }
