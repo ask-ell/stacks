@@ -61,7 +61,7 @@
   },
   "allowScripts": {
     "@scarf/scarf": false,
-    "@swc/core@": true,
+    "@swc/core": true,
     "nx": true,
     "sqlite3": true,
     "unrs-resolver": true
