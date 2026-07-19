@@ -53,25 +53,20 @@ function getWorkspaceDependenciesMap(){
   const nxGraph = require(NX_GRAPH_FILE_PATH);
 
   const packageIds = Object.entries(nxGraph.graph.dependencies).map(([packageId]) => packageId);
-  const targetedPackageFileContent = TARGETED_PACKAGE_ID ? getCompanyPackageFile(TARGETED_PACKAGE_ID) : undefined;
-  const targetedPackageFileDependencies = Object.entries(targetedPackageFileContent?.dependencies ?? {}).map(([packageName]) => packageName);
 
   for(const packageId of packageIds.filter(isNotAnExample)) {
     console.log(`Scanning dependencies for package ${packageId}...`)
     const packageFileContent = getCompanyPackageFile(packageId);
-    const dependencies = packageFileContent.dependencies ? Object.entries(packageFileContent.dependencies).map(([dependency]) => dependency) : []
-    const beyondsToTargetedProjectDependencies = targetedPackageFileDependencies.some(dependency => dependency === COMPANY_PACKAGE_PREFIX + packageId);
+    const dependencies = packageFileContent.dependencies ? Object.entries(packageFileContent.dependencies).map(([dependency]) => dependency) : [];
 
-    if(isTargetedPackage(packageId) || beyondsToTargetedProjectDependencies){
-      workspaceDependenciesMap[packageId] = {
-        id: packageId,
-        dependencies: [],
-        source: packageFileContent
-      }
-      if(packageFileContent.dependencies){
-        for(const dependency of dependencies) {
-          workspaceDependenciesMap[packageId].dependencies.push(dependency);
-        }
+    workspaceDependenciesMap[packageId] = {
+      id: packageId,
+      dependencies: [],
+      source: packageFileContent
+    }
+    if(packageFileContent.dependencies){
+      for(const dependency of dependencies) {
+        workspaceDependenciesMap[packageId].dependencies.push(dependency);
       }
     }
   }
@@ -84,7 +79,7 @@ function getWorkspaceDependenciesMap(){
 async function main() {
   const workspaceDependenciesMap = getWorkspaceDependenciesMap();
 
-  for(const { id, dependencies, source } of Object.values(workspaceDependenciesMap)) {
+  for(const { id, dependencies, source } of Object.values(workspaceDependenciesMap).filter(({ id }) => isTargetedPackage(id))) {
     console.log(`package.json file updating for project "${id}"...`);
 
     const packagePath = join(__dirname, `../dist/packages/${id}`)
