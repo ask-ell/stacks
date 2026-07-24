@@ -19,6 +19,9 @@
           "examples/blog/*.md"
         ]
       }
+    },
+    "nx-release-publish": {
+      "executor": "nx:noop"
     }
   }
 }
