@@ -1,5 +1,5 @@
 const { spawnSync } = require('node:child_process');
-const { readdirSync, writeFileSync, readFileSync } = require('node:fs');
+const { readdirSync, writeFileSync } = require('node:fs');
 const { mkdir } = require('node:fs/promises');
 const { join } = require('node:path');
 
@@ -95,7 +95,7 @@ async function main() {
     dependencies.forEach((dependency) => {
       const versionTag = isACompanyPackage(dependency)
         ? `^${workspaceDependenciesMap[dependency.replace(COMPANY_PACKAGE_PREFIX, '')].source.version}`
-        : ROOT_PACKAGE_CONTENT.dependencies[dependency];
+        : ROOT_PACKAGE_CONTENT.devDependencies[dependency];
       packageFileContent.dependencies[dependency] = versionTag;
     });
 
