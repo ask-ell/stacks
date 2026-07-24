@@ -23,7 +23,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npx nx run-many -t build
+      - run: node ./scripts/update-dependencies-version.js
 
       - run: npx nx run-many -t nx-release-publish
         env:
