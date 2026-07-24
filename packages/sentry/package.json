@@ -1,6 +1,7 @@
 {
   "name": "@ask-ell/sentry",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "type": "commonjs",
   "private": false,
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
