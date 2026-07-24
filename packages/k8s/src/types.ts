@@ -7,9 +7,7 @@ export type K8SClusterParams = {
 };
 
 export type ComponentsFetchingResponse<Item> = {
-    body: {
-        items: Item[];
-    }
+    items: Item[];
 };
 
 type CreateComponentDTOWrapper<DTO> = {
