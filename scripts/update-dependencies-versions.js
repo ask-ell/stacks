@@ -49,7 +49,10 @@ function getWorkspaceDependenciesMap(){
    */
   const workspaceDependenciesMap = {};
 
-  spawnSync('nx', ['graph', '--file', NX_GRAPH_FILE_PATH], { stdio: 'inherit' });
+  const nxGraphResult = spawnSync('npx', ['nx', 'graph', '--file', NX_GRAPH_FILE_PATH], { stdio: 'inherit' });
+  if (nxGraphResult.status !== 0) {
+    throw new Error(`"nx graph" failed with status ${nxGraphResult.status}`);
+  }
   const nxGraph = require(NX_GRAPH_FILE_PATH);
 
   const packageIds = Object.entries(nxGraph.graph.dependencies).map(([packageId]) => packageId);
