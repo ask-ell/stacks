@@ -3,14 +3,14 @@ import { ConfigModule } from "@nestjs/config";
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from "@nestjs/core";
 import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import type { ILogger } from "@ask-ell/core";
-import { askDockerSecretsFactory, askLocalSecretsFactory } from "@ask-ell/ask";
 import { NestLogger, HealthModule, ResponseFormatInterceptor, HttpExceptionFilter } from "@ask-ell/nest";
 import { SentryGlobalFilter, SentryModule } from '@sentry/nestjs/setup';
 
 import { KeyvStoreAdapterFactory } from "./keyv.store.adapter.factory";
+import { dockerSecretGetter, localSecretGetter } from "./secrets";
 
 
-const logger: ILogger = new NestLogger("Requirements");
+const configModuleLogger: ILogger = NestLogger.fromClass(ConfigModule);
 
 @Global()
 @Module({
@@ -24,8 +24,8 @@ const logger: ILogger = new NestLogger("Requirements");
         ConfigModule.forRoot({
             isGlobal: true,
             load: [
-                askDockerSecretsFactory(logger),
-                askLocalSecretsFactory(logger)
+                dockerSecretGetter(configModuleLogger),
+                localSecretGetter(configModuleLogger)
             ]
         })
     ],
