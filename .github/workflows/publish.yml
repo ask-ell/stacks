@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - release
-      - STACKS-17
 
 permissions:
   contents: read
