@@ -1,12 +1,12 @@
 import { PercentageIncrementor } from '@ask-ell/core';
-import { Client, QueryResult } from 'pg';
 import { Script, ExecuteOptions } from '@ask-ell/node';
 import { NestLogger } from '@ask-ell/nest';
+import { Client, QueryResult } from 'pg';
 
 
-type KeyvRowData = {
+type KeyvRowData<Value = unknown> = {
     key: string;
-    value: any;
+    value: Value;
 }
 
 export class MoveKeyvDataScript extends Script {

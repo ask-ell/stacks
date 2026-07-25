@@ -1,17 +1,17 @@
 import { ILogger } from "@ask-ell/core";
-import { Command } from "commander";
 import { confirm } from '@topcli/prompts';
+import { Command } from "commander";
 
 
 type ScriptArgument = {
     name: string;
-    description: string;
+    description?: string;
     required?: boolean;
 }
 
 export type ScriptParams = {
     logger: ILogger;
-    arguments: ScriptArgument[];
+    arguments?: ScriptArgument[];
 }
 
 type PromptTools = {
@@ -27,7 +27,7 @@ export type ExecuteOptions = {
 export abstract class Script extends Command {
     constructor(private params: ScriptParams) {
         super();
-        params.arguments.forEach((argument: ScriptArgument): void => this.setArgument(argument));
+        params.arguments?.forEach((argument: ScriptArgument): void => this.setArgument(argument));
     }
 
     abstract execute(options: ExecuteOptions): Promise<void>;
@@ -43,7 +43,7 @@ export abstract class Script extends Command {
             }
         };
 
-        this.params.arguments.forEach((argument: ScriptArgument, index: number): void => {
+        this.params.arguments?.forEach((argument: ScriptArgument, index: number): void => {
             const argumentValue: string | undefined = args[index];
             if (argument.required && argumentValue === undefined) {
                 throw new Error(`Missing required argument: ${argument.name}`);
