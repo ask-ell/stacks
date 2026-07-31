@@ -1,3 +1,6 @@
+/**
+ * @module @ask-ell/nest
+ */
 export * from "./filters"
 export * from "./interceptors"
 export * from "./modules"
