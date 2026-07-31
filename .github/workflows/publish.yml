@@ -31,3 +31,12 @@ jobs:
       - run: npx nx run-many -t nx-release-publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npx nx run stacks:docs
+
+      - name: Publish documentation
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
