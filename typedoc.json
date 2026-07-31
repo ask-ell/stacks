@@ -1,0 +1,24 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "packages/core/src/index.ts",
+    "packages/ddd/src/index.ts",
+    "packages/hexa/src/index.ts",
+    "packages/keyv/src/index.ts",
+    "packages/node/src/index.ts",
+    "packages/k8s/src/index.ts",
+    "packages/github/src/index.ts",
+    "packages/gitlab/src/index.ts",
+    "packages/sentry/src/index.ts",
+    "packages/nest/src/index.ts",
+    "packages/react/src/index.ts",
+    "packages/back-end/src/index.ts"
+  ],
+  "tsconfig": "tsconfig.docs.json",
+  "out": "docs",
+  "name": "Documentation",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "skipErrorChecking": true
+}

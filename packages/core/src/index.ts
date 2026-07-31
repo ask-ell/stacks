@@ -1,3 +1,6 @@
+/**
+ * @module @ask-ell/core
+ */
 export * from './entities';
 export * from './errors';
 export * from './event-listeners';

@@ -1,0 +1,15 @@
+{
+  "name": "stacks",
+  "$schema": "./node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "targets": {
+    "docs": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/docs"],
+      "options": {
+        "command": "typedoc",
+        "cwd": "{workspaceRoot}"
+      }
+    }
+  }
+}
