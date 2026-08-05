@@ -35,6 +35,7 @@ function isTargetedPackage(packageId) {
   if(TARGETED_PACKAGE_ID){
     return packageId === TARGETED_PACKAGE_ID;
   }
+
   return true;
 }
 
@@ -55,7 +56,7 @@ function getWorkspaceDependenciesMap(){
   }
   const nxGraph = require(NX_GRAPH_FILE_PATH);
 
-  const packageIds = Object.entries(nxGraph.graph.dependencies).map(([packageId]) => packageId);
+  const packageIds = Object.entries(nxGraph.graph.dependencies).map(([packageId]) => packageId).filter(packageId => packageId !== 'stacks');
 
   for(const packageId of packageIds.filter(isNotAnExample)) {
     console.log(`Scanning dependencies for package ${packageId}...`)

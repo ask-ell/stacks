@@ -25,3 +25,5 @@ jobs:
       - run: npm audit --audit-level=high
 
       - run: npx nx run-many -t test
+
+      - run: node scripts/update-dependencies-versions.js
