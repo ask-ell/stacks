@@ -39,5 +39,8 @@
     {
       "path": "./packages/sentry"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0"
+  }
 }
