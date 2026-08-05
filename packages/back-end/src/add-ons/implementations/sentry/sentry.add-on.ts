@@ -9,7 +9,7 @@ export class SentryAddon<T>
   extends Entity<ISentryAddOnState>
   implements ISentryAddOn<T>
 {
-  checkStateValidity(_newState: ISentryAddOnState): IResult<void> {
+  checkStateValidity(): IResult<void> {
     return ok();
   }
 

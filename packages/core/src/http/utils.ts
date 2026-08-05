@@ -7,7 +7,7 @@ export async function inspectResponse<ResponseData>(request: Promise<Response>):
   const isAtJsonFormat: boolean = response.headers.get('Content-Type')?.includes('application/json') ?? false
   const responseData: ResponseData = isAtJsonFormat ? await response.json() : await response.text()
   if (!response.ok) {
-    return fail(new HttpError(responseData))
+    return fail<ResponseData>(new HttpError(responseData))
   }
   if (responseData === '') {
     return success(undefined) as IResult<ResponseData>

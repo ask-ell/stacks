@@ -16,7 +16,7 @@ interface FoldParams<Data> {
   onFail?: (error: Error) => void
 }
 
-export type IResult<Data = any> = (ISuccessResult<Data> | IFailResult) & {
+export type IResult<Data = unknown> = (ISuccessResult<Data> | IFailResult) & {
   isAFail(): this is IFailResult
   isASuccess(): this is ISuccessResult<Data>
   fold(params: FoldParams<Data>): void
@@ -63,7 +63,7 @@ export const success = <T>(data: T): IResult<T> => new Result(data, null) as IRe
 
 export const ok = (): IResult<void> => success(undefined)
 
-export const fail = (error: any): IResult => {
+export const fail = <T = never>(error: unknown): IResult<T> => {
   let finalError: Error
   if (error instanceof Error) {
     finalError = error
@@ -72,18 +72,18 @@ export const fail = (error: any): IResult => {
   } else {
     finalError = new Error(JSON.stringify(error))
   }
-  return new Result(null, finalError) as IResult
+  return new Result(null, finalError) as unknown as IResult<T>
 }
 
-export function mergeResults<MergedResultData extends any[], MergedResultDataRange extends IResult[]>(results: MergedResultDataRange): IResult<[...MergedResultData]> {
-  const successData: any = []
+export function mergeResults<MergedResultData extends unknown[], MergedResultDataRange extends IResult[]>(results: MergedResultDataRange): IResult<[...MergedResultData]> {
+  const successData: unknown[] = []
   for (const result of results) {
     if (result.isAFail()) {
-      return result
+      return result as unknown as IResult<[...MergedResultData]>
     }
     successData.push(result.getData())
   }
-  return success(successData)
+  return success(successData as [...MergedResultData])
 }
 
 export interface ResultSnapshot<Data> {
@@ -104,7 +104,7 @@ export const fromPromiseToResult = async <T>(promise: () => Promise<T>): Promise
   try {
     const data: T = await promise()
     return success(data)
-  } catch (error: any) {
-    return fail(error)
+  } catch (error: unknown) {
+    return fail(error) as IResult<T>
   }
 }

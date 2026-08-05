@@ -1,4 +1,5 @@
 export * from './list';
+export * from './dictionnary';
 export * from './equalizable';
 export * from './maybe';
 export * from './nullable';
