@@ -1,0 +1,442 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>K8SCluster | Documentation</title><meta name="description" content="Documentation for Documentation"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container"><a href="../index.html" class="title">Documentation</a>
+<div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/>
+<ul role="listbox" id="tsd-search-results"></ul>
+<div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+<div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb" aria-label="Breadcrumb">
+<li><a href="../modules/_ask-ell_k8s.html">@ask-ell/k8s</a></li>
+<li><a href="" aria-current="page">K8SCluster</a></li></ul>
+<h1>Class K8SCluster</h1></div>
+<section class="tsd-panel">
+<h4>Implements</h4>
+<ul class="tsd-hierarchy">
+<li><a href="../interfaces/_ask-ell_k8s.IK8SCluster.html" class="tsd-signature-type tsd-kind-interface">IK8SCluster</a></li></ul></section><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L11">packages/k8s/src/k8s.cluster.ts:11</a></li></ul></aside>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h5 class="tsd-index-heading uppercase">Index</h5></summary>
+<div class="tsd-accordion-details">
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading tsd-anchor-link" id="constructors">Constructors<a href="#constructors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-index-list"><a href="#constructor" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Constructor"><use href="../assets/icons.svg#icon-512"></use></svg><span>constructor</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading tsd-anchor-link" id="methods">Methods<a href="#methods" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-index-list"><a href="#createclustercustomobject" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Cluster<wbr/>Custom<wbr/>Object</span></a>
+<a href="#createcustomresourcedefinition" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Custom<wbr/>Resource<wbr/>Definition</span></a>
+<a href="#createdeployment" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Deployment</span></a>
+<a href="#createnamespace" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Namespace</span></a>
+<a href="#createrole" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Role</span></a>
+<a href="#createrolebinding" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Role<wbr/>Binding</span></a>
+<a href="#createservice" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Service</span></a>
+<a href="#createserviceaccount" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Service<wbr/>Account</span></a>
+<a href="#createserviceaccounttoken" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Service<wbr/>Account<wbr/>Token</span></a>
+<a href="#deleteclustercustomobject" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Cluster<wbr/>Custom<wbr/>Object</span></a>
+<a href="#deletedeployment" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Deployment</span></a>
+<a href="#deletenamespace" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Namespace</span></a>
+<a href="#deleteservice" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Service</span></a>
+<a href="#getallclustercustomobjectsfromresourcedefinition" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>All<wbr/>Cluster<wbr/>Custom<wbr/>Objects<wbr/>From<wbr/>Resource<wbr/>Definition</span></a>
+<a href="#getallcustomresourcedefinitions" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>All<wbr/>Custom<wbr/>Resource<wbr/>Definitions</span></a>
+<a href="#getallnamespaces" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>All<wbr/>Namespaces</span></a>
+<a href="#getdeploymentsfromnamespace" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Deployments<wbr/>From<wbr/>Namespace</span></a>
+<a href="#getrolebindings" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Role<wbr/>Bindings</span></a>
+<a href="#getroles" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Roles</span></a>
+<a href="#getsecretsfromnamespace" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Secrets<wbr/>From<wbr/>Namespace</span></a>
+<a href="#getserviceaccountsfromnamespace" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Service<wbr/>Accounts<wbr/>From<wbr/>Namespace</span></a>
+<a href="#getservicesfromnamespace" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Services<wbr/>From<wbr/>Namespace</span></a>
+<a href="#isnamespacepersisted" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Namespace<wbr/>Persisted</span></a>
+<a href="#patchclustercustomobject" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>patch<wbr/>Cluster<wbr/>Custom<wbr/>Object</span></a>
+</div></section></div></details></section></section>
+<details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Constructors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h2 class="tsd-anchor-link" id="constructors-1">Constructors<a href="#constructors-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
+<section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="constructor"><span>constructor</span><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="constructork8scluster"><span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">K8SCluster</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.K8SClusterParams.html" class="tsd-signature-type tsd-kind-type-alias">K8SClusterParams</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type tsd-kind-class">K8SCluster</a><a href="#constructork8scluster" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.K8SClusterParams.html" class="tsd-signature-type tsd-kind-type-alias">K8SClusterParams</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="" class="tsd-signature-type tsd-kind-class">K8SCluster</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L19">packages/k8s/src/k8s.cluster.ts:19</a></li></ul></aside></div></li></ul></section></section></details>
+<details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h2 class="tsd-anchor-link" id="methods-1">Methods<a href="#methods-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
+<section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createclustercustomobject"><span>create<wbr/>Cluster<wbr/>Custom<wbr/>Object</span><a href="#createclustercustomobject" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createclustercustomobject-1"><span class="tsd-kind-call-signature">createClusterCustomObject</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#createclustercustomobjectcustomresource">CustomResource</a> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.PersistClusterCustomObjectDTO.html" class="tsd-signature-type tsd-kind-type-alias">PersistClusterCustomObjectDTO</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#createclustercustomobjectcustomresource">CustomResource</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createclustercustomobject-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li><span id="createclustercustomobjectcustomresource"><span class="tsd-kind-type-parameter">CustomResource</span> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a></span></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.PersistClusterCustomObjectDTO.html" class="tsd-signature-type tsd-kind-type-alias">PersistClusterCustomObjectDTO</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#createclustercustomobjectcustomresource">CustomResource</a><span class="tsd-signature-symbol">&gt;</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createclustercustomobject">createClusterCustomObject</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L184">packages/k8s/src/k8s.cluster.ts:184</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createcustomresourcedefinition"><span>create<wbr/>Custom<wbr/>Resource<wbr/>Definition</span><a href="#createcustomresourcedefinition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createcustomresourcedefinition-1"><span class="tsd-kind-call-signature">createCustomResourceDefinition</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">body</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">V1CustomResourceDefinition</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createcustomresourcedefinition-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">body</span>: <span class="tsd-signature-type">V1CustomResourceDefinition</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createcustomresourcedefinition">createCustomResourceDefinition</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L168">packages/k8s/src/k8s.cluster.ts:168</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createdeployment"><span>create<wbr/>Deployment</span><a href="#createdeployment" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createdeployment-1"><span class="tsd-kind-call-signature">createDeployment</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.CreateDeploymentDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateDeploymentDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createdeployment-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.CreateDeploymentDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateDeploymentDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createdeployment">createDeployment</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L61">packages/k8s/src/k8s.cluster.ts:61</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createnamespace"><span>create<wbr/>Namespace</span><a href="#createnamespace" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createnamespace-1"><span class="tsd-kind-call-signature">createNamespace</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createnamespace-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createnamespace">createNamespace</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L41">packages/k8s/src/k8s.cluster.ts:41</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createrole"><span>create<wbr/>Role</span><a href="#createrole" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createrole-1"><span class="tsd-kind-call-signature">createRole</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.CreateRoleDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateRoleDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createrole-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.CreateRoleDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateRoleDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createrole">createRole</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L125">packages/k8s/src/k8s.cluster.ts:125</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createrolebinding"><span>create<wbr/>Role<wbr/>Binding</span><a href="#createrolebinding" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createrolebinding-1"><span class="tsd-kind-call-signature">createRoleBinding</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.CreateRoleBindingDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateRoleBindingDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createrolebinding-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.CreateRoleBindingDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateRoleBindingDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createrolebinding">createRoleBinding</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L144">packages/k8s/src/k8s.cluster.ts:144</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createservice"><span>create<wbr/>Service</span><a href="#createservice" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createservice-1"><span class="tsd-kind-call-signature">createService</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.CreateServiceDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateServiceDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createservice-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.CreateServiceDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateServiceDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createservice">createService</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L109">packages/k8s/src/k8s.cluster.ts:109</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createserviceaccount"><span>create<wbr/>Service<wbr/>Account</span><a href="#createserviceaccount" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createserviceaccount-1"><span class="tsd-kind-call-signature">createServiceAccount</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.CreateServiceAccountDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateServiceAccountDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createserviceaccount-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.CreateServiceAccountDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateServiceAccountDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createserviceaccount">createServiceAccount</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L77">packages/k8s/src/k8s.cluster.ts:77</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="createserviceaccounttoken"><span>create<wbr/>Service<wbr/>Account<wbr/>Token</span><a href="#createserviceaccounttoken" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="createserviceaccounttoken-1"><span class="tsd-kind-call-signature">createServiceAccountToken</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.CreateServiceAccountTokenDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateServiceAccountTokenDTO</a><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#createserviceaccounttoken-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.CreateServiceAccountTokenDTO.html" class="tsd-signature-type tsd-kind-type-alias">CreateServiceAccountTokenDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#createserviceaccounttoken">createServiceAccountToken</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L91">packages/k8s/src/k8s.cluster.ts:91</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="deleteclustercustomobject"><span>delete<wbr/>Cluster<wbr/>Custom<wbr/>Object</span><a href="#deleteclustercustomobject" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="deleteclustercustomobject-1"><span class="tsd-kind-call-signature">deleteClusterCustomObject</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#deleteclustercustomobjectcustomresource">CustomResource</a> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.DeleteClusterCustomObjectDTO.html" class="tsd-signature-type tsd-kind-type-alias">DeleteClusterCustomObjectDTO</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#deleteclustercustomobjectcustomresource">CustomResource</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#deleteclustercustomobject-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li><span id="deleteclustercustomobjectcustomresource"><span class="tsd-kind-type-parameter">CustomResource</span> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a></span></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.DeleteClusterCustomObjectDTO.html" class="tsd-signature-type tsd-kind-type-alias">DeleteClusterCustomObjectDTO</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#deleteclustercustomobjectcustomresource">CustomResource</a><span class="tsd-signature-symbol">&gt;</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#deleteclustercustomobject">deleteClusterCustomObject</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L248">packages/k8s/src/k8s.cluster.ts:248</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="deletedeployment"><span>delete<wbr/>Deployment</span><a href="#deletedeployment" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="deletedeployment-1"><span class="tsd-kind-call-signature">deleteDeployment</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.DeleteComponentDTO.html" class="tsd-signature-type tsd-kind-type-alias">DeleteComponentDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#deletedeployment-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.DeleteComponentDTO.html" class="tsd-signature-type tsd-kind-type-alias">DeleteComponentDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#deletedeployment">deleteDeployment</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L65">packages/k8s/src/k8s.cluster.ts:65</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="deletenamespace"><span>delete<wbr/>Namespace</span><a href="#deletenamespace" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="deletenamespace-1"><span class="tsd-kind-call-signature">deleteNamespace</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">namespace</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#deletenamespace-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">namespace</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#deletenamespace">deleteNamespace</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L53">packages/k8s/src/k8s.cluster.ts:53</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="deleteservice"><span>delete<wbr/>Service</span><a href="#deleteservice" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="deleteservice-1"><span class="tsd-kind-call-signature">deleteService</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.DeleteComponentDTO.html" class="tsd-signature-type tsd-kind-type-alias">DeleteComponentDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#deleteservice-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.DeleteComponentDTO.html" class="tsd-signature-type tsd-kind-type-alias">DeleteComponentDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#deleteservice">deleteService</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L113">packages/k8s/src/k8s.cluster.ts:113</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getallclustercustomobjectsfromresourcedefinition"><span>get<wbr/>All<wbr/>Cluster<wbr/>Custom<wbr/>Objects<wbr/>From<wbr/>Resource<wbr/>Definition</span><a href="#getallclustercustomobjectsfromresourcedefinition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getallclustercustomobjectsfromresourcedefinition-1"><span class="tsd-kind-call-signature">getAllClusterCustomObjectsFromResourceDefinition</span><span class="tsd-signature-symbol">&lt;</span><br/>    <a class="tsd-signature-type tsd-kind-type-parameter" href="#getallclustercustomobjectsfromresourcedefinitioncustomresource">CustomResource</a> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">V1CustomResourceDefinition</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#getallclustercustomobjectsfromresourcedefinitioncustomresource">CustomResource</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getallclustercustomobjectsfromresourcedefinition-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li><span id="getallclustercustomobjectsfromresourcedefinitioncustomresource"><span class="tsd-kind-type-parameter">CustomResource</span> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a></span></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <span class="tsd-signature-type">V1CustomResourceDefinition</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#getallclustercustomobjectsfromresourcedefinitioncustomresource">CustomResource</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getallclustercustomobjectsfromresourcedefinition">getAllClusterCustomObjectsFromResourceDefinition</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L172">packages/k8s/src/k8s.cluster.ts:172</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getallcustomresourcedefinitions"><span>get<wbr/>All<wbr/>Custom<wbr/>Resource<wbr/>Definitions</span><a href="#getallcustomresourcedefinitions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getallcustomresourcedefinitions-1"><span class="tsd-kind-call-signature">getAllCustomResourceDefinitions</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1CustomResourceDefinition</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getallcustomresourcedefinitions-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1CustomResourceDefinition</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getallcustomresourcedefinitions">getAllCustomResourceDefinitions</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L164">packages/k8s/src/k8s.cluster.ts:164</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getallnamespaces"><span>get<wbr/>All<wbr/>Namespaces</span><a href="#getallnamespaces" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getallnamespaces-1"><span class="tsd-kind-call-signature">getAllNamespaces</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Namespace</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getallnamespaces-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Namespace</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getallnamespaces">getAllNamespaces</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L32">packages/k8s/src/k8s.cluster.ts:32</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getdeploymentsfromnamespace"><span>get<wbr/>Deployments<wbr/>From<wbr/>Namespace</span><a href="#getdeploymentsfromnamespace" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getdeploymentsfromnamespace-1"><span class="tsd-kind-call-signature">getDeploymentsFromNamespace</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">namespace</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Deployment</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getdeploymentsfromnamespace-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">namespace</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Deployment</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getdeploymentsfromnamespace">getDeploymentsFromNamespace</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L57">packages/k8s/src/k8s.cluster.ts:57</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getrolebindings"><span>get<wbr/>Role<wbr/>Bindings</span><a href="#getrolebindings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getrolebindings-1"><span class="tsd-kind-call-signature">getRoleBindings</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.GetRoleBindingsDTO.html" class="tsd-signature-type tsd-kind-type-alias">GetRoleBindingsDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1RoleBinding</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getrolebindings-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.GetRoleBindingsDTO.html" class="tsd-signature-type tsd-kind-type-alias">GetRoleBindingsDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1RoleBinding</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getrolebindings">getRoleBindings</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L140">packages/k8s/src/k8s.cluster.ts:140</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getroles"><span>get<wbr/>Roles</span><a href="#getroles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getroles-1"><span class="tsd-kind-call-signature">getRoles</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.GetRolesDTO.html" class="tsd-signature-type tsd-kind-type-alias">GetRolesDTO</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Role</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getroles-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.GetRolesDTO.html" class="tsd-signature-type tsd-kind-type-alias">GetRolesDTO</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Role</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getroles">getRoles</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L121">packages/k8s/src/k8s.cluster.ts:121</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getsecretsfromnamespace"><span>get<wbr/>Secrets<wbr/>From<wbr/>Namespace</span><a href="#getsecretsfromnamespace" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getsecretsfromnamespace-1"><span class="tsd-kind-call-signature">getSecretsFromNamespace</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">namespace</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Secret</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getsecretsfromnamespace-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">namespace</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Secret</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getsecretsfromnamespace">getSecretsFromNamespace</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L117">packages/k8s/src/k8s.cluster.ts:117</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getserviceaccountsfromnamespace"><span>get<wbr/>Service<wbr/>Accounts<wbr/>From<wbr/>Namespace</span><a href="#getserviceaccountsfromnamespace" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getserviceaccountsfromnamespace-1"><span class="tsd-kind-call-signature">getServiceAccountsFromNamespace</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">namespace</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1ServiceAccount</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getserviceaccountsfromnamespace-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">namespace</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1ServiceAccount</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getserviceaccountsfromnamespace">getServiceAccountsFromNamespace</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L73">packages/k8s/src/k8s.cluster.ts:73</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getservicesfromnamespace"><span>get<wbr/>Services<wbr/>From<wbr/>Namespace</span><a href="#getservicesfromnamespace" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getservicesfromnamespace-1"><span class="tsd-kind-call-signature">getServicesFromNamespace</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">namespace</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Service</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><a href="#getservicesfromnamespace-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">namespace</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">V1Service</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#getservicesfromnamespace">getServicesFromNamespace</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L69">packages/k8s/src/k8s.cluster.ts:69</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="isnamespacepersisted"><span>is<wbr/>Namespace<wbr/>Persisted</span><a href="#isnamespacepersisted" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="isnamespacepersisted-1"><span class="tsd-kind-call-signature">isNamespacePersisted</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><a href="#isnamespacepersisted-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#isnamespacepersisted">isNamespacePersisted</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L36">packages/k8s/src/k8s.cluster.ts:36</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="patchclustercustomobject"><span>patch<wbr/>Cluster<wbr/>Custom<wbr/>Object</span><a href="#patchclustercustomobject" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="patchclustercustomobject-1"><span class="tsd-kind-call-signature">patchClusterCustomObject</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#patchclustercustomobjectcustomresource">CustomResource</a> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">:</span> <a href="../types/_ask-ell_k8s.PersistClusterCustomObjectDTO.html" class="tsd-signature-type tsd-kind-type-alias">PersistClusterCustomObjectDTO</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#patchclustercustomobjectcustomresource">CustomResource</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><a href="#patchclustercustomobject-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li><span id="patchclustercustomobjectcustomresource"><span class="tsd-kind-type-parameter">CustomResource</span> <span class="tsd-signature-keyword">extends</span> <a href="../types/_ask-ell_k8s.K8SCustomResource.html" class="tsd-signature-type tsd-kind-type-alias">K8SCustomResource</a></span></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../types/_ask-ell_k8s.PersistClusterCustomObjectDTO.html" class="tsd-signature-type tsd-kind-type-alias">PersistClusterCustomObjectDTO</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#patchclustercustomobjectcustomresource">CustomResource</a><span class="tsd-signature-symbol">&gt;</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<p>Implementation of <a href="../interfaces/_ask-ell_k8s.IK8SCluster.html">IK8SCluster</a>.<a href="../interfaces/_ask-ell_k8s.IK8SCluster.html#patchclustercustomobject">patchClusterCustomObject</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/ask-ell/stacks/blob/8a3600c5bc5147a924cf26e59df29696ae7c713e/packages/k8s/src/k8s.cluster.ts#L214">packages/k8s/src/k8s.cluster.ts:214</a></li></ul></aside></div></li></ul></section></section></details></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div>
+<div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Constructors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Constructors</summary>
+<div><a href="#constructor"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Constructor"><use href="../assets/icons.svg#icon-512"></use></svg><span>constructor</span></a></div></details>
+<details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Methods</summary>
+<div><a href="#createclustercustomobject"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Cluster<wbr/>Custom<wbr/>Object</span></a><a href="#createcustomresourcedefinition"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Custom<wbr/>Resource<wbr/>Definition</span></a><a href="#createdeployment"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Deployment</span></a><a href="#createnamespace"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Namespace</span></a><a href="#createrole"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Role</span></a><a href="#createrolebinding"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Role<wbr/>Binding</span></a><a href="#createservice"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Service</span></a><a href="#createserviceaccount"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Service<wbr/>Account</span></a><a href="#createserviceaccounttoken"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr/>Service<wbr/>Account<wbr/>Token</span></a><a href="#deleteclustercustomobject"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Cluster<wbr/>Custom<wbr/>Object</span></a><a href="#deletedeployment"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Deployment</span></a><a href="#deletenamespace"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Namespace</span></a><a href="#deleteservice"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>delete<wbr/>Service</span></a><a href="#getallclustercustomobjectsfromresourcedefinition"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>All<wbr/>Cluster<wbr/>Custom<wbr/>Objects<wbr/>From<wbr/>Resource<wbr/>Definition</span></a><a href="#getallcustomresourcedefinitions"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>All<wbr/>Custom<wbr/>Resource<wbr/>Definitions</span></a><a href="#getallnamespaces"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>All<wbr/>Namespaces</span></a><a href="#getdeploymentsfromnamespace"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Deployments<wbr/>From<wbr/>Namespace</span></a><a href="#getrolebindings"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Role<wbr/>Bindings</span></a><a href="#getroles"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Roles</span></a><a href="#getsecretsfromnamespace"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Secrets<wbr/>From<wbr/>Namespace</span></a><a href="#getserviceaccountsfromnamespace"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Service<wbr/>Accounts<wbr/>From<wbr/>Namespace</span></a><a href="#getservicesfromnamespace"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Services<wbr/>From<wbr/>Namespace</span></a><a href="#isnamespacepersisted"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>is<wbr/>Namespace<wbr/>Persisted</span></a><a href="#patchclustercustomobject"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>patch<wbr/>Cluster<wbr/>Custom<wbr/>Object</span></a></div></details></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="../modules.html">Documentation</a>
+<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+<li>Loading...</li></ul></nav></div></div></div><footer>
+<p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer>
+<div class="overlay"></div></body></html>
