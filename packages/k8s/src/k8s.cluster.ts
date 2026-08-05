@@ -1,7 +1,7 @@
 import { ILogger } from "@ask-ell/core";
 import { ApiextensionsV1Api, AppsV1Api, CoreV1Api, CustomObjectsApi, KubeConfig, RbacAuthorizationV1Api } from "@kubernetes/client-node";
 
-import { K8SClusterParams, PersistClusterCustomObjectDTO, K8SSecret, K8SService, K8SCustomResource, DeleteClusterCustomObjectDTO, K8SCustomResourceDefinition, K8SNamespace, CreateDeploymentDTO, CreateServiceDTO, DeleteComponentDTO, K8SDeployment, K8SServiceAccount, CreateServiceAccountDTO, CreateServiceAccountTokenDTO, GetRolesDTO, K8SRole, CreateRoleDTO, K8SRoleBinding, GetRoleBindingsDTO, CreateRoleBindingDTO } from "./types";
+import { K8SClusterParams, PersistClusterCustomObjectDTO, K8SSecret, K8SService, K8SCustomResource, DeleteClusterCustomObjectDTO, K8SCustomResourceDefinition, K8SNamespace, CreateDeploymentDTO, CreateServiceDTO, DeleteComponentDTO, K8SDeployment, K8SServiceAccount, CreateServiceAccountDTO, CreateServiceAccountTokenDTO, GetRolesDTO, K8SRole, CreateRoleDTO, K8SRoleBinding, GetRoleBindingsDTO, CreateRoleBindingDTO, ComponentsFetchingResponse } from "./types";
 import { getK8SConfig } from "./k8s.config";
 import { IK8SCluster } from "./k8s.cluster.interface";
 import { getItems, getVersionName } from "./utils";
@@ -173,12 +173,12 @@ export class K8SCluster implements IK8SCluster {
         spec: { group, names: { plural }, versions }
     }: K8SCustomResourceDefinition): Promise<CustomResource[]> {
         const versionName: string = getVersionName(versions[0]);
-        const result: any = await this.customObjectsApi.listClusterCustomObject({
+        const { items }: ComponentsFetchingResponse<CustomResource> = await this.customObjectsApi.listClusterCustomObject({
             group,
             plural,
             version: versionName,
         });
-        return result['items'];
+        return items;
     }
 
     async createClusterCustomObject<CustomResource extends K8SCustomResource>({

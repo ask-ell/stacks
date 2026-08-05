@@ -31,7 +31,7 @@ export class SentryConfiguration<SentryClientFactory extends (params: SentryClie
         }
 
         const { publicKey, host, projectId, environment, init } = this.props;
-        const dsn: string = `https://${publicKey}@${host}/${projectId}`;
+        const dsn = `https://${publicKey}@${host}/${projectId}`;
 
         this.client = init({
             dsn,

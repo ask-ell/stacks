@@ -50,7 +50,7 @@ describe('Blog', (): void => {
       }
       await createArticleUseCase.run(dto)
       throw new TestMustFailError()
-    } catch (error: any) {
+    } catch (error: unknown) {
       expect(error).toBeInstanceOf(WrongArticleTitleSizeError)
     }
   })
@@ -63,7 +63,7 @@ describe('Blog', (): void => {
       dto.title = ''
       await updateArticleUseCase.run(dto as IUpdateArticleUseCaseInput)
       throw new TestMustFailError()
-    } catch (error: any) {
+    } catch (error: unknown) {
       expect(error).toBeInstanceOf(WrongArticleTitleSizeError)
     }
   })

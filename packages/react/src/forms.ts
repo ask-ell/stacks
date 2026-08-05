@@ -24,7 +24,7 @@ type FormDataFieldUpdater<FormData> = <Key extends keyof FormData>(key: Key) => 
 
 type SubmitTrigger = () => void;
 
-export interface ErrorsMap<FormData> extends Map<keyof FormData, string[]> { }
+export type ErrorsMap<FormData> = Map<keyof FormData, string[]>
 
 export type FormController<FormData> = {
     formData: FormData;

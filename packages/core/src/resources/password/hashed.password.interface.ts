@@ -1,4 +1,4 @@
 import { IStringable } from "../../primitives";
 
 
-export interface IHashedPassword extends IStringable {}
+export type IHashedPassword = IStringable
