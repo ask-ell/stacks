@@ -8,9 +8,14 @@ import { join } from 'node:path';
 
 
 const PROJECT_ROOT_PATH: MaybeUndefined<string> = process.env['PWD'];
-if (!PROJECT_ROOT_PATH) {
-    throw new UnknownEnvironmentVariableError('PWD');
+
+function makeSureThatProjectRootPathIsDefined(projectRootPath: MaybeUndefined<string>): asserts projectRootPath is string {
+    if (!projectRootPath) {
+        throw new UnknownEnvironmentVariableError('PWD');
+    }
 }
+
+makeSureThatProjectRootPathIsDefined(PROJECT_ROOT_PATH);
 
 const NX_GRAPH_FILE_PATH: string = join(PROJECT_ROOT_PATH, 'tmp/graph.json');
 
@@ -25,9 +30,7 @@ const ROOT_PACKAGE_CONTENT: PackageContent = require(ROOT_PACKAGE_FILE_PATH);
 
 
 function getOrganisationPackageFile(packageId: string): PackageContent {
-    if (!PROJECT_ROOT_PATH) {
-        throw new UnknownEnvironmentVariableError('PWD');
-    }
+    makeSureThatProjectRootPathIsDefined(PROJECT_ROOT_PATH);
     const packageFilePath = join(PROJECT_ROOT_PATH, `packages/${packageId}/package.json`);
     return require(packageFilePath);
 }
