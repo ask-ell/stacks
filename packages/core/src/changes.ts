@@ -8,11 +8,11 @@ export type ChangesDetection<Data extends object, Key extends keyof Data = keyof
 }
 
 export const detectChanges = <Data extends object>(oldVersion: Data) => (newVersion: Data): ChangesDetection<Data> => {
-  const changesDetection: ChangesDetection<Data> = {}
-  Object.keys(oldVersion).forEach((key: string): void => {
-    (changesDetection as any)[key] = {
-      previous: (oldVersion as any)[key],
-      current: (newVersion as any)[key]
+  const changesDetection: ChangesDetection<Data> = {};
+  (Object.keys(oldVersion) as Array<keyof Data>).forEach((key): void => {
+    changesDetection[key] = {
+      previous: oldVersion[key],
+      current: newVersion[key]
     }
   })
   return changesDetection

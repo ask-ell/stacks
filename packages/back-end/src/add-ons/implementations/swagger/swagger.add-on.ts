@@ -15,7 +15,7 @@ export class SwaggerAddon<T>
   extends Entity<ISwaggerAddOnState>
   implements ISwaggerAddOn<T>
 {
-  checkStateValidity(_newState: ISwaggerAddOnState): IResult<void> {
+  checkStateValidity(): IResult<void> {
     return ok();
   }
 

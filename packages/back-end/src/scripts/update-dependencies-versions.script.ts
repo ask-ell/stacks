@@ -1,4 +1,4 @@
-import { MaybeUndefined, UnknownEnvironmentVariableError } from "@ask-ell/core";
+import { MaybeUndefined, StringDictionnary, UnknownEnvironmentVariableError } from "@ask-ell/core";
 import { NestLogger } from "@ask-ell/nest";
 import { ExecuteOptions, Script } from "@ask-ell/node";
 import { spawnSync } from 'node:child_process';
@@ -21,8 +21,8 @@ const NX_GRAPH_FILE_PATH: string = join(PROJECT_ROOT_PATH, 'tmp/graph.json');
 
 type PackageContent = {
     version: string;
-    dependencies: {[key: string]: string};
-    devDependencies: {[key: string]: string};
+    dependencies: StringDictionnary;
+    devDependencies: StringDictionnary;
 };
 
 const ROOT_PACKAGE_FILE_PATH: string = join(PROJECT_ROOT_PATH, `package.json`);

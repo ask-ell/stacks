@@ -1,7 +1,7 @@
 export interface ILogger {
-  log(...data: any[]): void;
-  info(...data: any[]): void;
-  success(...data: any[]): void;
-  warn(...data: any[]): void;
-  error(...data: any[]): void;
+  log(...data: unknown[]): void;
+  info(...data: unknown[]): void;
+  success(...data: unknown[]): void;
+  warn(...data: unknown[]): void;
+  error(...data: unknown[]): void;
 }
