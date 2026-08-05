@@ -1,3 +1,8 @@
 import { MaybeUndefined } from "@ask-ell/core";
 
-export const environment: MaybeUndefined<string> = (process.env as any).NODE_ENV;
+
+type EnvironmentVariablesMap = {
+    NODE_ENV?: string
+}
+
+export const environment: MaybeUndefined<string> = (process.env as EnvironmentVariablesMap).NODE_ENV;

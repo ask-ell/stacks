@@ -76,7 +76,7 @@ export type CreateRoleBindingDTO = {
 
 export type K8SCustomResourceDefinition = V1CustomResourceDefinition;
 
-export type K8SCustomResource<Spec = any> = {
+export type K8SCustomResource<Spec = unknown> = {
     apiVersion: string;
     kind: string;
     metadata: {

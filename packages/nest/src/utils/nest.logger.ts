@@ -11,13 +11,13 @@ export class NestLogger extends Logger implements ILogger {
     return new NestLogger(classType.name);
   }
 
-  info(...data: any[]): void {
+  info(...data: unknown[]): void {
     for (const line of data) {
       this.log(line);
     }
   }
 
-  success(...data: any[]): void {
+  success(...data: unknown[]): void {
     this.info(...data);
   }
 }
