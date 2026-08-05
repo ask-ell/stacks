@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent } from 'react';
+import { KeyboardEvent } from 'react';
 
 
 export const handleEnterKeyDown =
@@ -8,12 +8,17 @@ export const handleEnterKeyDown =
     }
   };
 
+type EventTarget = {
+  value?: string;
+}
+
 export const handleKeyboardEvent =
   (callback: (fieldValue: string) => void) => <TargetType>(event: KeyboardEvent<TargetType>) => {
-    callback((event.target as any).value as string);
+    const { value } = event.target as EventTarget;
+    if(!value) {
+      throw new Error('Target value is undefined')
+    }
+    callback(value);
   };
 
-export const handleChangeEvent =
-  (callback: (fieldValue: string) => void) => <TargetType>(event: ChangeEvent<TargetType>) => {
-    callback((event.target as any).value as string);
-  };
+export const handleChangeEvent = handleKeyboardEvent

@@ -1,5 +1,11 @@
+type SelectEvent = {
+    target: {
+        value: string;
+    }
+}
+
 export const handleSelectChange =
     (callback: (data: string) => void) =>
-        <T>(event: T): void => {
-            callback((event as any).target.value);
-    };
+        <T extends SelectEvent>(event: T): void => {
+            callback(event.target.value);
+    }
