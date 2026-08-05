@@ -5,4 +5,4 @@ import { ArticleState } from '../../domain'
 import type { IUpdateArticleUseCaseInput } from './types'
 
 
-export type IUpdateArticleUseCase = IUseCase<IUpdateArticleUseCaseInput, Promise<MaybeUndefined<ArticleState>>>
+export interface IUpdateArticleUseCase extends IUseCase<IUpdateArticleUseCaseInput, Promise<MaybeUndefined<ArticleState>>> {}

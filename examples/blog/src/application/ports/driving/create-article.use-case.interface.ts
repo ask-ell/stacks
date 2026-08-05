@@ -5,4 +5,4 @@ import { ArticleState } from '../../domain'
 import type { ICreateArticleUseCaseInput } from './types'
 
 
-export type ICreateArticleUseCase = IUseCase<ICreateArticleUseCaseInput, Promise<MaybeUndefined<ArticleState>>>
+export interface ICreateArticleUseCase extends IUseCase<ICreateArticleUseCaseInput, Promise<MaybeUndefined<ArticleState>>> {}
