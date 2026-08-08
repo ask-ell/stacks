@@ -1,0 +1,1 @@
+export const UNIT_OF_WORK_PROVIDER = Symbol('UNIT_OF_WORK_PROVIDER');
