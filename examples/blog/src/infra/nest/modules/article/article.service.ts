@@ -1,9 +1,14 @@
-import { ILogger } from "@ask-ell/core"
+import { ILogger, MaybeUndefined } from "@ask-ell/core"
 import { NestLogger } from "@ask-ell/nest"
-import { Inject, Injectable } from "@nestjs/common"
+import { ForbiddenException, Inject, Injectable, NotFoundException } from "@nestjs/common"
+import { Id } from "@ask-ell/ddd"
 
-import { ArticleState, IUnitOfWork } from "../../../../application"
-import { UNIT_OF_WORK_PROVIDER } from "../../config/providers"
+import { ArticleState, ICreateArticleUseCase, IUnitOfWork, IUpdateArticleUseCase } from "../../../../application"
+
+import { CREATE_ARTICLE_USE_CASE_PROVIDER, UNIT_OF_WORK_PROVIDER, UPDATE_ARTICLE_USE_CASE_PROVIDER } from "../../config/providers"
+import { articleMockDataList } from "./article.data"
+import { CreateArticleDTO } from "./dto/create.article.dto"
+import { UpdateArticleDTO } from "./dto/update.article.dto"
 
 
 @Injectable()
@@ -12,7 +17,11 @@ export class ArticleService {
 
     constructor(
         @Inject(UNIT_OF_WORK_PROVIDER)
-        private unitOfWork: IUnitOfWork
+        private unitOfWork: IUnitOfWork,
+        @Inject(CREATE_ARTICLE_USE_CASE_PROVIDER)
+        private createArticleUseCase: ICreateArticleUseCase,
+        @Inject(UPDATE_ARTICLE_USE_CASE_PROVIDER)
+        private updateArticleUseCase: IUpdateArticleUseCase
     ){
         this.persistData().catch(this.logger.error.bind(this.logger))
     }
@@ -21,12 +30,27 @@ export class ArticleService {
         return this.unitOfWork.getArticleProvider().findAll()
     }
 
+    async findOne(id: Id): Promise<ArticleState> {
+        const article: MaybeUndefined<ArticleState> = await this.unitOfWork.getArticleProvider().findOneById(id)
+        if(!article){
+            throw new NotFoundException()
+        }
+        return article;
+    }
+
+    create(dto: CreateArticleDTO): Promise<ArticleState> {
+        return this.createArticleUseCase.run(dto);
+    }
+
+    async updateOne(dto: UpdateArticleDTO): Promise<ArticleState> {
+        const updatedArticle: MaybeUndefined<ArticleState> = await this.updateArticleUseCase.run(dto)
+        if(!updatedArticle){
+            throw new ForbiddenException()
+        }
+        return updatedArticle
+    }
+
     private async persistData(): Promise<void> {
-        // TODO: save from external data file
-        await this.unitOfWork.getArticleRepository().save({
-            id: 'test',
-            title: 'Test',
-            description: "Test"
-        })
+        await Promise.all(articleMockDataList.map(this.createArticleUseCase.run.bind(this.createArticleUseCase)))
     }
 }

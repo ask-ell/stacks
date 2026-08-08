@@ -7,21 +7,32 @@
   "targets": {
     "build": {
       "executor": "nx:run-commands",
+      "defaultConfiguration": "development",
       "options": {
         "command": "webpack-cli build",
-        "args": ["--config-node-env=development"],
         "cwd": "{projectRoot}"
+      },
+      "configurations": {
+        "development": {
+          "args": ["--config-node-env=development"]
+        }
       }
     },
     "serve": {
       "continuous": true,
       "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
       "dependsOn": [
-        "^build"
+        "build"
       ],
       "options": {
         "buildTarget": "blog:build",
         "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "blog:build:development"
+        }
       }
     },
     "nx-release-publish": {

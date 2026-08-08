@@ -17,6 +17,8 @@
     "@nestjs/swagger": "*",
     "@nestjs/throttler": "*",
     "@sentry/nestjs": "*",
+    "class-validator": "*",
+    "class-transformer": "*",
     "helmet": "*",
     "keyv": "*",
     "pg": "*",
