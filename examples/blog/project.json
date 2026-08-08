@@ -6,18 +6,22 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
-      "dependsOn": ["^build"],
-      "outputs": [
-        "{options.outputPath}"
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "webpack-cli build",
+        "args": ["--config-node-env=development"],
+        "cwd": "{projectRoot}"
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/js:node",
+      "dependsOn": [
+        "^build"
       ],
       "options": {
-        "outputPath": "dist/examples/blog",
-        "main": "examples/blog/src/index.ts",
-        "tsConfig": "examples/blog/tsconfig.lib.json",
-        "assets": [
-          "examples/blog/*.md"
-        ]
+        "buildTarget": "blog:build",
+        "runBuildTargetDependencies": false
       }
     },
     "nx-release-publish": {
