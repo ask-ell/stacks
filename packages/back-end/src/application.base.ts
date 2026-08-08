@@ -1,8 +1,9 @@
-import { DynamicModule, Provider, Module } from "@nestjs/common";
+import { DynamicModule, Provider, Module, Global } from "@nestjs/common";
 
 import { RequirementModule } from "./requirement.module";
 
 
+@Global()
 @Module({
     imports: [RequirementModule],
 })
