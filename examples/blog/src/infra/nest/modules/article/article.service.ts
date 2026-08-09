@@ -3,7 +3,7 @@ import { NestLogger } from "@ask-ell/nest"
 import { ForbiddenException, Inject, Injectable, NotFoundException } from "@nestjs/common"
 import { Id } from "@ask-ell/ddd"
 
-import { ArticleState, ICreateArticleUseCase, IUnitOfWork, IUpdateArticleUseCase } from "../../../../application"
+import type { ArticleState, ICreateArticleUseCase, IUnitOfWork, IUpdateArticleUseCase } from "../../../../application"
 
 import { CREATE_ARTICLE_USE_CASE_PROVIDER, UNIT_OF_WORK_PROVIDER, UPDATE_ARTICLE_USE_CASE_PROVIDER } from "../../config/providers"
 import { articleMockDataList } from "./article.data"

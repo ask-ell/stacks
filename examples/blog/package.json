@@ -6,12 +6,18 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
+    "@ask-ell/back-end": "*",
     "@ask-ell/core": "*",
     "@ask-ell/ddd": "*",
     "@ask-ell/hexa": "*",
     "@ask-ell/keyv": "*",
+    "@ask-ell/nest": "*",
     "@ask-ell/node": "*",
+    "@nestjs/common": "*",
+    "@nestjs/core": "*",
+    "@nestjs/swagger": "*",
+    "@nx/webpack": "*",
     "keyv": "*",
-    "tslib": "*"
+    "rxjs": "*"
   }
 }
