@@ -10,6 +10,9 @@
         "command": "typedoc",
         "cwd": "{workspaceRoot}"
       }
+    },
+    "nx-release-publish": {
+      "executor": "nx:noop"
     }
   }
 }
