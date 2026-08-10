@@ -1,6 +1,6 @@
+import { ForbiddenException, Inject, Injectable, NotFoundException } from "@nestjs/common"
 import { ILogger, MaybeUndefined } from "@ask-ell/core"
 import { NestLogger } from "@ask-ell/nest"
-import { ForbiddenException, Inject, Injectable, NotFoundException } from "@nestjs/common"
 import { Id } from "@ask-ell/ddd"
 
 import type { ArticleState, ICreateArticleUseCase, IUnitOfWork, IUpdateArticleUseCase } from "../../../../application"
@@ -9,6 +9,7 @@ import { CREATE_ARTICLE_USE_CASE_PROVIDER, UNIT_OF_WORK_PROVIDER, UPDATE_ARTICLE
 import { articleMockDataList } from "./article.data"
 import { CreateArticleDTO } from "./dto/create.article.dto"
 import { UpdateArticleDTO } from "./dto/update.article.dto"
+import { ArticleDTO } from "./dto/article.dto"
 
 
 @Injectable()
@@ -26,28 +27,29 @@ export class ArticleService {
         this.persistData().catch(this.logger.error.bind(this.logger))
     }
 
-    async findAll(): Promise<ArticleState[]> {
-        return this.unitOfWork.getArticleProvider().findAll()
+    async findAll(): Promise<ArticleDTO[]> {
+        const articles: ArticleState[] = await this.unitOfWork.getArticleProvider().findAll()
+        return articles.map((article: ArticleState): ArticleDTO => new ArticleDTO(article))
     }
 
-    async findOne(id: Id): Promise<ArticleState> {
+    async findOne(id: Id): Promise<ArticleDTO> {
         const article: MaybeUndefined<ArticleState> = await this.unitOfWork.getArticleProvider().findOneById(id)
         if(!article){
             throw new NotFoundException()
         }
-        return article;
+        return new ArticleDTO(article)
     }
 
-    create(dto: CreateArticleDTO): Promise<ArticleState> {
-        return this.createArticleUseCase.run(dto);
+    async create(dto: CreateArticleDTO): Promise<ArticleDTO> {
+        return new ArticleDTO(await this.createArticleUseCase.run(dto))
     }
 
-    async updateOne(dto: UpdateArticleDTO): Promise<ArticleState> {
+    async updateOne(dto: UpdateArticleDTO): Promise<ArticleDTO> {
         const updatedArticle: MaybeUndefined<ArticleState> = await this.updateArticleUseCase.run(dto)
         if(!updatedArticle){
             throw new ForbiddenException()
         }
-        return updatedArticle
+        return new ArticleDTO(updatedArticle)
     }
 
     private async persistData(): Promise<void> {

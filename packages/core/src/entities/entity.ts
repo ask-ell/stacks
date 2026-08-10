@@ -25,10 +25,6 @@ export abstract class Entity<EntityState> implements IEntity<EntityState> {
 
   abstract checkStateValidity(newState: EntityState): IResult;
 
-  protected getState<T>(fn: (state: EntityState) => T): T {
-    return fn(this.state);
-  }
-
   private checkStateValidityAndThrowError(): void {
     const result: IResult = this.checkStateValidity(this.state);
     if (result.isAFail()) {
