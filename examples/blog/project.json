@@ -23,7 +23,7 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "dependsOn": [
-        "build"
+        "^build"
       ],
       "options": {
         "buildTarget": "blog:build",
