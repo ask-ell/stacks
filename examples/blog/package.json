@@ -17,7 +17,6 @@
     "@nestjs/core": "*",
     "@nestjs/swagger": "*",
     "@nx/webpack": "*",
-    "keyv": "*",
-    "rxjs": "*"
+    "keyv": "*"
   }
 }
