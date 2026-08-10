@@ -19,16 +19,12 @@ describe('Blog', (): void => {
   let createArticleUseCase: ICreateArticleUseCase
   let updateArticleUseCase: IUpdateArticleUseCase
 
-  async function createArticle(): Promise<ArticleState> {
+  async function createArticle(): Promise<IUpdateArticleUseCaseInput> {
     const dto: ICreateArticleUseCaseInput = {
       title: "My article's title",
       description: "My article's description"
     }
-    const createdArticle: MaybeUndefined<ArticleState> = await createArticleUseCase.run(dto);
-
-    if(!createdArticle){
-      throw new TestMustFailError();
-    }
+    const createdArticle: ArticleState = await createArticleUseCase.run(dto);
 
     expect(createdArticle.title).toEqual(dto.title)
     expect(createdArticle.description).toEqual(dto.description)
@@ -59,9 +55,9 @@ describe('Blog', (): void => {
 
   it('A user cannot update an article with an empty title', async () => {
     try {
-      const dto: ArticleState = await createArticle()
+      const dto: IUpdateArticleUseCaseInput = await createArticle()
       dto.title = ''
-      await updateArticleUseCase.run(dto as IUpdateArticleUseCaseInput)
+      await updateArticleUseCase.run(dto)
       throw new TestMustFailError()
     } catch (error: unknown) {
       expect(error).toBeInstanceOf(WrongArticleTitleSizeError)
@@ -69,11 +65,11 @@ describe('Blog', (): void => {
   })
 
   it('A user can update an article', async (): Promise<void> => {
-    const dto: ICreateArticleUseCaseInput = await createArticle()
+    const dto: IUpdateArticleUseCaseInput = await createArticle()
     dto.title = "My article's new title"
     dto.description = "My article's new description"
 
-    const updatedArticle: MaybeUndefined<ArticleState> = await updateArticleUseCase.run(dto as IUpdateArticleUseCaseInput)
+    const updatedArticle: MaybeUndefined<ArticleState> = await updateArticleUseCase.run(dto)
 
     expect(updatedArticle).toBeDefined()
     expect(updatedArticle?.title).toEqual(dto.title)
