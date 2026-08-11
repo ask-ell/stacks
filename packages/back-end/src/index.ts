@@ -4,5 +4,6 @@
 export * from './add-ons';
 export * from './scripts';
 export * from "./application.base";
+export * from "./application.factory";
 export * from "./error.interceptor";
 export * from './keyv.store.adapter.factory';
