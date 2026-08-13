@@ -45,6 +45,12 @@
   "targetDefaults": {
     "test": {
       "dependsOn": ["^build"]
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --write {projectRoot}"
+      }
     }
   },
   "analytics": false

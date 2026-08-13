@@ -8,22 +8,19 @@
     "build": {
       "executor": "@nx/js:tsc",
       "dependsOn": ["^build"],
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/nest",
         "main": "packages/nest/src/index.ts",
         "tsConfig": "packages/nest/tsconfig.lib.json",
-        "assets": [
-          "packages/nest/*.md"
-        ]
+        "assets": ["packages/nest/*.md"]
       }
     },
     "test": {
       "options": {
         "passWithNoTests": true
       }
-    }
+    },
+    "format": {}
   }
 }

@@ -8,22 +8,19 @@
     "build": {
       "executor": "@nx/js:tsc",
       "dependsOn": ["^build"],
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/github",
         "main": "packages/github/src/index.ts",
         "tsConfig": "packages/github/tsconfig.lib.json",
-        "assets": [
-          "packages/github/*.md"
-        ]
+        "assets": ["packages/github/*.md"]
       }
     },
     "test": {
       "options": {
         "passWithNoTests": true
       }
-    }
+    },
+    "format": {}
   }
 }
