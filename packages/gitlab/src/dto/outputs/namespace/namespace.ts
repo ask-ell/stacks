@@ -1,4 +1,4 @@
 export type NamespaceDTO = {
-    id: number;
-    full_path: string;
-}
+  id: number;
+  full_path: string;
+};

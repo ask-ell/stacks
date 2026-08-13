@@ -1,2 +1,2 @@
-export * from './docker.secret.getter'
-export * from './local.secret.getter'
+export * from './docker.secret.getter';
+export * from './local.secret.getter';

@@ -1,14 +1,13 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
-import { IUpdateArticleUseCaseInput } from "../../../../../application";
-
+import { IUpdateArticleUseCaseInput } from '../../../../../application';
 
 export class UpdateArticleDTO implements IUpdateArticleUseCaseInput {
-    id!: string;
+  id!: string;
 
-    @ApiProperty()
-    title!: string;
+  @ApiProperty()
+  title!: string;
 
-    @ApiProperty()
-    description!: string;
+  @ApiProperty()
+  description!: string;
 }

@@ -1,1 +1,1 @@
-export * from './ping.middleware'
+export * from './ping.middleware';

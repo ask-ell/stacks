@@ -3,28 +3,28 @@ export enum HttpMethod {
   POST = 'POST',
   PATCH = 'PATCH',
   PUT = 'PUT',
-  DELETE = 'DELETE'
+  DELETE = 'DELETE',
 }
 
 interface CommonMethodParams {
-  url: URL
-  headers?: HeadersInit
+  url: URL;
+  headers?: HeadersInit;
 }
 
-export type GetMethodParams = CommonMethodParams
+export type GetMethodParams = CommonMethodParams;
 
 export type PostMethodParams<Body> = CommonMethodParams & {
-  body?: Body
-}
+  body?: Body;
+};
 
 export type PatchMethodParams<Body> = CommonMethodParams & {
-  body: Body
-}
+  body: Body;
+};
 
 export type PutMethodParams<Body> = CommonMethodParams & {
-  body: Body
-}
+  body: Body;
+};
 
 export type DeleteMethodParams<Body> = CommonMethodParams & {
-  body?: Body
-}
+  body?: Body;
+};

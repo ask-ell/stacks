@@ -1,2 +1,3 @@
 # Stacks
+
 Stack adapters repository

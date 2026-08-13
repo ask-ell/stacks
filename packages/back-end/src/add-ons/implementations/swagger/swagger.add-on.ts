@@ -1,15 +1,14 @@
-import { Entity, type IResult, ok } from "@ask-ell/core";
-import { type INestApplication } from "@nestjs/common";
+import { Entity, type IResult, ok } from '@ask-ell/core';
+import { type INestApplication } from '@nestjs/common';
 import {
   DocumentBuilder,
   type OpenAPIObject,
   SwaggerModule,
-} from "@nestjs/swagger";
+} from '@nestjs/swagger';
 
-import { ISwaggerAddOnState } from "./swagger.add-on.state.interface";
-import { ISwaggerAddOn } from "./swagger.add-on.interface";
-import { AuthMethod } from "./types";
-
+import { ISwaggerAddOnState } from './swagger.add-on.state.interface';
+import { ISwaggerAddOn } from './swagger.add-on.interface';
+import { AuthMethod } from './types';
 
 export class SwaggerAddon<T>
   extends Entity<ISwaggerAddOnState>
@@ -22,7 +21,9 @@ export class SwaggerAddon<T>
   apply(application: INestApplication<T>): void {
     const { title, auths } = this.getSnapshot();
 
-    const documentBuilder: DocumentBuilder = new DocumentBuilder().setTitle(title)
+    const documentBuilder: DocumentBuilder = new DocumentBuilder().setTitle(
+      title
+    );
 
     auths?.forEach((auth: AuthMethod): void => {
       if (auth === 'bearer') {
@@ -30,14 +31,14 @@ export class SwaggerAddon<T>
       }
     });
 
-    const documentBuild: Omit<OpenAPIObject, "paths"> = documentBuilder.build();
+    const documentBuild: Omit<OpenAPIObject, 'paths'> = documentBuilder.build();
 
     const documentFactory = (): OpenAPIObject =>
       SwaggerModule.createDocument(application, documentBuild);
 
-    SwaggerModule.setup("/swagger", application, documentFactory, {
+    SwaggerModule.setup('/swagger', application, documentFactory, {
       customSiteTitle: title,
-      jsonDocumentUrl: "/swagger/json",
+      jsonDocumentUrl: '/swagger/json',
     });
   }
 }

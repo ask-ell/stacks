@@ -1,12 +1,11 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
-import { ICreateArticleUseCaseInput } from "../../../../../application";
-
+import { ICreateArticleUseCaseInput } from '../../../../../application';
 
 export class CreateArticleDTO implements ICreateArticleUseCaseInput {
-    @ApiProperty()
-    title!: string;
+  @ApiProperty()
+  title!: string;
 
-    @ApiProperty()
-    description!: string;
+  @ApiProperty()
+  description!: string;
 }

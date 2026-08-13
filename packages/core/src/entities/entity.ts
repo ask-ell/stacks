@@ -1,6 +1,5 @@
-import { IResult } from "../primitives";
-import { IEntity } from "./entity.interface";
-
+import { IResult } from '../primitives';
+import { IEntity } from './entity.interface';
 
 export abstract class Entity<EntityState> implements IEntity<EntityState> {
   constructor(private state: EntityState) {

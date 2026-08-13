@@ -5,24 +5,27 @@ import { CryptoIdFactory } from '@ask-ell/node';
 import type {
   IArticleProvider,
   IArticleRepository,
-  IUnitOfWork
+  IUnitOfWork,
 } from '../../application';
 
 import { KeyvArticleProvider, KeyvArticleRepository } from '../keyv';
 
-
 export class FullStackUnitOfWork implements IUnitOfWork {
   private keyvInstance: Keyv = new Keyv();
-  private articleProvider: IArticleProvider = new KeyvArticleProvider(this.keyvInstance);
-  private articleRepository: IArticleRepository = new KeyvArticleRepository(this.keyvInstance);
-  private idFactory: IIdFactory = new CryptoIdFactory()
+  private articleProvider: IArticleProvider = new KeyvArticleProvider(
+    this.keyvInstance
+  );
+  private articleRepository: IArticleRepository = new KeyvArticleRepository(
+    this.keyvInstance
+  );
+  private idFactory: IIdFactory = new CryptoIdFactory();
 
   getArticleProvider(): IArticleProvider {
-    return this.articleProvider
+    return this.articleProvider;
   }
 
   getArticleRepository(): IArticleRepository {
-    return this.articleRepository
+    return this.articleRepository;
   }
 
   getIdFactory(): IIdFactory {

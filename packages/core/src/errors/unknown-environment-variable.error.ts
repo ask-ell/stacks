@@ -1,5 +1,5 @@
 export class UnknownEnvironmentVariableError extends Error {
   constructor(environmentVariableKey: string) {
-    super(`Unknown environment variable : "${environmentVariableKey}"`)
+    super(`Unknown environment variable : "${environmentVariableKey}"`);
   }
 }

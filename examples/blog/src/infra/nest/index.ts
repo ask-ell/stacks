@@ -1,2 +1,2 @@
 export * from './config/providers';
-export * from './app.module'
+export * from './app.module';

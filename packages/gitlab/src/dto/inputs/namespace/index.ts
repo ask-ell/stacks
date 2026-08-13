@@ -1,1 +1,1 @@
-export * from './search-namespace.dto'
+export * from './search-namespace.dto';

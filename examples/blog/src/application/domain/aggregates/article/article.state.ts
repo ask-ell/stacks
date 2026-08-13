@@ -1,6 +1,6 @@
-import { AggregateRootState } from "@ask-ell/ddd"
+import { AggregateRootState } from '@ask-ell/ddd';
 
 export type ArticleState = AggregateRootState<{
-  title: string
-  description: string
+  title: string;
+  description: string;
 }>;

@@ -1,3 +1,3 @@
 export type SearchNamespacesDTO = {
-    search: string;
-}
+  search: string;
+};

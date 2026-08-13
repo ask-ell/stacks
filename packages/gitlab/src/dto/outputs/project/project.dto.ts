@@ -1,3 +1,3 @@
 export type ProjectDTO = {
-    archived: boolean;
-}
+  archived: boolean;
+};

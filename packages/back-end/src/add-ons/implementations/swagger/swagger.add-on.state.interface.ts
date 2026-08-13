@@ -1,4 +1,4 @@
-import { AuthMethod } from "./types";
+import { AuthMethod } from './types';
 
 export interface ISwaggerAddOnState {
   title: string;
