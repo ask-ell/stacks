@@ -22,4 +22,4 @@ jobs:
 
       - run: npm ci
 
-      - run: scripts/run-ci-tests.sh
+      - run: scripts/check-pull-request-validity.sh
