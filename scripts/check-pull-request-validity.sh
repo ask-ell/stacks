@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# npm audit --audit-level=high && \
+npm audit --audit-level=high && \
 
 npx nx run-many -t test && \
 
