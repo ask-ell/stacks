@@ -8,22 +8,19 @@
     "build": {
       "executor": "@nx/js:tsc",
       "dependsOn": ["^build"],
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/sentry",
         "main": "packages/sentry/src/index.ts",
         "tsConfig": "packages/sentry/tsconfig.lib.json",
-        "assets": [
-          "packages/sentry/*.md"
-        ]
+        "assets": ["packages/sentry/*.md"]
       }
     },
     "test": {
       "options": {
         "passWithNoTests": true
       }
-    }
+    },
+    "format": {}
   }
 }

@@ -8,22 +8,19 @@
     "build": {
       "executor": "@nx/js:tsc",
       "dependsOn": ["^build"],
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/keyv",
         "main": "packages/keyv/src/index.ts",
         "tsConfig": "packages/keyv/tsconfig.lib.json",
-        "assets": [
-          "packages/keyv/*.md"
-        ]
+        "assets": ["packages/keyv/*.md"]
       }
     },
     "test": {
       "options": {
         "passWithNoTests": true
       }
-    }
+    },
+    "format": {}
   }
 }
