@@ -1,3 +1,3 @@
 export enum ProjectVisibilityDTO {
-    PRIVATE = 'private'
+  PRIVATE = 'private',
 }

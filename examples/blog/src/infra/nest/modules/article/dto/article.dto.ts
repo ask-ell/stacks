@@ -1,25 +1,20 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
-import { ArticleState } from "../../../../../application";
-
+import { ArticleState } from '../../../../../application';
 
 export class ArticleDTO {
-    @ApiProperty()
-    id!: string;
+  @ApiProperty()
+  id!: string;
 
-    @ApiProperty()
-    title!: string;
+  @ApiProperty()
+  title!: string;
 
-    @ApiProperty()
-    description!: string;
+  @ApiProperty()
+  description!: string;
 
-    constructor({
-        id,
-        title,
-        description
-    }: ArticleState) {
-        this.id = id
-        this.title = title
-        this.description = description
-    }
+  constructor({ id, title, description }: ArticleState) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+  }
 }

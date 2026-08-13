@@ -1,42 +1,39 @@
-import type { MaybeUndefined } from '@ask-ell/core'
+import type { MaybeUndefined } from '@ask-ell/core';
 
-import type { ArticleState, IArticle } from '../domain'
-import { Article } from '../domain'
+import type { ArticleState, IArticle } from '../domain';
+import { Article } from '../domain';
 
-import type { IUpdateArticleUseCase } from '../ports/driving/update-article.use-case.interface'
-import type { IUpdateArticleUseCaseInput } from '../ports/driving/types'
-import type { IUnitOfWork } from '../unit-of-work.interface'
-
+import type { IUpdateArticleUseCase } from '../ports/driving/update-article.use-case.interface';
+import type { IUpdateArticleUseCaseInput } from '../ports/driving/types';
+import type { IUnitOfWork } from '../unit-of-work.interface';
 
 export class UpdateArticleUseCase implements IUpdateArticleUseCase {
-  constructor(private readonly unitOfWork: IUnitOfWork) { }
+  constructor(private readonly unitOfWork: IUnitOfWork) {}
 
   async run({
     id,
     title,
-    description
+    description,
   }: IUpdateArticleUseCaseInput): Promise<MaybeUndefined<ArticleState>> {
     const articleToUpdateState: MaybeUndefined<ArticleState> =
-      await this.unitOfWork.getArticleProvider().findOneById(id)
+      await this.unitOfWork.getArticleProvider().findOneById(id);
 
     if (!articleToUpdateState) {
-      return undefined
+      return undefined;
     }
 
-    const articleToUpdate: IArticle = new Article(articleToUpdateState)
+    const articleToUpdate: IArticle = new Article(articleToUpdateState);
 
     articleToUpdate.updateAndCheckStateValidity(() => ({
       title,
-      description
-    }))
+      description,
+    }));
 
-    const updatedArticleSnapshot: ArticleState = articleToUpdate.getSnapshot()
+    const updatedArticleSnapshot: ArticleState = articleToUpdate.getSnapshot();
     const hasBeenUpdated: boolean = await this.unitOfWork
       .getArticleRepository()
-      .updateOne(updatedArticleSnapshot)
+      .updateOne(updatedArticleSnapshot);
 
-    return hasBeenUpdated
-      ? updatedArticleSnapshot
-      : undefined
+    return hasBeenUpdated ? updatedArticleSnapshot : undefined;
   }
 }

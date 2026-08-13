@@ -1,2 +1,2 @@
-export * from './add-on.wrapper'
-export * from './types'
+export * from './add-on.wrapper';
+export * from './types';

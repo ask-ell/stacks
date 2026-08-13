@@ -1,10 +1,9 @@
-import { Logger } from "@nestjs/common";
-import { type ILogger } from "@ask-ell/core";
-
+import { Logger } from '@nestjs/common';
+import { type ILogger } from '@ask-ell/core';
 
 export class NestLogger extends Logger implements ILogger {
   constructor(name: string) {
-    super(name, { timestamp: true })
+    super(name, { timestamp: true });
   }
 
   static fromClass(classType: Function): ILogger {

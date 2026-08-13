@@ -1,6 +1,7 @@
-import { KeyvAggregateRootProvider } from "@ask-ell/keyv";
+import { KeyvAggregateRootProvider } from '@ask-ell/keyv';
 
-import { IArticleProvider, ArticleState } from "../../application";
+import { IArticleProvider, ArticleState } from '../../application';
 
-
-export class KeyvArticleProvider extends KeyvAggregateRootProvider<ArticleState> implements IArticleProvider {}
+export class KeyvArticleProvider
+  extends KeyvAggregateRootProvider<ArticleState>
+  implements IArticleProvider {}

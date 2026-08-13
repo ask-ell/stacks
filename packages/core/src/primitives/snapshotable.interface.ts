@@ -1,3 +1,3 @@
 export interface ISnapshotable<Snapshot> {
-  getSnapshot(): Snapshot
+  getSnapshot(): Snapshot;
 }

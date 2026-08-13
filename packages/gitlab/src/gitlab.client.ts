@@ -1,84 +1,82 @@
-import { IResult, HttpClient, IHttpClient } from "@ask-ell/core"
+import { IResult, HttpClient, IHttpClient } from '@ask-ell/core';
 
-import { CreateProjectDTO } from "./dto/inputs/project/create-project.dto"
-import { UpdateProjectDTO } from "./dto/inputs/project/update-project.dto"
-import { NamespaceDTO } from "./dto/outputs/namespace/namespace"
-import { ProjectDTO } from "./dto/outputs/project/project.dto"
-import { IGitlabClient } from "./gitlab.client.interface"
-import { GitlabClientParams } from "./types"
-import { SearchNamespacesDTO } from "./dto/inputs/namespace/search-namespace.dto"
-import { URLProvider } from "./urls/url.provider"
-
+import { CreateProjectDTO } from './dto/inputs/project/create-project.dto';
+import { UpdateProjectDTO } from './dto/inputs/project/update-project.dto';
+import { NamespaceDTO } from './dto/outputs/namespace/namespace';
+import { ProjectDTO } from './dto/outputs/project/project.dto';
+import { IGitlabClient } from './gitlab.client.interface';
+import { GitlabClientParams } from './types';
+import { SearchNamespacesDTO } from './dto/inputs/namespace/search-namespace.dto';
+import { URLProvider } from './urls/url.provider';
 
 export class GitlabClient implements IGitlabClient {
-    readonly rootURL: URL;
-    private headers: HeadersInit;
-    private urlProvider: URLProvider;
-    private httpClient: IHttpClient;
+  readonly rootURL: URL;
+  private headers: HeadersInit;
+  private urlProvider: URLProvider;
+  private httpClient: IHttpClient;
 
-    constructor({
-        httpClient,
-        rootURL,
-        token
-    }: GitlabClientParams) {
-        this.headers = {
-            'Content-Type': 'application/json',
-            'PRIVATE-TOKEN': token
-        };
-        this.httpClient = httpClient ?? new HttpClient();
-        this.rootURL = rootURL ?? new URL('https://gitlab.com');
-        const apiRootURL: URL = new URL('api/v4/', this.rootURL);
-        this.urlProvider = new URLProvider(apiRootURL);
-    }
+  constructor({ httpClient, rootURL, token }: GitlabClientParams) {
+    this.headers = {
+      'Content-Type': 'application/json',
+      'PRIVATE-TOKEN': token,
+    };
+    this.httpClient = httpClient ?? new HttpClient();
+    this.rootURL = rootURL ?? new URL('https://gitlab.com');
+    const apiRootURL: URL = new URL('api/v4/', this.rootURL);
+    this.urlProvider = new URLProvider(apiRootURL);
+  }
 
-    searchNamespaces(dto: SearchNamespacesDTO): Promise<IResult<NamespaceDTO[]>> {
-        return this.httpClient.get({
-            url: this.urlProvider.searchNamespacesUrlFactory(dto),
-            headers: this.headers,
-        });
-    }
+  searchNamespaces(dto: SearchNamespacesDTO): Promise<IResult<NamespaceDTO[]>> {
+    return this.httpClient.get({
+      url: this.urlProvider.searchNamespacesUrlFactory(dto),
+      headers: this.headers,
+    });
+  }
 
-    getProject(projectId: string): Promise<IResult<ProjectDTO>> {
-        return this.httpClient.get({
-            url: this.urlProvider.getProjectUrlFactory(projectId),
-            headers: this.headers,
-        })
-    }
+  getProject(projectId: string): Promise<IResult<ProjectDTO>> {
+    return this.httpClient.get({
+      url: this.urlProvider.getProjectUrlFactory(projectId),
+      headers: this.headers,
+    });
+  }
 
-    createProject(body: CreateProjectDTO): Promise<IResult<ProjectDTO>> {
-        return this.httpClient.post({
-            url: this.urlProvider.createProjectUrl,
-            headers: this.headers,
-            body
-        })
-    }
+  createProject(body: CreateProjectDTO): Promise<IResult<ProjectDTO>> {
+    return this.httpClient.post({
+      url: this.urlProvider.createProjectUrl,
+      headers: this.headers,
+      body,
+    });
+  }
 
-    updateProject({ projectId, ...body }: UpdateProjectDTO): Promise<IResult<ProjectDTO>> {
-        return this.httpClient.put({
-            url: this.urlProvider.updateProjectUrlFactory(projectId),
-            headers: this.headers,
-            body
-        })
-    }
+  updateProject({
+    projectId,
+    ...body
+  }: UpdateProjectDTO): Promise<IResult<ProjectDTO>> {
+    return this.httpClient.put({
+      url: this.urlProvider.updateProjectUrlFactory(projectId),
+      headers: this.headers,
+      body,
+    });
+  }
 
-    archiveProject(projectId: string): Promise<IResult> {
-        return this.httpClient.post({
-            url: this.urlProvider.archiveProjectUrlFactory(projectId),
-            headers: this.headers,
-        })
-    }
+  archiveProject(projectId: string): Promise<IResult> {
+    return this.httpClient.post({
+      url: this.urlProvider.archiveProjectUrlFactory(projectId),
+      headers: this.headers,
+    });
+  }
 
-    unarchiveProject(projectId: string): Promise<IResult> {
-        return this.httpClient.post({
-            url: this.urlProvider.unarchiveProjectUrlFactory(projectId),
-            headers: this.headers,
-        })
-    }
+  unarchiveProject(projectId: string): Promise<IResult> {
+    return this.httpClient.post({
+      url: this.urlProvider.unarchiveProjectUrlFactory(projectId),
+      headers: this.headers,
+    });
+  }
 
-    deleteProject(projectId: string): Promise<IResult> {
-        return this.httpClient.delete({
-            url: this.urlProvider.deleteProjectUrlFactory(projectId),
-            headers: this.headers,
-        })
-    }
+  deleteProject(projectId: string): Promise<IResult> {
+    return this.httpClient.delete({
+      url: this.urlProvider.deleteProjectUrlFactory(projectId),
+      headers: this.headers,
+    });
+  }
 }
