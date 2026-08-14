@@ -1,6 +1,6 @@
-import { MaybeUndefined } from '@ask-ell/core';
-import { init, NodeClient, NodeOptions } from '@sentry/nestjs';
+import { getNodeEnvironmentVariable, MaybeUndefined } from '@ask-ell/core';
 import { SentryConfiguration, SentryConfigurationProps } from '@ask-ell/sentry';
+import { init, NodeClient, NodeOptions } from '@sentry/nestjs';
 
 import { NestLogger } from './utils';
 
@@ -19,7 +19,7 @@ export class NestSentryConfiguration extends SentryConfiguration<NestSentryClien
       ...props,
       init,
       logger: NestLogger.fromClass(NestSentryConfiguration),
-      environment: process.env['NODE_ENV'],
+      environment: getNodeEnvironmentVariable(),
     });
   }
 }
