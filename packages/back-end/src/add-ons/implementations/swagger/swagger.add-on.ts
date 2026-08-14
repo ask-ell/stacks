@@ -1,4 +1,11 @@
-import { Entity, type IResult, ok } from '@ask-ell/core';
+import {
+  Entity,
+  ILogger,
+  type IResult,
+  isOnDevelopmentMode,
+  ok,
+} from '@ask-ell/core';
+import { NestLogger } from '@ask-ell/nest';
 import { type INestApplication } from '@nestjs/common';
 import {
   DocumentBuilder,
@@ -14,12 +21,18 @@ export class SwaggerAddon<T>
   extends Entity<ISwaggerAddOnState>
   implements ISwaggerAddOn<T>
 {
+  private logger: ILogger = NestLogger.fromClass(SwaggerAddon);
+
   checkStateValidity(): IResult<void> {
     return ok();
   }
 
   apply(application: INestApplication<T>): void {
-    const { title, auths } = this.getSnapshot();
+    const { title, auths, enabledInProduction } = this.getSnapshot();
+
+    if (!enabledInProduction && !isOnDevelopmentMode()) {
+      return;
+    }
 
     const documentBuilder: DocumentBuilder = new DocumentBuilder().setTitle(
       title
@@ -40,5 +53,7 @@ export class SwaggerAddon<T>
       customSiteTitle: title,
       jsonDocumentUrl: '/swagger/json',
     });
+
+    this.logger.log('Swagger initialized');
   }
 }

@@ -11,6 +11,7 @@ export * from './resources';
 export * from './change-detection-queue';
 export * from './changes';
 export * from './durations';
+export * from './environment';
 export * from './filters';
 export * from './percentage-incrementor';
 export * from './reduce';
