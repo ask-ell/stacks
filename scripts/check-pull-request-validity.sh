@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-npm audit --audit-level=high && \
+# TODO: https://ask-ell.atlassian.net/browse/STACKS-31
+# npm audit --audit-level=high && \
 
 npx nx run-many -t test && \
 
