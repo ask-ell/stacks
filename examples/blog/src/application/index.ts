@@ -4,7 +4,6 @@ export * from './ports/driven/article.repository.interface';
 export * from './ports/driving/create-article.use-case.interface';
 export * from './ports/driving/update-article.use-case.interface';
 export * from './ports/driving/types';
-export * from './unit-of-work.interface';
 export * from './use-cases/create-article.use-case';
 export * from './use-cases/update-article.use-case';
 export * from './errors';

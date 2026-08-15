@@ -1,23 +1,39 @@
+import Keyv from 'keyv';
 import { type MaybeUndefined, TestMustFailError } from '@ask-ell/core';
+import { IIdFactory } from '@ask-ell/ddd';
+import { CryptoIdFactory } from '@ask-ell/node';
 
 import {
   type ICreateArticleUseCaseInput,
   type IUpdateArticleUseCaseInput,
   type ICreateArticleUseCase,
   type IUpdateArticleUseCase,
-  type IUnitOfWork,
   type ArticleState,
   CreateArticleUseCase,
   UpdateArticleUseCase,
   WrongArticleTitleSizeError,
+  IArticleProvider,
+  IArticleRepository,
 } from './application';
 
-import { FullStackUnitOfWork } from './infra';
+import { KeyvArticleProvider, KeyvArticleRepository } from './infra';
+
+const keyvInstance: Keyv = new Keyv();
+const idFactory: IIdFactory = new CryptoIdFactory();
+const articleProvider: IArticleProvider = new KeyvArticleProvider(keyvInstance);
+const articleRepository: IArticleRepository = new KeyvArticleRepository(
+  keyvInstance
+);
+const createArticleUseCase: ICreateArticleUseCase = new CreateArticleUseCase(
+  idFactory,
+  articleRepository
+);
+const updateArticleUseCase: IUpdateArticleUseCase = new UpdateArticleUseCase(
+  articleProvider,
+  articleRepository
+);
 
 describe('Blog', (): void => {
-  let createArticleUseCase: ICreateArticleUseCase;
-  let updateArticleUseCase: IUpdateArticleUseCase;
-
   async function createArticle(): Promise<IUpdateArticleUseCaseInput> {
     const dto: ICreateArticleUseCaseInput = {
       title: "My article's title",
@@ -31,10 +47,8 @@ describe('Blog', (): void => {
     return createdArticle;
   }
 
-  beforeEach((): void => {
-    const unitOfWork: IUnitOfWork = new FullStackUnitOfWork();
-    createArticleUseCase = new CreateArticleUseCase(unitOfWork);
-    updateArticleUseCase = new UpdateArticleUseCase(unitOfWork);
+  beforeEach(async (): Promise<void> => {
+    await keyvInstance.clear();
   });
 
   it('A user cannot create an article with an empty title', async () => {

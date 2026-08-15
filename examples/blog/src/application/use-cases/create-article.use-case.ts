@@ -1,20 +1,23 @@
-import { Id } from '@ask-ell/ddd';
+import { Id, IIdFactory } from '@ask-ell/ddd';
 
 import type { ArticleState, IArticle } from '../domain';
 import { Article } from '../domain';
 
 import type { ICreateArticleUseCaseInput } from '../ports/driving/types';
 import type { ICreateArticleUseCase } from '../ports/driving/create-article.use-case.interface';
-import type { IUnitOfWork } from '../unit-of-work.interface';
+import { IArticleRepository } from '../ports/driven/article.repository.interface';
 
 export class CreateArticleUseCase implements ICreateArticleUseCase {
-  constructor(private unitOfWork: IUnitOfWork) {}
+  constructor(
+    private idFactory: IIdFactory,
+    private articleRepository: IArticleRepository
+  ) {}
 
   async run({
     title,
     description,
   }: ICreateArticleUseCaseInput): Promise<ArticleState> {
-    const id: Id = await this.unitOfWork.getIdFactory().create();
+    const id: Id = await this.idFactory.create();
 
     const newArticle: IArticle = new Article({
       id,
@@ -24,7 +27,7 @@ export class CreateArticleUseCase implements ICreateArticleUseCase {
 
     const newArticleSnapshot: ArticleState = newArticle.getSnapshot();
 
-    await this.unitOfWork.getArticleRepository().save(newArticleSnapshot);
+    await this.articleRepository.save(newArticleSnapshot);
 
     return newArticleSnapshot;
   }
