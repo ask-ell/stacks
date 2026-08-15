@@ -1,5 +1,20 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+  "tsconfig": "tsconfig.docs.json",
+  "out": "docs",
+  "name": "Stacks",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "skipErrorChecking": true,
+  "readme": "website/index.md",
+  "searchInComments": true,
+  "searchInDocuments": true,
+  "navigationLinks": {
+    "Example": "https://github.com/ask-ell/stacks/tree/develop/examples/blog",
+    "GitHub": "https://github.com/ask-ell/stacks",
+    "Contribute": "https://opencollective.com/ask-ell/projects/ask-ell-stacks"
+  },
   "entryPoints": [
     "packages/core/src/index.ts",
     "packages/ddd/src/index.ts",
@@ -13,12 +28,5 @@
     "packages/nest/src/index.ts",
     "packages/react/src/index.ts",
     "packages/back-end/src/index.ts"
-  ],
-  "tsconfig": "tsconfig.docs.json",
-  "out": "docs",
-  "name": "Documentation",
-  "excludePrivate": true,
-  "excludeInternal": true,
-  "excludeExternals": true,
-  "skipErrorChecking": true
+  ]
 }
