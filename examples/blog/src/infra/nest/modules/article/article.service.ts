@@ -11,13 +11,13 @@ import { Id } from '@ask-ell/ddd';
 import type {
   ArticleState,
   ICreateArticleUseCase,
-  IUnitOfWork,
+  IArticleProvider,
   IUpdateArticleUseCase,
 } from '../../../../application';
 
 import {
+  ARTICLE_PROVIDER_PROVIDER,
   CREATE_ARTICLE_USE_CASE_PROVIDER,
-  UNIT_OF_WORK_PROVIDER,
   UPDATE_ARTICLE_USE_CASE_PROVIDER,
 } from '../../config/providers';
 import { articleMockDataList } from './article.data';
@@ -30,8 +30,8 @@ export class ArticleService {
   private logger: ILogger = NestLogger.fromClass(ArticleService);
 
   constructor(
-    @Inject(UNIT_OF_WORK_PROVIDER)
-    private unitOfWork: IUnitOfWork,
+    @Inject(ARTICLE_PROVIDER_PROVIDER)
+    private articleProvider: IArticleProvider,
     @Inject(CREATE_ARTICLE_USE_CASE_PROVIDER)
     private createArticleUseCase: ICreateArticleUseCase,
     @Inject(UPDATE_ARTICLE_USE_CASE_PROVIDER)
@@ -41,18 +41,15 @@ export class ArticleService {
   }
 
   async findAll(): Promise<ArticleDTO[]> {
-    const articles: ArticleState[] = await this.unitOfWork
-      .getArticleProvider()
-      .findAll();
+    const articles: ArticleState[] = await this.articleProvider.findAll();
     return articles.map(
       (article: ArticleState): ArticleDTO => new ArticleDTO(article)
     );
   }
 
   async findOne(id: Id): Promise<ArticleDTO> {
-    const article: MaybeUndefined<ArticleState> = await this.unitOfWork
-      .getArticleProvider()
-      .findOneById(id);
+    const article: MaybeUndefined<ArticleState> =
+      await this.articleProvider.findOneById(id);
     if (!article) {
       throw new NotFoundException();
     }

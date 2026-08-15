@@ -22,7 +22,7 @@ export abstract class Entity<EntityState> implements IEntity<EntityState> {
     return { ...this.state };
   }
 
-  abstract checkStateValidity(newState: EntityState): IResult;
+  protected abstract checkStateValidity(newState: EntityState): IResult;
 
   private checkStateValidityAndThrowError(): void {
     const result: IResult = this.checkStateValidity(this.state);
