@@ -17,6 +17,7 @@
     "@nestjs/swagger": "*",
     "@nestjs/throttler": "*",
     "@sentry/nestjs": "*",
+    "express": "*",
     "helmet": "*",
     "keyv": "*",
     "pg": "*",
