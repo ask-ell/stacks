@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { HttpResponseBody } from '../types';
+import { HttpResponseBody } from '../../http/types';
 
 @Injectable()
 export class ResponseFormatInterceptor<T>

@@ -7,6 +7,7 @@ import { ErrorInterceptor } from '@ask-ell/back-end';
 
 import { WrongArticleTitleSizeError } from '../../../application';
 
+// TODO: improve
 @Injectable()
 export class ApplicationErrorInterceptor
   extends ErrorInterceptor

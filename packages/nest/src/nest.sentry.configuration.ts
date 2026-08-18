@@ -2,7 +2,7 @@ import { getNodeEnvironmentVariable, MaybeUndefined } from '@ask-ell/core';
 import { SentryConfiguration, SentryConfigurationProps } from '@ask-ell/sentry';
 import { init, NodeClient, NodeOptions } from '@sentry/nestjs';
 
-import { NestLogger } from './utils';
+import { NestLogger } from './nest.logger';
 
 type NestSentryClientFactory = (
   options?: MaybeUndefined<NodeOptions>

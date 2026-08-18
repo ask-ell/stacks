@@ -7,7 +7,7 @@ import {
 import { HttpArgumentsHost } from '@nestjs/common/interfaces';
 import type { Response } from 'express';
 
-import { HttpResponseBody } from '../types';
+import { HttpResponseBody } from '../../http';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {

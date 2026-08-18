@@ -1,6 +1,6 @@
 import { DynamicModule, Provider, Module, Global } from '@nestjs/common';
 
-import { RequirementModule } from './requirement.module';
+import { RequirementModule } from './modules';
 
 @Global()
 @Module({
