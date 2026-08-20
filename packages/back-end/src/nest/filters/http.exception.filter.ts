@@ -1,13 +1,13 @@
 import {
-  ExceptionFilter,
+  type ExceptionFilter,
+  type ArgumentsHost,
   Catch,
-  ArgumentsHost,
   HttpException,
 } from '@nestjs/common';
-import { HttpArgumentsHost } from '@nestjs/common/interfaces';
+import type { HttpArgumentsHost } from '@nestjs/common/interfaces';
 import type { Response } from 'express';
 
-import { HttpResponseBody } from '../../http';
+import type { HttpResponseBody } from '../../http';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -15,9 +15,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const context: HttpArgumentsHost = host.switchToHttp();
     const response: Response = context.getResponse<Response>();
     const status: number = exception.getStatus();
-
-    response.status(status).json({
+    const responseData: HttpResponseBody = {
       message: exception.message,
-    } as HttpResponseBody);
+    };
+    response.status(status).json(responseData);
   }
 }
