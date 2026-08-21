@@ -6,7 +6,7 @@ import { providers } from './providers';
 
 export const createApplication = (): Promise<IServerProvider> =>
   createNestApplication({
-    params: {
+    addons: {
       swagger: {
         title: 'Blog example API',
       },

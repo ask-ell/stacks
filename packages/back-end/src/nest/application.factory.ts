@@ -5,19 +5,19 @@ import { IServerProvider } from '@ask-ell/node';
 import { AddOnWrapper, AddOnWrapperParams } from './add-ons';
 
 type NestApplicationFactoryParams = {
-  params: AddOnWrapperParams;
+  addons: AddOnWrapperParams;
   module: DynamicModule;
 };
 
 export async function createNestApplication({
-  params,
   module,
+  addons: addonsParams,
 }: NestApplicationFactoryParams): Promise<IServerProvider> {
   const application: INestApplication = await NestFactory.create(module, {
     logger: new ConsoleLogger({
       json: true,
     }),
   });
-  new AddOnWrapper(params).apply(application);
+  new AddOnWrapper(addonsParams).apply(application);
   return application;
 }
