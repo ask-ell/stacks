@@ -23,3 +23,20 @@ jobs:
       - run: npm ci
 
       - run: scripts/check-pull-request-validity.sh
+
+  check-changeset:
+    if: github.base_ref == 'develop' && !startsWith(github.head_ref, 'changeset-release/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.18.0'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npx changeset status --since=origin/develop

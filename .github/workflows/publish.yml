@@ -32,6 +32,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Tag released packages
+        run: |
+          npx changeset tag
+          git push --follow-tags
+
       - run: npx nx run stacks:docs
 
       - name: Publish documentation
