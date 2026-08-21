@@ -1,16 +1,16 @@
 import { MaybeNullOrUndefined } from './nullable';
 
-interface ISuccessResult<Data> {
+export interface ISuccessResult<Data> {
   getError(): undefined;
   getData(): Data;
 }
 
-interface IFailResult {
+export interface IFailResult {
   getError(): Error;
   getData(): undefined;
 }
 
-interface FoldParams<Data> {
+export interface FoldParams<Data> {
   onSuccess?: (data: Data) => void;
   onFail?: (error: Error) => void;
 }

@@ -5,11 +5,11 @@ import { Client } from '@sentry/core';
 
 import { environment } from './environment';
 
-type ReactSentryClientFactory = (
+export type ReactSentryClientFactory = (
   options: BrowserOptions
 ) => MaybeUndefined<Client>;
 
-type ReactSentryConfigurationProps = Omit<
+export type ReactSentryConfigurationProps = Omit<
   SentryConfigurationProps<ReactSentryClientFactory>,
   'environment' | 'logger' | 'init'
 > & { logger?: ILogger };

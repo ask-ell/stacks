@@ -2,7 +2,7 @@ import { ILogger } from '@ask-ell/core';
 import { confirm } from '@topcli/prompts';
 import { Command } from 'commander';
 
-type ScriptArgument = {
+export type ScriptArgument = {
   name: string;
   description?: string;
   required?: boolean;
@@ -13,7 +13,7 @@ export type ScriptParams = {
   arguments?: ScriptArgument[];
 };
 
-type PromptTools = {
+export type PromptTools = {
   confirm: (message: string) => Promise<boolean>;
 };
 

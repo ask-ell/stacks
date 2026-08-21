@@ -24,11 +24,11 @@ export type UseFormParams<FormData> = {
   submitMode?: SubmitMode;
 };
 
-type FormDataFieldUpdater<FormData> = <Key extends keyof FormData>(
+export type FormDataFieldUpdater<FormData> = <Key extends keyof FormData>(
   key: Key
 ) => (value: FormData[Key]) => void;
 
-type SubmitTrigger = () => void;
+export type SubmitTrigger = () => void;
 
 export type ErrorsMap<FormData> = Map<keyof FormData, string[]>;
 

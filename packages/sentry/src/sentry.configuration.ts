@@ -1,7 +1,7 @@
 import type { ILogger, MaybeUndefined } from '@ask-ell/core';
 import { Client } from '@sentry/core';
 
-type SentryClientFactoryParams = {
+export type SentryClientFactoryParams = {
   dsn: string;
   sendDefaultPii: boolean;
   environment?: string;

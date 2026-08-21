@@ -4,11 +4,11 @@ import { init, NodeClient, NodeOptions } from '@sentry/nestjs';
 
 import { NestLogger } from './nest.logger';
 
-type NestSentryClientFactory = (
+export type NestSentryClientFactory = (
   options?: MaybeUndefined<NodeOptions>
 ) => MaybeUndefined<NodeClient>;
 
-type NestSentryConfigurationProps = Omit<
+export type NestSentryConfigurationProps = Omit<
   SentryConfigurationProps<NestSentryClientFactory>,
   'environment' | 'logger' | 'init'
 >;

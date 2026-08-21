@@ -2,7 +2,7 @@ import { Entity, IResult, ok } from '@ask-ell/core';
 import { CallHandler, ExecutionContext, NestInterceptor } from '@nestjs/common';
 import { catchError, Observable, throwError } from 'rxjs';
 
-type ErrorInterceptorProps = {
+export type ErrorInterceptorProps = {
   errorConvertor: (error: unknown) => unknown;
 };
 

@@ -1,4 +1,4 @@
-type SelectEvent = {
+export type SelectEvent = {
   target: {
     value: string;
   };

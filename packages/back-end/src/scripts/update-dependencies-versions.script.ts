@@ -24,7 +24,7 @@ makeSureThatProjectRootPathIsDefined(PROJECT_ROOT_PATH);
 
 const NX_GRAPH_FILE_PATH: string = join(PROJECT_ROOT_PATH, 'tmp/graph.json');
 
-type PackageContent = {
+export type PackageContent = {
   version: string;
   dependencies: StringDictionnary;
   devDependencies: StringDictionnary;
@@ -42,18 +42,18 @@ function getOrganisationPackageFile(packageId: string): PackageContent {
   return require(packageFilePath);
 }
 
-type UpdateDependenciesVersionsScriptParams = {
+export type UpdateDependenciesVersionsScriptParams = {
   organisationPackagePrefix: string;
   blackListedPackages: string[];
 };
 
-type WorkspaceDependenciesMapElement = {
+export type WorkspaceDependenciesMapElement = {
   id: string;
   dependencies: string[];
   source: PackageContent;
 };
 
-type WorkspaceDependenciesMap = {
+export type WorkspaceDependenciesMap = {
   [id: string]: WorkspaceDependenciesMapElement;
 };
 

@@ -6,7 +6,7 @@ export enum HttpMethod {
   DELETE = 'DELETE',
 }
 
-interface CommonMethodParams {
+export interface CommonMethodParams {
   url: URL;
   headers?: HeadersInit;
 }

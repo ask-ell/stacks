@@ -8,7 +8,7 @@ import { join } from 'node:path';
 
 import { createTmpFolder, TMP_FOLDER_PATH } from './tmp';
 
-type CreateKeyvStoreAdapterOptions = {
+export type CreateKeyvStoreAdapterOptions = {
   postgresUri: MaybeUndefined<string>;
 };
 

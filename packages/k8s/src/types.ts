@@ -22,7 +22,7 @@ export type ComponentsFetchingResponse<Item> = {
   items: Item[];
 };
 
-type CreateComponentDTOWrapper<DTO> = {
+export type CreateComponentDTOWrapper<DTO> = {
   namespace: string;
   dto: DTO;
 };

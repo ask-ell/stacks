@@ -4,7 +4,7 @@ import { IServerProvider } from '@ask-ell/node';
 
 import { AddOnWrapper, AddOnWrapperParams } from './add-ons';
 
-type NestApplicationFactoryParams = {
+export type NestApplicationFactoryParams = {
   addons: AddOnWrapperParams;
   module: DynamicModule;
 };
