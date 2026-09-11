@@ -112,9 +112,7 @@
     }
   },
   "scripts": {
-    "prepare": "husky",
-    "changeset": "changeset",
-    "changeset:version": "changeset version"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"
