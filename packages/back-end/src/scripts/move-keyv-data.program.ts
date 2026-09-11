@@ -1,5 +1,5 @@
 import { PercentageIncrementor } from '@ask-ell/core';
-import { Script, ExecuteOptions } from '@ask-ell/node';
+import { Program, ProgramExecutionOptions } from '@ask-ell/node';
 import { NestLogger } from '@ask-ell/nest';
 import { Client, QueryResult } from 'pg';
 
@@ -8,7 +8,7 @@ type KeyvRowData<Value = unknown> = {
   value: Value;
 };
 
-export class MoveKeyvDataScript extends Script {
+export class MoveKeyvDataProgram extends Program {
   constructor() {
     super({
       arguments: [
@@ -23,7 +23,7 @@ export class MoveKeyvDataScript extends Script {
           required: true,
         },
       ],
-      logger: NestLogger.fromClass(MoveKeyvDataScript),
+      logger: NestLogger.fromClass(MoveKeyvDataProgram),
     });
   }
 
@@ -31,7 +31,7 @@ export class MoveKeyvDataScript extends Script {
     logger,
     arguments: { origin, target },
     prompts: { confirm },
-  }: ExecuteOptions): Promise<void> {
+  }: ProgramExecutionOptions): Promise<void> {
     const originPostgresClient: Client = new Client(origin);
     const targetPostgresClient: Client = new Client(target);
 

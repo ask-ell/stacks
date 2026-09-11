@@ -2,41 +2,41 @@ import { ILogger } from '@ask-ell/core';
 import { confirm } from '@topcli/prompts';
 import { Command } from 'commander';
 
-export type ScriptArgument = {
+export type ProgramArgument = {
   name: string;
   description?: string;
   required?: boolean;
 };
 
-export type ScriptParams = {
+export type ProgramParams = {
   logger: ILogger;
-  arguments?: ScriptArgument[];
+  arguments?: ProgramArgument[];
 };
 
 export type PromptTools = {
   confirm: (message: string) => Promise<boolean>;
 };
 
-export type ExecuteOptions = {
+export type ProgramExecutionOptions = {
   arguments: Record<string, string>;
   logger: ILogger;
   prompts: PromptTools;
 };
 
-export abstract class Script extends Command {
-  constructor(private params: ScriptParams) {
+export abstract class Program extends Command {
+  constructor(private params: ProgramParams) {
     super();
-    params.arguments?.forEach((argument: ScriptArgument): void =>
+    params.arguments?.forEach((argument: ProgramArgument): void =>
       this.setArgument(argument)
     );
   }
 
-  abstract execute(options: ExecuteOptions): Promise<void>;
+  abstract execute(options: ProgramExecutionOptions): Promise<void>;
 
   run(): void {
     this.parse(process.argv);
     const args: string[] = this.args;
-    const executeOptions: ExecuteOptions = {
+    const executeOptions: ProgramExecutionOptions = {
       arguments: {},
       logger: this.params.logger,
       prompts: {
@@ -45,7 +45,7 @@ export abstract class Script extends Command {
     };
 
     this.params.arguments?.forEach(
-      (argument: ScriptArgument, index: number): void => {
+      (argument: ProgramArgument, index: number): void => {
         const argumentValue: string | undefined = args[index];
         if (argument.required && argumentValue === undefined) {
           throw new Error(`Missing required argument: ${argument.name}`);
@@ -59,7 +59,7 @@ export abstract class Script extends Command {
       .catch(this.params.logger.error.bind(this.params.logger));
   }
 
-  private setArgument(argument: ScriptArgument): void {
+  private setArgument(argument: ProgramArgument): void {
     const name: string = argument.required
       ? `<${argument.name}>`
       : `[${argument.name}]`;

@@ -4,7 +4,7 @@ import {
   UnknownEnvironmentVariableError,
 } from '@ask-ell/core';
 import { NestLogger } from '@ask-ell/nest';
-import { ExecuteOptions, Script } from '@ask-ell/node';
+import { ProgramExecutionOptions, Program } from '@ask-ell/node';
 import { spawnSync } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
@@ -42,7 +42,7 @@ function getOrganisationPackageFile(packageId: string): PackageContent {
   return require(packageFilePath);
 }
 
-export type UpdateDependenciesVersionsScriptParams = {
+export type UpdateDependenciesVersionsProgramParams = {
   organisationPackagePrefix: string;
   blackListedPackages: string[];
 };
@@ -57,7 +57,7 @@ export type WorkspaceDependenciesMap = {
   [id: string]: WorkspaceDependenciesMapElement;
 };
 
-export class UpdateDependenciesVersionsScript extends Script {
+export class UpdateDependenciesVersionsProgram extends Program {
   private organisationPackagePrefix: string;
   private blackListedPackages: string[];
   private workspaceDependenciesMap: WorkspaceDependenciesMap =
@@ -66,9 +66,9 @@ export class UpdateDependenciesVersionsScript extends Script {
   constructor({
     organisationPackagePrefix,
     blackListedPackages,
-  }: UpdateDependenciesVersionsScriptParams) {
+  }: UpdateDependenciesVersionsProgramParams) {
     super({
-      logger: NestLogger.fromClass(UpdateDependenciesVersionsScript),
+      logger: NestLogger.fromClass(UpdateDependenciesVersionsProgram),
       arguments: [
         {
           name: 'targetedPackage',
@@ -83,7 +83,7 @@ export class UpdateDependenciesVersionsScript extends Script {
   async execute({
     logger,
     arguments: { targetedPackage },
-  }: ExecuteOptions): Promise<void> {
+  }: ProgramExecutionOptions): Promise<void> {
     const workspaceDependenciesMapElements: WorkspaceDependenciesMapElement[] =
       Object.values(this.workspaceDependenciesMap).filter(
         ({ id }: WorkspaceDependenciesMapElement): boolean =>
