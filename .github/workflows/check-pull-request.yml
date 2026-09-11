@@ -3,8 +3,7 @@ name: Check Pull Request
 on:
   pull_request:
     branches:
-      - develop
-      - release
+      - main
 
 permissions:
   contents: read
@@ -25,7 +24,7 @@ jobs:
       - run: scripts/check-pull-request-validity.sh
 
   check-changeset:
-    if: github.base_ref == 'develop' && !startsWith(github.head_ref, 'changeset-release/')
+    if: github.base_ref == 'main' && !startsWith(github.head_ref, 'changeset-release/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,4 +38,4 @@ jobs:
 
       - run: npm ci
 
-      - run: npx changeset status --since=origin/develop
+      - run: npx changeset status --since=origin/main
