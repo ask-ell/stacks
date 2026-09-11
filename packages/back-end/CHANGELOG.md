@@ -1,5 +1,13 @@
 # @ask-ell/back-end
 
+## 0.2.4
+
+### Patch Changes
+
+- [#20](https://github.com/ask-ell/stacks/pull/20) [`6eb9d13`](https://github.com/ask-ell/stacks/commit/6eb9d13e6473a022eb1377d3ca688811379e0376) Thanks [@timbitwin](https://github.com/timbitwin)! - script renamed to program
+- Updated dependencies [[`6eb9d13`](https://github.com/ask-ell/stacks/commit/6eb9d13e6473a022eb1377d3ca688811379e0376)]:
+  - @ask-ell/node@0.0.6
+
 ## 0.2.3
 
 ### Patch Changes
