@@ -29,7 +29,7 @@ jobs:
       - name: Create or update Version Packages PR
         uses: changesets/action@v1
         with:
-          version: npm run changeset:version
+          version: npx changeset version
           commit: 'chore: version packages'
           title: 'chore: version packages'
         env:
