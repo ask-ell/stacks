@@ -1,5 +1,16 @@
 # @ask-ell/node
 
+## 0.1.0
+
+### Minor Changes
+
+- [`47f8c3e`](https://github.com/ask-ell/stacks/commit/47f8c3ea6aa95253b2e32f46c53f4df838d00b1e) Thanks [@timbitwin](https://github.com/timbitwin)! - crypto manager class created
+
+### Patch Changes
+
+- Updated dependencies [[`47f8c3e`](https://github.com/ask-ell/stacks/commit/47f8c3ea6aa95253b2e32f46c53f4df838d00b1e)]:
+  - @ask-ell/core@1.3.7
+
 ## 0.0.6
 
 ### Patch Changes
