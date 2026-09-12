@@ -1,5 +1,11 @@
 # @ask-ell/node
 
+## 0.1.1
+
+### Patch Changes
+
+- [`b6e3f30`](https://github.com/ask-ell/stacks/commit/b6e3f30b351599a82900f03a9087d36239694603) Thanks [@timbitwin](https://github.com/timbitwin)! - crypto password manager exported
+
 ## 0.1.0
 
 ### Minor Changes
