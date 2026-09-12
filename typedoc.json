@@ -11,7 +11,7 @@
   "searchInComments": true,
   "searchInDocuments": true,
   "navigationLinks": {
-    "Example": "https://github.com/ask-ell/stacks/tree/develop/examples/blog",
+    "Examples": "https://github.com/ask-ell/stacks/tree/main/examples",
     "GitHub": "https://github.com/ask-ell/stacks",
     "Contribute": "https://opencollective.com/ask-ell/projects/ask-ell-stacks"
   },
