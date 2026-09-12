@@ -7,7 +7,9 @@ export type GenerateRandomPasswordResultDTO = {
 
 export interface IPasswordManager {
   generateFromPlainText(plainTextValue: string): Promise<IHashedPassword>;
-  generateRandom(size: number): Promise<GenerateRandomPasswordResultDTO>;
+  generateRandomPassword(
+    size: number
+  ): Promise<GenerateRandomPasswordResultDTO>;
   matchs(
     plainTextValue: string,
     hashedPassword: IHashedPassword
