@@ -1,6 +1,6 @@
 {
   "name": "@ask-ell/gitlab",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "type": "commonjs",
   "main": "./src/index.js",
