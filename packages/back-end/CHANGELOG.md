@@ -1,5 +1,15 @@
 # @ask-ell/back-end
 
+## 0.2.6
+
+### Patch Changes
+
+- [`a15edf6`](https://github.com/ask-ell/stacks/commit/a15edf6a2deb914cadfbbaa3f95b45f7986dcec0) Thanks [@timbitwin](https://github.com/timbitwin)! - Forced publish
+- Updated dependencies [[`a15edf6`](https://github.com/ask-ell/stacks/commit/a15edf6a2deb914cadfbbaa3f95b45f7986dcec0)]:
+  - @ask-ell/core@1.3.10
+  - @ask-ell/nest@0.0.17
+  - @ask-ell/node@0.1.3
+
 ## 0.2.5
 
 ### Patch Changes

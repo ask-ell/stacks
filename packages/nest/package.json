@@ -1,6 +1,6 @@
 {
   "name": "@ask-ell/nest",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "private": false,
   "type": "commonjs",
   "main": "./src/index.js",
