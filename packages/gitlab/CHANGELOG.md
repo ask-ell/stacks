@@ -1,5 +1,13 @@
 # @ask-ell/gitlab
 
+## 0.0.7
+
+### Patch Changes
+
+- [`a15edf6`](https://github.com/ask-ell/stacks/commit/a15edf6a2deb914cadfbbaa3f95b45f7986dcec0) Thanks [@timbitwin](https://github.com/timbitwin)! - Forced publish
+- Updated dependencies [[`a15edf6`](https://github.com/ask-ell/stacks/commit/a15edf6a2deb914cadfbbaa3f95b45f7986dcec0)]:
+  - @ask-ell/core@1.3.10
+
 ## 0.0.6
 
 ### Patch Changes
