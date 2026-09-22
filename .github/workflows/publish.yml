@@ -33,15 +33,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Tag released packages
-        run: |
+      - run: |
           npx changeset tag
           git push --follow-tags
 
       - run: npx nx run stacks:docs
 
-      - name: Publish documentation
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages

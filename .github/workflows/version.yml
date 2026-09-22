@@ -26,8 +26,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Create or update Version Packages PR
-        uses: changesets/action@v1
+      - uses: changesets/action@v1
         with:
           version: npx changeset version
           commit: 'chore: version packages'

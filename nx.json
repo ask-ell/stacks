@@ -46,6 +46,12 @@
     "test": {
       "dependsOn": ["^build"]
     },
+    "nx-release-publish": {
+      "dependsOn": ["build"],
+      "options": {
+        "packageRoot": "{workspaceRoot}/dist/{projectRoot}"
+      }
+    },
     "format": {
       "executor": "nx:run-commands",
       "options": {
