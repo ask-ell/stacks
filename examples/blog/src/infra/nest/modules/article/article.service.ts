@@ -70,6 +70,11 @@ export class ArticleService {
   }
 
   private async persistData(): Promise<void> {
+    const allArticles = await this.articleProvider.findAll();
+    if (allArticles.length === articleMockDataList.length) {
+      this.logger.info('Mocked data already saved');
+      return;
+    }
     await Promise.all(
       articleMockDataList.map(
         this.createArticleUseCase.run.bind(this.createArticleUseCase)

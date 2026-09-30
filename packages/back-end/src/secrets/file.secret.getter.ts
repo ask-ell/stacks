@@ -19,9 +19,12 @@ export const fileSecretGetter =
 
     return readdirSync(rootDirectoryPath, { withFileTypes: true })
       .filter((entry: Dirent<string>): boolean => entry.isFile())
-      .reduce((secrets: Record<string, string>, entry): object => {
-        const filePath: string = join(rootDirectoryPath, entry.name);
-        secrets[entry.name] = readFileSync(filePath, 'utf-8').trim();
-        return secrets;
-      }, {});
+      .reduce(
+        (secrets: Record<string, string>, entry: Dirent<string>): object => {
+          const filePath: string = join(rootDirectoryPath, entry.name);
+          secrets[entry.name] = readFileSync(filePath, 'utf-8').trim();
+          return secrets;
+        },
+        {}
+      );
   };

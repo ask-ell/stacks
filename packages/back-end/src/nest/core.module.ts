@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import type { ILogger } from '@ask-ell/core';
-import { NestLogger } from '@ask-ell/nest';
 import { SentryGlobalFilter, SentryModule } from '@sentry/nestjs/setup';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { ConfigModule } from '@nestjs/config';
+import { ILogger } from '@ask-ell/core';
+import { NestLogger } from '@ask-ell/nest';
 
-import { KeyvStoreAdapterFactory } from '../../../keyv.store.adapter.factory';
-import { dockerSecretGetter, localSecretGetter } from '../../../secrets';
-import { HealthModule } from '../health';
-import { ResponseFormatInterceptor } from '../../interceptors';
-import { HttpExceptionFilter } from '../../filters';
+import { HealthModule } from './modules';
+import { ResponseFormatInterceptor } from './interceptors';
+import { HttpExceptionFilter } from './filters';
+import { dockerSecretGetter, localSecretGetter } from '../secrets';
+import { KeyvStoreAdapterFactory } from '../keyv';
 
 const configModuleLogger: ILogger = NestLogger.fromClass(ConfigModule);
 
@@ -33,7 +33,6 @@ const configModuleLogger: ILogger = NestLogger.fromClass(ConfigModule);
     }),
   ],
   providers: [
-    KeyvStoreAdapterFactory,
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
@@ -50,7 +49,11 @@ const configModuleLogger: ILogger = NestLogger.fromClass(ConfigModule);
       provide: APP_FILTER,
       useClass: SentryGlobalFilter,
     },
+    {
+      provide: KeyvStoreAdapterFactory,
+      useClass: KeyvStoreAdapterFactory,
+    },
   ],
-  exports: [ConfigModule, SentryModule, KeyvStoreAdapterFactory],
+  exports: [KeyvStoreAdapterFactory],
 })
-export class RequirementModule {}
+export class CoreModule {}

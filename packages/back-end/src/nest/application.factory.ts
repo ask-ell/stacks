@@ -1,12 +1,12 @@
-import { ConsoleLogger, DynamicModule, INestApplication } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import { ConsoleLogger, INestApplication } from '@nestjs/common';
+import { IEntryNestModule, NestFactory } from '@nestjs/core';
 import { IServerProvider } from '@ask-ell/node';
 
 import { AddOnWrapper, AddOnWrapperParams } from './add-ons';
 
 export type NestApplicationFactoryParams = {
   addons: AddOnWrapperParams;
-  module: DynamicModule;
+  module: IEntryNestModule;
 };
 
 export async function createNestApplication({

@@ -4,4 +4,4 @@
 export * from './scripts';
 export * from './http';
 export * from './nest';
-export * from './keyv.store.adapter.factory';
+export * from './keyv/keyv.store.adapter.factory';

@@ -1,12 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { ApplicationBase } from '@ask-ell/back-end';
+import { CoreModule, DynamicModuleFactory } from '@ask-ell/back-end';
 
 import { ArticleModule } from './modules';
 import { ApplicationErrorInterceptor } from './interceptors';
 
+@Global()
 @Module({
-  imports: [ArticleModule],
+  imports: [ArticleModule, CoreModule],
   providers: [
     {
       provide: APP_INTERCEPTOR,
@@ -14,4 +15,4 @@ import { ApplicationErrorInterceptor } from './interceptors';
     },
   ],
 })
-export class AppModule extends ApplicationBase {}
+export class AppModule extends DynamicModuleFactory {}
