@@ -1,6 +1,6 @@
 import Keyv from 'keyv';
 import { type MaybeUndefined, TestMustFailError } from '@ask-ell/core';
-import { IIdFactory } from '@ask-ell/ddd';
+import { type IIdFactory } from '@ask-ell/ddd';
 import { CryptoIdFactory } from '@ask-ell/node';
 
 import {
@@ -9,44 +9,49 @@ import {
   type ICreateArticleUseCase,
   type IUpdateArticleUseCase,
   type ArticleState,
+  type IArticleProvider,
+  type IArticleRepository,
   CreateArticleUseCase,
   UpdateArticleUseCase,
   WrongArticleTitleSizeError,
-  IArticleProvider,
-  IArticleRepository,
 } from './application';
 
 import { KeyvArticleProvider, KeyvArticleRepository } from './infra';
 
 const keyvInstance: Keyv = new Keyv();
+
 const idFactory: IIdFactory = new CryptoIdFactory();
+
 const articleProvider: IArticleProvider = new KeyvArticleProvider(keyvInstance);
+
 const articleRepository: IArticleRepository = new KeyvArticleRepository(
   keyvInstance
 );
+
 const createArticleUseCase: ICreateArticleUseCase = new CreateArticleUseCase(
   idFactory,
   articleRepository
 );
+
 const updateArticleUseCase: IUpdateArticleUseCase = new UpdateArticleUseCase(
   articleProvider,
   articleRepository
 );
 
+async function createArticle(): Promise<IUpdateArticleUseCaseInput> {
+  const dto: ICreateArticleUseCaseInput = {
+    title: "My article's title",
+    description: "My article's description",
+  };
+  const createdArticle: ArticleState = await createArticleUseCase.run(dto);
+
+  expect(createdArticle.title).toEqual(dto.title);
+  expect(createdArticle.description).toEqual(dto.description);
+
+  return createdArticle;
+}
+
 describe('Blog', (): void => {
-  async function createArticle(): Promise<IUpdateArticleUseCaseInput> {
-    const dto: ICreateArticleUseCaseInput = {
-      title: "My article's title",
-      description: "My article's description",
-    };
-    const createdArticle: ArticleState = await createArticleUseCase.run(dto);
-
-    expect(createdArticle.title).toEqual(dto.title);
-    expect(createdArticle.description).toEqual(dto.description);
-
-    return createdArticle;
-  }
-
   beforeEach(async (): Promise<void> => {
     await keyvInstance.clear();
   });
