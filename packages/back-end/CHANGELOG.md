@@ -1,5 +1,11 @@
 # @ask-ell/back-end
 
+## 1.0.0
+
+### Major Changes
+
+- [`efd4b29`](https://github.com/ask-ell/stacks/commit/efd4b2958eaa6c597db05fc7e18a5c6b18530431) Thanks [@timbitwin](https://github.com/timbitwin)! - CoreModule created instead of ApplicationBase class
+
 ## 0.2.6
 
 ### Patch Changes
