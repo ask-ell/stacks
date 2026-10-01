@@ -1,5 +1,11 @@
 # @ask-ell/back-end
 
+## 1.1.0
+
+### Minor Changes
+
+- [`960967d`](https://github.com/ask-ell/stacks/commit/960967d0c267cd6214da5dfa5792be543f1464c8) Thanks [@timbitwin](https://github.com/timbitwin)! - core module auto-imported in dynamic module factory
+
 ## 1.0.0
 
 ### Major Changes
