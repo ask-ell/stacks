@@ -6,11 +6,11 @@ import { ConfigModule } from '@nestjs/config';
 import { ILogger } from '@ask-ell/core';
 import { NestLogger } from '@ask-ell/nest';
 
-import { HealthModule } from './modules';
-import { ResponseFormatInterceptor } from './interceptors';
-import { HttpExceptionFilter } from './filters';
-import { dockerSecretGetter, localSecretGetter } from '../secrets';
-import { KeyvStoreAdapterFactory } from '../keyv';
+import { HealthModule } from '../health';
+import { ResponseFormatInterceptor } from '../../interceptors';
+import { HttpExceptionFilter } from '../../filters';
+import { dockerSecretGetter, localSecretGetter } from '../../../secrets';
+import { KeyvStoreAdapterFactory } from '../../../keyv';
 
 const configModuleLogger: ILogger = NestLogger.fromClass(ConfigModule);
 
