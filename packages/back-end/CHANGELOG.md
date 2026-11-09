@@ -1,5 +1,11 @@
 # @ask-ell/back-end
 
+## 1.1.1
+
+### Patch Changes
+
+- [`661bd1c`](https://github.com/ask-ell/stacks/commit/661bd1c1f970f8e94f2fed6a24f0c94511f96206) Thanks [@timbitwin](https://github.com/timbitwin)! - `UpdateDependenciesVersionsProgram` now runs all its logic inside `execute` instead of at module load or construction, writes each package file to `dist/packages/<id>/package.json` instead of overwriting the root `package.json`, and no longer loses `this` when filtering blacklisted packages.
+
 ## 1.1.0
 
 ### Minor Changes
