@@ -6,10 +6,10 @@ import { providers } from './providers';
 
 export const createApplication = (): Promise<IServerProvider> =>
   createNestApplication({
+    module: AppModule.withProviders(providers),
     addons: {
       swagger: {
         title: 'Blog example API',
       },
     },
-    module: AppModule.withProviders(providers),
   });
