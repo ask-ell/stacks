@@ -10,8 +10,6 @@ import { writeFileSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const PROJECT_ROOT_PATH: MaybeUndefined<string> = process.env['PWD'];
-
 function makeSureThatProjectRootPathIsDefined(
   projectRootPath: MaybeUndefined<string>
 ): asserts projectRootPath is string {
@@ -20,27 +18,22 @@ function makeSureThatProjectRootPathIsDefined(
   }
 }
 
-makeSureThatProjectRootPathIsDefined(PROJECT_ROOT_PATH);
-
-const NX_GRAPH_FILE_PATH: string = join(PROJECT_ROOT_PATH, 'tmp/graph.json');
+function getOrganisationPackageFile(
+  projectRootPath: string,
+  packageId: string
+): PackageContent {
+  const packageFilePath = join(
+    projectRootPath,
+    `packages/${packageId}/package.json`
+  );
+  return require(packageFilePath);
+}
 
 export type PackageContent = {
   version: string;
   dependencies: StringDictionnary;
   devDependencies: StringDictionnary;
 };
-
-const ROOT_PACKAGE_FILE_PATH: string = join(PROJECT_ROOT_PATH, `package.json`);
-const ROOT_PACKAGE_CONTENT: PackageContent = require(ROOT_PACKAGE_FILE_PATH);
-
-function getOrganisationPackageFile(packageId: string): PackageContent {
-  makeSureThatProjectRootPathIsDefined(PROJECT_ROOT_PATH);
-  const packageFilePath = join(
-    PROJECT_ROOT_PATH,
-    `packages/${packageId}/package.json`
-  );
-  return require(packageFilePath);
-}
 
 export type UpdateDependenciesVersionsProgramParams = {
   organisationPackagePrefix: string;
@@ -60,8 +53,6 @@ export type WorkspaceDependenciesMap = {
 export class UpdateDependenciesVersionsProgram extends Program {
   private organisationPackagePrefix: string;
   private blackListedPackages: string[];
-  private workspaceDependenciesMap: WorkspaceDependenciesMap =
-    this.getWorkspaceDependenciesMap();
 
   constructor({
     organisationPackagePrefix,
@@ -84,8 +75,18 @@ export class UpdateDependenciesVersionsProgram extends Program {
     logger,
     arguments: { targetedPackage },
   }: ProgramExecutionOptions): Promise<void> {
+    const projectRootPath: MaybeUndefined<string> = process.env['PWD'];
+    makeSureThatProjectRootPathIsDefined(projectRootPath);
+
+    const rootPackageContent: PackageContent = require(join(
+      projectRootPath,
+      'package.json'
+    ));
+    const workspaceDependenciesMap: WorkspaceDependenciesMap =
+      this.getWorkspaceDependenciesMap(projectRootPath);
+
     const workspaceDependenciesMapElements: WorkspaceDependenciesMapElement[] =
-      Object.values(this.workspaceDependenciesMap).filter(
+      Object.values(workspaceDependenciesMap).filter(
         ({ id }: WorkspaceDependenciesMapElement): boolean =>
           this.isTargetedPackage(targetedPackage)(id)
       );
@@ -97,16 +98,10 @@ export class UpdateDependenciesVersionsProgram extends Program {
     } of workspaceDependenciesMapElements) {
       logger.log(`package.json file updating for project "${id}"...`);
 
-      if (!PROJECT_ROOT_PATH) {
-        throw new UnknownEnvironmentVariableError('PWD');
-      }
-      const packagePath: string = join(
-        PROJECT_ROOT_PATH,
-        `dist/packages/${id}`
-      );
+      const packagePath: string = join(projectRootPath, `dist/packages/${id}`);
 
       await mkdir(packagePath, { recursive: true });
-      const packageFilePath: string = join(PROJECT_ROOT_PATH, 'package.json');
+      const packageFilePath: string = join(packagePath, 'package.json');
 
       const packageFileContent: PackageContent = { ...source };
 
@@ -117,11 +112,11 @@ export class UpdateDependenciesVersionsProgram extends Program {
       dependencies.forEach((dependency: string): void => {
         const versionTag = this.isAOrganisationPackage(dependency)
           ? `^${
-              this.workspaceDependenciesMap[
+              workspaceDependenciesMap[
                 dependency.replace(this.organisationPackagePrefix, '')
               ].source.version
             }`
-          : ROOT_PACKAGE_CONTENT.devDependencies[dependency];
+          : rootPackageContent.devDependencies[dependency];
         packageFileContent.dependencies[dependency] = versionTag;
       });
 
@@ -136,26 +131,34 @@ export class UpdateDependenciesVersionsProgram extends Program {
     console.log('Package files updated.');
   }
 
-  getWorkspaceDependenciesMap(): WorkspaceDependenciesMap {
+  getWorkspaceDependenciesMap(
+    projectRootPath: string
+  ): WorkspaceDependenciesMap {
     const workspaceDependenciesMap: WorkspaceDependenciesMap = {};
+    const nxGraphFilePath: string = join(projectRootPath, 'tmp/graph.json');
 
     const nxGraphResult = spawnSync(
       'npx',
-      ['nx', 'graph', '--file', NX_GRAPH_FILE_PATH],
+      ['nx', 'graph', '--file', nxGraphFilePath],
       { stdio: 'inherit' }
     );
     if (nxGraphResult.status !== 0) {
       throw new Error(`"nx graph" failed with status ${nxGraphResult.status}`);
     }
-    const nxGraph = require(NX_GRAPH_FILE_PATH);
+    const nxGraph = require(nxGraphFilePath);
 
     const packageIds = Object.entries(nxGraph.graph.dependencies).map(
       ([packageId]) => packageId
     );
 
-    for (const packageId of packageIds.filter(this.isNotBlackListed)) {
+    for (const packageId of packageIds.filter((packageId: string): boolean =>
+      this.isNotBlackListed(packageId)
+    )) {
       console.log(`Scanning dependencies for package ${packageId}...`);
-      const packageFileContent = getOrganisationPackageFile(packageId);
+      const packageFileContent = getOrganisationPackageFile(
+        projectRootPath,
+        packageId
+      );
       const dependencies = packageFileContent.dependencies
         ? Object.entries(packageFileContent.dependencies).map(
             ([dependency]) => dependency
