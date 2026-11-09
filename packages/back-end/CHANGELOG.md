@@ -1,5 +1,11 @@
 # @ask-ell/back-end
 
+## 1.1.2
+
+### Patch Changes
+
+- [`c428197`](https://github.com/ask-ell/stacks/commit/c428197641ccfbe47880f9d1d1a86658f7951c4d) Thanks [@timbitwin](https://github.com/timbitwin)! - back-end application factory addons parameter optional
+
 ## 1.1.1
 
 ### Patch Changes
