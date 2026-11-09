@@ -29,7 +29,9 @@ jobs:
 
       - run: node scripts/update-dependencies-versions.js
 
-      - run: npx nx run-many -t nx-release-publish
+      # Builds already ran above; skipping the `build` dependency keeps the
+      # dist/packages/*/package.json files rewritten by the previous step.
+      - run: npx nx run-many -t nx-release-publish --excludeTaskDependencies
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
